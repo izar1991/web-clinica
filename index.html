@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Centre Sanitari Villaquet — Centro médico de excelencia y proximidad en Calafell. Especialidades médicas, diagnóstico avanzado y atención personalizada.">
+  <title>Centre Sanitari Villaquet — Calafell</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Barra superior -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__info">
+        <a href="https://maps.google.com/?q=Carrer+Molí+del+Blanquet+24+Calafell" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          Carrer Molí del Blanquet, 24 — Calafell
+        </a>
+        <a href="mailto:info@villaquet.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          info@villaquet.com
+        </a>
+        <a href="tel:877643360">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+          877 643 360
+        </a>
+      </div>
+      <div class="topbar__hours">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Lun–Vie: 8:00–13:00 / 15:00–20:00
+      </div>
+    </div>
+  </div>
+
+  <!-- Navegación -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#inicio" class="nav__logo">
+        <img src="images/logo.jpg" alt="Centre Sanitari Villaquet" width="48" height="48">
+        <span>Villa<span class="nav__logo-accent">quet</span></span>
+      </a>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="#inicio" class="nav__link">Inicio</a></li>
+        <li><a href="#servicios" class="nav__link">Servicios</a></li>
+        <li><a href="#equipo" class="nav__link">Equipo</a></li>
+        <li><a href="#tecnologia" class="nav__link">Tecnología</a></li>
+        <li><a href="#mutuas" class="nav__link">Mutuas</a></li>
+        <li><a href="#club" class="nav__link">Club CSV</a></li>
+        <li><a href="#contacto" class="nav__link nav__link--cta">Pedir cita</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+      <div class="hero__bg"></div>
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <p class="hero__tag">Centre Sanitari Villaquet · Calafell</p>
+          <h1 class="hero__title">Tu centro de confianza en <em>Calafell</em></h1>
+          <p class="hero__subtitle">Un centro médico de excelencia y proximidad. Profesionales de sólida trayectoria, tecnología de vanguardia y atención personalizada.</p>
+          <div class="hero__actions">
+            <a href="#contacto" class="btn btn--primary">Reservar cita</a>
+            <a href="tel:877643360" class="btn btn--outline">877 643 360</a>
+          </div>
+        </div>
+        <div class="hero__image">
+          <img src="images/about.jpg" alt="Instalaciones del Centre Sanitari Villaquet" loading="eager">
+          <div class="hero__badge">
+            <strong>Excelencia</strong>
+            <span>y proximidad</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Por qué elegirnos -->
+    <section class="why section" id="nosotros">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__tag">Por qué elegirnos</span>
+          <h2 class="section__title">Calidad, rapidez y atención cercana</h2>
+          <p class="section__desc">Profesionales de sólida trayectoria y reputación, comprometidos con tu bienestar.</p>
+        </div>
+        <div class="why__grid">
+          <article class="why-card">
+            <div class="why-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>Profesionales altamente cualificados</h3>
+            <p>Equipo con sólida trayectoria clínica y amplia experiencia en distintas especialidades médicas y sanitarias. Atención cercana, rigurosa y personalizada.</p>
+          </article>
+          <article class="why-card">
+            <div class="why-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <h3>Instalaciones punteras</h3>
+            <p>Tecnología de última generación: ecógrafos, rayos X, electrocardiógrafos y cardiotocógrafos. Resonancias magnéticas y TACs en centros colaboradores.</p>
+          </article>
+          <article class="why-card">
+            <div class="why-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </div>
+            <h3>Salud integral</h3>
+            <p>Fisioterapia, medicina estética avanzada y podología con instrumental de alta calidad. Enfoque profesional orientado al bienestar y la prevención.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Servicios -->
+    <section class="services section section--alt" id="servicios">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__tag">Nuestra cartera de servicios</span>
+          <h2 class="section__title">Atención integral y multidisciplinar</h2>
+          <p class="section__desc">Amplia cartera de especialidades médicas y servicios complementarios para una atención completa, ágil y de máxima calidad.</p>
+        </div>
+        <div class="services__grid">
+
+          <article class="service-card">
+            <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+            <h3>Ginecología y Obstetricia</h3>
+            <p>Salud femenina integral: menopausia, ecografía avanzada, reproducción asistida y cirugía ginecológica.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <h3>Dermatología</h3>
+            <p>Dermatología integral y pediátrica. Prevención del cáncer de piel y tratamiento de patologías complejas.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a8 8 0 0 0-8 8c0 6 8 12 8 12s8-6 8-12a8 8 0 0 0-8-8Z"/></svg></div>
+            <h3>Psicología</h3>
+            <p>Psicoterapia infantil, adultos, crisis de pareja y familia. Acompañamiento en procesos de inclusión y salud mental.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
+            <h3>Fisioterapia</h3>
+            <p>Fisioterapia deportiva y traumatológica. Punción seca, rehabilitación postquirúrgica y readaptación al esfuerzo.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg></div>
+            <h3>Medicina General</h3>
+            <p>Atención primaria, urgencias y certificados médicos y psicotécnicos para permisos de conducir y licencias.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div>
+            <h3>Podología</h3>
+            <p>Atención integral del pie: prevención, diagnóstico preciso y tratamiento personalizado de patologías podológicas.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+            <h3>Enfermería</h3>
+            <p>Extracciones, consultas, urgencias y coordinación de equipos. Técnica especializada en rayos X.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+            <h3>Diagnóstico por imagen</h3>
+            <p>Ecografías, radiología digital, electrocardiogramas y cardiotocografías con equipamiento de última generación.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Equipo -->
+    <section class="team section" id="equipo">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__tag">Equipo médico</span>
+          <h2 class="section__title">Un equipo profesional de la mejor calidad</h2>
+          <p class="section__desc">Especialistas con amplia trayectoria, formación continuada y vocación asistencial.</p>
+        </div>
+        <div class="team__grid">
+
+          <article class="doctor-card">
+            <div class="doctor-card__header">
+              <div class="doctor-card__avatar">JP</div>
+              <div>
+                <h3>Dr. Jaime Paredes</h3>
+                <p class="doctor-card__role">Director Médico · Medicina General · Urgencias</p>
+              </div>
+            </div>
+            <p class="doctor-card__bio">Más de 25 años de experiencia en urgencias. Trayectoria en la Clínica Corachan de Barcelona y otras instituciones de referencia.</p>
+          </article>
+
+          <article class="doctor-card">
+            <div class="doctor-card__header">
+              <div class="doctor-card__avatar">EM</div>
+              <div>
+                <h3>Dr. Esteban Pedro Mussin</h3>
+                <p class="doctor-card__role">Ginecología y Obstetricia</p>
+              </div>
+            </div>
+            <p class="doctor-card__bio">Más de 20 años de experiencia internacional. Referente en cirugía ginecológica de alta complejidad y oncología ginecológica.</p>
+          </article>
+
+          <article class="doctor-card">
+            <div class="doctor-card__header">
+              <div class="doctor-card__avatar">YM</div>
+              <div>
+                <h3>Dra. Yolanda Medrano de Blas</h3>
+                <p class="doctor-card__role">Ginecología y Obstetricia</p>
+              </div>
+            </div>
+            <p class="doctor-card__bio">Máster en Anticoncepción y Salud Reproductiva. Referente en menopausia, ecografía avanzada y reproducción asistida.</p>
+          </article>
+
+          <article class="doctor-card">
+            <div class="doctor-card__header">
+              <div class="doctor-card__avatar">AG</div>
+              <div>
+                <h3>Dr. Álvaro Gómez Tomás</h3>
+                <p class="doctor-card__role">Dermatología</p>
+              </div>
+            </div>
+            <p class="doctor-card__bio">Formación en el Hospital Vall d'Hebron. Dermatología integral y pediátrica con enfoque innovador en diagnóstico avanzado.</p>
+          </article>
+
+          <article class="doctor-card">
+            <div class="doctor-card__header">
+              <div class="doctor-card__avatar">MC</div>
+              <div>
+                <h3>María Cecilia Cristaldi</h3>
+                <p class="doctor-card__role">Psicología</p>
+              </div>
+            </div>
+            <p class="doctor-card__bio">15 años de experiencia. Especialización en Coaching Ontológico y abordaje del trauma. Psicoterapia para adolescentes y adultos.</p>
+          </article>
+
+          <article class="doctor-card">
+            <div class="doctor-card__header">
+              <div class="doctor-card__avatar">KE</div>
+              <div>
+                <h3>Klay del Carmen Escobar</h3>
+                <p class="doctor-card__role">Psicología</p>
+              </div>
+            </div>
+            <p class="doctor-card__bio">Más de 25 años de trayectoria. Psicología infantil, terapia breve y acompañamiento en enfermedades neurodegenerativas.</p>
+          </article>
+
+          <article class="doctor-card">
+            <div class="doctor-card__header">
+              <div class="doctor-card__avatar">LH</div>
+              <div>
+                <h3>Lic. Luciano Ezequiel Herlein</h3>
+                <p class="doctor-card__role">Fisioterapia y Rehabilitación</p>
+              </div>
+            </div>
+            <p class="doctor-card__bio">Especializado en fisioterapia deportiva y traumatológica. Técnicas avanzadas como punción seca y rehabilitación postquirúrgica.</p>
+          </article>
+
+          <article class="doctor-card">
+            <div class="doctor-card__header">
+              <div class="doctor-card__avatar">DM</div>
+              <div>
+                <h3>Dídac Melero</h3>
+                <p class="doctor-card__role">Podología</p>
+              </div>
+            </div>
+            <p class="doctor-card__bio">Graduado en la Universitat de Barcelona. Especialización en imagen diagnóstica y cirugía de antepié.</p>
+          </article>
+
+          <article class="doctor-card">
+            <div class="doctor-card__header">
+              <div class="doctor-card__avatar">MP</div>
+              <div>
+                <h3>Meritxell Paredes</h3>
+                <p class="doctor-card__role">Medicina</p>
+              </div>
+            </div>
+            <p class="doctor-card__bio">Experiencia en Atención Primaria con enfoque integral del bienestar y cuidado global del paciente.</p>
+          </article>
+
+          <article class="doctor-card">
+            <div class="doctor-card__header">
+              <div class="doctor-card__avatar">CP</div>
+              <div>
+                <h3>Calipso del Pino</h3>
+                <p class="doctor-card__role">Enfermería</p>
+              </div>
+            </div>
+            <p class="doctor-card__bio">Amplia experiencia en banco de sangre, extracciones, consultas y urgencias. Técnica especializada en rayos X.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Tecnología -->
+    <section class="tech section section--alt" id="tecnologia">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__tag">La mejor tecnología</span>
+          <h2 class="section__title">Equipos de ayuda diagnóstica</h2>
+          <p class="section__desc">Tecnología de última generación para un diagnóstico preciso, ágil y de máxima calidad.</p>
+        </div>
+        <div class="tech__grid">
+          <article class="tech-card">
+            <div class="tech-card__label">Ecografía</div>
+            <h3>CHISON QBit 7</h3>
+            <p>Ecógrafo Doppler color de última generación con alta definición y excelente precisión diagnóstica. Ideal para ginecología, obstetricia, ecografía abdominal, vascular, músculo-esquelética, urológica, pediátrica y cardiológica.</p>
+            <ul class="tech-card__features">
+              <li>Ecografía 4D y elastografía</li>
+              <li>Alta calidad Doppler</li>
+              <li>Procedimientos guiados</li>
+            </ul>
+          </article>
+          <article class="tech-card">
+            <div class="tech-card__label">Radiología</div>
+            <h3>Sistema Universal Vertix</h3>
+            <p>Sala de radiología convencional digitalizada con imágenes de alta calidad y máxima precisión diagnóstica. Generador trifásico de alta frecuencia y digitalización CR.</p>
+            <ul class="tech-card__features">
+              <li>Radiología general y traumatología</li>
+              <li>Tórax, extremidades y abdomen</li>
+              <li>Diagnóstico ágil y seguro</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mutuas -->
+    <section class="mutuas section" id="mutuas">
+      <div class="container mutuas__inner">
+        <div class="section__header">
+          <span class="section__tag">Mutuas colaboradoras</span>
+          <h2 class="section__title">Cobertura de seguros</h2>
+        </div>
+        <div class="mutuas__coming">
+          <div class="mutuas__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+          </div>
+          <h3>Próximamente nuevas colaboraciones</h3>
+          <p>Permanece atento a las novedades. Estamos ampliando nuestra red de mutuas y seguros colaboradores.</p>
+          <a href="#contacto" class="btn btn--outline">Consultar cobertura</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Club CSV -->
+    <section class="club section section--dark" id="club">
+      <div class="container club__grid">
+        <div class="club__content">
+          <span class="section__tag section__tag--light">Club CSV</span>
+          <h2 class="section__title section__title--light">Únete a nuestro club y disfruta de sus ventajas</h2>
+          <p>Forma parte del Club CSV del Centre Sanitari Villaquet y accede a beneficios exclusivos en nuestros servicios de salud y bienestar.</p>
+          <a href="#contacto" class="btn btn--light">Más información</a>
+        </div>
+        <div class="club__visual">
+          <div class="club__card">
+            <span class="club__card-label">CSV</span>
+            <strong>Club Sanitari Villaquet</strong>
+            <p>Ventajas exclusivas para socios</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="contact section" id="contacto">
+      <div class="container contact__grid">
+        <div class="contact__info">
+          <span class="section__tag">Contacto</span>
+          <h2 class="section__title">Estamos aquí para ayudarte</h2>
+
+          <div class="contact__item">
+            <div class="contact__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <strong>Dirección</strong>
+              <p>Carrer Molí del Blanquet, 24, baixos<br>El Vilarenc, 43820 Calafell, Tarragona</p>
+            </div>
+          </div>
+
+          <div class="contact__item">
+            <div class="contact__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+            </div>
+            <div>
+              <strong>Teléfono</strong>
+              <p><a href="tel:877643360">877 643 360</a></p>
+            </div>
+          </div>
+
+          <div class="contact__item">
+            <div class="contact__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div>
+              <strong>Email</strong>
+              <p><a href="mailto:info@villaquet.com">info@villaquet.com</a></p>
+            </div>
+          </div>
+
+          <div class="contact__item">
+            <div class="contact__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <strong>Horario</strong>
+              <p>Lunes – Viernes: 8:00–13:00 / 15:00–20:00</p>
+            </div>
+          </div>
+
+          <div class="contact__map">
+            <iframe
+              title="Ubicación Centre Sanitari Villaquet"
+              src="https://maps.google.com/maps?q=Carrer+Mol%C3%AD+del+Blanquet+24+Calafell&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contact-form" novalidate>
+          <h3>Solicita tu cita</h3>
+          <p class="contact-form__desc">Rellena el formulario y nos pondremos en contacto contigo.</p>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre *</label>
+              <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+            </div>
+            <div class="form-group">
+              <label for="telefono">Teléfono *</label>
+              <input type="tel" id="telefono" name="telefono" required placeholder="600 000 000">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com">
+          </div>
+          <div class="form-group">
+            <label for="asunto">Asunto *</label>
+            <select id="asunto" name="asunto" required>
+              <option value="">Selecciona un motivo</option>
+              <option>Reservar cita</option>
+              <option>Ginecología y Obstetricia</option>
+              <option>Dermatología</option>
+              <option>Psicología</option>
+              <option>Fisioterapia</option>
+              <option>Podología</option>
+              <option>Medicina General</option>
+              <option>Club CSV</option>
+              <option>Consulta mutuas</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos en qué podemos ayudarte"></textarea>
+          </div>
+          <div class="form-group form-group--checkbox">
+            <input type="checkbox" id="privacidad" name="privacidad" required>
+            <label for="privacidad">He leído y acepto la <a href="#">política de privacidad</a> *</label>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">Enviar solicitud</button>
+          <p class="form-success" id="form-success" hidden>¡Mensaje enviado! Nos pondremos en contacto contigo pronto.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a href="#inicio" class="nav__logo">
+          <img src="images/logo.jpg" alt="Centre Sanitari Villaquet" width="40" height="40">
+          <span>Villa<span class="nav__logo-accent">quet</span></span>
+        </a>
+        <p>Centre Sanitari Villaquet — Un centro médico de excelencia y proximidad en Calafell.</p>
+      </div>
+      <div class="footer__links">
+        <h4>Secciones</h4>
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#equipo">Equipo médico</a></li>
+          <li><a href="#tecnologia">Tecnología</a></li>
+          <li><a href="#mutuas">Mutuas</a></li>
+          <li><a href="#club">Club CSV</a></li>
+        </ul>
+      </div>
+      <div class="footer__links">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:877643360">877 643 360</a></li>
+          <li><a href="mailto:info@villaquet.com">info@villaquet.com</a></li>
+          <li><a href="#contacto">Pedir cita</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom container">
+      <p>&copy; 2026 Centre Sanitari Villaquet. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
