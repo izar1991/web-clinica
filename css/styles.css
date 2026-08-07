@@ -834,7 +834,16 @@ ul {
     pointer-events: none;
     transition: all var(--transition);
   }
-
+  .topbar__info svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0; /* Evita que el icono se deforme si el espacio es ajustado */
+  }
+  .topbar__hours svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0; /* Evita que el icono se deforme si el espacio es ajustado */
+  }
   .nav__menu.open {
     transform: translateY(0);
     opacity: 1;
