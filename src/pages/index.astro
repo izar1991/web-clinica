@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
 ---
 
 <Layout
@@ -16,12 +18,12 @@ import Layout from '../layouts/Layout.astro';
           <h1 class="hero__title">Tu centro de confianza en <em>Calafell</em></h1>
           <p class="hero__subtitle">Un centro médico de excelencia y proximidad. Profesionales de sólida trayectoria, tecnología de vanguardia y atención personalizada.</p>
           <div class="hero__actions">
-            <a href="/reservar-cita" class="btn btn--primary">Reservar cita</a>
+            <a href={`${base}reservar-cita`} class="btn btn--primary">Reservar cita</a>
             <a href="tel:877643360" class="btn btn--outline">877 643 360</a>
           </div>
         </div>
         <div class="hero__image">
-          <img src="/images/about.jpg" alt="Instalaciones del Centre Sanitari Villaquet" loading="eager" />
+          <img src={`${base}images/about.jpg`} alt="Instalaciones del Centre Sanitari Villaquet" loading="eager" />
           <div class="hero__badge">
             <strong>Excelencia</strong>
             <span>y proximidad</span>
@@ -271,7 +273,7 @@ import Layout from '../layouts/Layout.astro';
           </div>
           <h3>Próximamente nuevas colaboraciones</h3>
           <p>Permanece atento a las novedades. Estamos ampliando nuestra red de mutuas y seguros colaboradores.</p>
-          <a href="/reservar-cita" class="btn btn--outline">Consultar cobertura</a>
+          <a href={`${base}reservar-cita`} class="btn btn--outline">Consultar cobertura</a>
         </div>
       </div>
     </section>
@@ -282,7 +284,7 @@ import Layout from '../layouts/Layout.astro';
           <span class="section__tag section__tag--light">Club CSV</span>
           <h2 class="section__title section__title--light">Únete a nuestro club y disfruta de sus ventajas</h2>
           <p>Forma parte del Club CSV del Centre Sanitari Villaquet y accede a beneficios exclusivos en nuestros servicios de salud y bienestar.</p>
-          <a href="/reservar-cita" class="btn btn--light">Más información</a>
+          <a href={`${base}reservar-cita`} class="btn btn--light">Más información</a>
         </div>
         <div class="club__visual">
           <div class="club__card">
@@ -349,7 +351,7 @@ import Layout from '../layouts/Layout.astro';
           <h3>Reserva tu cita online</h3>
           <p>La solicitud se realiza en una página dedicada para que puedas completar tus datos sin distraerte del resto de la web.</p>
           <div class="contact__cta-actions">
-            <a href="/reservar-cita" class="btn btn--primary">Reservar cita</a>
+            <a href={`${base}reservar-cita`} class="btn btn--primary">Reservar cita</a>
             <a href="tel:877643360" class="btn btn--outline">Llamar ahora</a>
           </div>
         </div>

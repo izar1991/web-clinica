@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { especialidades } from '../data/especialidades';
+
+const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
 ---
 
 <Layout
@@ -26,7 +28,7 @@ import { especialidades } from '../data/especialidades';
             </div>
             <h2>{especialidad.title}</h2>
             <p>Atención especializada, cercana y centrada en tu bienestar.</p>
-            <a href={`/servicios/${especialidad.slug}`} class="btn btn--outline">Ver más</a>
+            <a href={`${base}servicios/${especialidad.slug}`} class="btn btn--outline">Ver más</a>
           </article>
         ))}
       </div>
