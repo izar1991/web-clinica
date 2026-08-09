@@ -279,20 +279,77 @@ const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
     </section>
 
     <section class="club section section--dark" id="club">
-      <div class="container club__grid">
-        <div class="club__content">
+      <div class="container club__wrapper">
+        <div class="club__header">
           <span class="section__tag section__tag--light">Club CSV</span>
-          <h2 class="section__title section__title--light">Únete a nuestro club y disfruta de sus ventajas</h2>
-          <p>Forma parte del Club CSV del Centre Sanitari Villaquet y accede a beneficios exclusivos en nuestros servicios de salud y bienestar.</p>
-          <a href={`${base}reservar-cita`} class="btn btn--light">Más información</a>
+          <h2 class="section__title section__title--light">Únete a nuestro club y disfruta de ventajas exclusivas</h2>
+          <p>Diseñado para cuidar de tu salud y la de tu familia con beneficios preferentes, descuentos y acceso a servicios de alto valor.</p>
         </div>
-        <div class="club__visual">
-          <div class="club__card">
-            <span class="club__card-label">CSV</span>
-            <strong>Club Sanitari Villaquet</strong>
-            <p>Ventajas exclusivas para socios</p>
-          </div>
+
+        <div class="club__plans">
+          <article class="club__plan club__plan--featured">
+            <div class="club__plan-head">
+              <div class="club__plan-icon" aria-hidden="true">👤</div>
+              <span class="club__plan-badge">General</span>
+            </div>
+            <h3>Club CSV General</h3>
+            <p class="club__plan-audience">Ideal para adultos y familias que buscan salud, prevención y atención completa.</p>
+            <div class="club__plan-price">
+              <span>Incluye</span>
+            </div>
+            <ul class="club__plan-list">
+              <li>Medicina General</li>
+              <li>Enfermería</li>
+              <li>Analítica General Completa</li>
+              <li>Revisión Anual Ginecológica</li>
+              <li>Fisioterapia (5 sesiones)</li>
+              <li>Podología (Quiropedia)</li>
+            </ul>
+            <a href={`${base}reservar-cita`} class="btn btn--light">Consultar plan</a>
+          </article>
+
+          <article class="club__plan club__plan--sport">
+            <div class="club__plan-head">
+              <div class="club__plan-icon" aria-hidden="true">⚡</div>
+              <span class="club__plan-badge club__plan-badge--soft">Sport</span>
+            </div>
+            <h3>Club CSV Sport</h3>
+            <p class="club__plan-audience">Pensado para personas activas y deportistas que quieren rendimiento y recuperación.</p>
+            <div class="club__plan-price">
+              <span>Incluye</span>
+            </div>
+            <ul class="club__plan-list">
+              <li>Medicina General</li>
+              <li>Enfermería</li>
+              <li>Analítica “Sport” Completa</li>
+              <li>Fisioterapia (10 sesiones)</li>
+              <li>Podología (Quiropedia + Estudio Biomecánico)</li>
+            </ul>
+            <a href={`${base}reservar-cita`} class="btn btn--outline btn--outline-light">Consultar plan</a>
+          </article>
+
+          <article class="club__plan club__plan--senior">
+            <div class="club__plan-head">
+              <div class="club__plan-icon" aria-hidden="true">🌿</div>
+              <span class="club__plan-badge club__plan-badge--warm">Senior</span>
+            </div>
+            <h3>Club CSV Senior (+60)</h3>
+            <p class="club__plan-audience">Diseñado para mayores de 60 años con atención preventiva y bienestar integral.</p>
+            <div class="club__plan-price">
+              <span>Incluye</span>
+            </div>
+            <ul class="club__plan-list">
+              <li>Medicina General</li>
+              <li>Enfermería</li>
+              <li>Analítica Senior Completa</li>
+              <li>Fisioterapia (5 sesiones)</li>
+              <li>Podología (2 Quiropedias)</li>
+            </ul>
+            <a href={`${base}reservar-cita`} class="btn btn--outline btn--outline-light">Consultar plan</a>
+          </article>
         </div>
+
+        <p class="club__note">Tres modalidades diferentes, totalmente adaptadas a tus necesidades, con precios especiales y beneficios en todos nuestros servicios.</p>
       </div>
     </section>
 

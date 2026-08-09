@@ -565,17 +565,130 @@ ul {
   color: #fff;
 }
 
-.club__grid {
+.club__wrapper {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
   gap: 2rem;
-  align-items: center;
 }
 
-.club__content p {
+.club__header {
+  max-width: 760px;
+}
+
+.club__header p {
   color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 1.5rem;
-  max-width: 560px;
+  margin-top: 1rem;
+}
+
+.club__plans {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.4rem;
+}
+
+.club__plan {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  padding: 1.8rem;
+  box-shadow: 0 20px 38px rgba(0, 0, 0, 0.12);
+}
+
+.club__plan--featured {
+  background: linear-gradient(180deg, rgba(255,255,255,0.11), rgba(255,255,255,0.04));
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+.club__plan--senior {
+  background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.05));
+}
+
+.club__plan-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.club__plan-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 1.35rem;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.club__plan-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.club__plan-badge--soft {
+  background: rgba(20, 163, 168, 0.24);
+}
+
+.club__plan-badge--warm {
+  background: rgba(255, 204, 128, 0.2);
+}
+
+.club__plan h3 {
+  font-size: 1.45rem;
+  margin: 0 0 0.6rem;
+}
+
+.club__plan-audience {
+  margin: 0 0 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  min-height: 48px;
+}
+
+.club__plan-price {
+  display: flex;
+  align-items: end;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.club__plan-price span {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.club__plan-price strong {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: #fff;
+  font-weight: 800;
+}
+
+.club__plan-list {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0 0 1.5rem;
+  padding-left: 1.2rem;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.club__plan-list li {
+  list-style: disc;
+  line-height: 1.6;
 }
 
 .btn--light {
@@ -589,42 +702,21 @@ ul {
   color: var(--color-primary-dark);
 }
 
-.club__visual {
-  display: flex;
-  justify-content: center;
-}
-
-.club__card {
-  width: min(100%, 260px);
-  padding: 2rem 1.5rem;
-  border-radius: 24px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03));
-  border: 1px solid rgba(255,255,255,0.15);
-  backdrop-filter: blur(8px);
-  text-align: center;
-  box-shadow: 0 26px 50px rgba(0,0,0,0.2);
-}
-
-.club__card-label {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  background: rgba(255,255,255,0.12);
+.btn--outline-light {
+  border-color: rgba(255, 255, 255, 0.45);
   color: #fff;
-  padding: 0.5rem 0.7rem;
-  border-radius: 999px;
-  margin-bottom: 1rem;
 }
 
-.club__card strong {
-  display: block;
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
+.btn--outline-light:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
 }
 
-.club__card p {
-  color: rgba(255, 255, 255, 0.75);
+.club__note {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.92rem;
+  text-align: center;
 }
 
 /* ===== Contact / CTA ===== */
