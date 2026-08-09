@@ -39,35 +39,39 @@ sections.forEach(section => observer.observe(section));
 
 // Formulario de citas
 const form = document.getElementById('appointment-form');
-const formSuccess = document.getElementById('form-success');
+if (form) {
+  const formSuccess = document.getElementById('form-success');
 
-form.addEventListener('submit', e => {
-  e.preventDefault();
+  form.addEventListener('submit', e => {
+    e.preventDefault();
 
-  const nombre = form.nombre.value.trim();
-  const telefono = form.telefono.value.trim();
-  const especialidad = form.especialidad.value;
+    const nombre = form.nombre.value.trim();
+    const telefono = form.telefono.value.trim();
+    const especialidad = form.especialidad.value;
 
-  if (!nombre || !telefono || !especialidad) {
-    alert('Por favor, completa los campos obligatorios.');
-    return;
-  }
+    if (!nombre || !telefono || !especialidad) {
+      alert('Por favor, completa los campos obligatorios.');
+      return;
+    }
 
-  if (!form.privacidad.checked) {
-    alert('Debes aceptar la política de privacidad.');
-    return;
-  }
+    if (!form.privacidad.checked) {
+      alert('Debes aceptar la política de privacidad.');
+      return;
+    }
 
-  // Aquí puedes conectar con un backend o servicio de email (Formspree, etc.)
-  form.reset();
-  formSuccess.hidden = false;
+    // Aquí puedes conectar con un backend o servicio de email (Formspree, etc.)
+    form.reset();
+    formSuccess.hidden = false;
 
-  setTimeout(() => {
-    formSuccess.hidden = true;
-  }, 6000);
-});
+    setTimeout(() => {
+      formSuccess.hidden = true;
+    }, 6000);
+  });
+}
 
 // Fecha mínima: hoy
 const fechaInput = document.getElementById('fecha');
-const today = new Date().toISOString().split('T')[0];
-fechaInput.min = today;
+if (fechaInput) {
+  const today = new Date().toISOString().split('T')[0];
+  fechaInput.min = today;
+}
