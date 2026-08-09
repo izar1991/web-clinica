@@ -1,0 +1,54 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { contenidoEspecialidades } from '../../data/especialidades';
+
+export async function getStaticPaths() {
+  return Object.entries(contenidoEspecialidades).map(([slug, data]) => ({
+    params: { slug },
+    props: { data },
+  }));
+}
+
+const { slug } = Astro.params;
+const { data } = Astro.props;
+---
+
+<Layout
+  title={`${data.title} | Centre Sanitari Villaquet`}
+  description={`${data.intro} Consulta a nuestro centro médico en Calafell y reserva tu cita.`}
+  keywords={`${data.title}, ${data.title.toLowerCase()} Calafell, centro médico Calafell`}
+>
+  <main>
+    <section class="specialty-page__hero">
+      <div class="container">
+        <span class="section__tag">Especialidad</span>
+        <h1 class="section__title">{data.title}</h1>
+        <p class="section__subtitle">{data.subtitle}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container specialty-page__grid">
+        <div class="specialty-page__content">
+          <p>{data.intro}</p>
+          <ul class="specialty-page__list">
+            {data.bullets.map((bullet) => <li>{bullet}</li>)}
+          </ul>
+          <div class="specialty-page__actions">
+            <a href="/reservar-cita" class="btn btn--primary">{data.cta}</a>
+            <a href="/servicios" class="btn btn--outline">Ver todas las especialidades</a>
+          </div>
+        </div>
+
+        <aside class="specialty-page__card">
+          <h3>¿Necesitas una valoración?</h3>
+          <p>Contacto directo con nuestro centro para resolver dudas y programar la primera visita.</p>
+          <div class="specialty-page__contact">
+            <a href="tel:877643360">877 643 360</a>
+            <a href="mailto:info@villaquet.com">info@villaquet.com</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+</Layout>

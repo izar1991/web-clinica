@@ -1,0 +1,300 @@
+---
+import { especialidades } from '../data/especialidades';
+
+const siteUrl = 'https://www.villaquet.com';
+const canonicalURL = new URL(Astro.url.pathname, siteUrl).toString().replace(/\/$/, '');
+const defaultTitle = 'Centre Sanitari Villaquet — Centro médico en Calafell';
+const defaultDescription = 'Centro médico en Calafell. Medicina general, ginecología, dermatología, psicología, fisioterapia, podología y diagnóstico por imagen.';
+const { title = defaultTitle, description = defaultDescription, image = '/images/about.jpg', keywords = 'centro médico Calafell, medicina general Calafell, ginecología Calafell, dermatología Calafell, fisioterapia Calafell, podología Calafell, psicología Calafell' } = Astro.props;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalBusiness',
+  name: 'Centre Sanitari Villaquet',
+  image: `${siteUrl}${image}`,
+  url: siteUrl,
+  telephone: '+34 877 643 360',
+  email: 'info@villaquet.com',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Carrer Molí del Blanquet, 24',
+    addressLocality: 'Calafell',
+    postalCode: '43820',
+    addressRegion: 'Tarragona',
+    addressCountry: 'ES',
+  },
+  openingHours: 'Mo,Tu,We,Th,Fr 08:00-13:00,15:00-20:00',
+  medicalSpecialty: ['Family Medicine', 'Gynaecology', 'Dermatology', 'Psychology', 'Physiotherapy', 'Podiatry', 'Diagnostic imaging'],
+  sameAs: ['https://maps.google.com/?q=Carrer+Mol%C3%AD+del+Blanquet+24+Calafell'],
+};
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="author" content="Centre Sanitari Villaquet" />
+    <meta name="theme-color" content="#0d7377" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={`${siteUrl}${image}`} />
+    <meta property="og:site_name" content="Centre Sanitari Villaquet" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}${image}`} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalURL} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)}></script>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container topbar__inner">
+        <div class="topbar__info">
+          <a href="https://maps.google.com/?q=Carrer+Mol%C3%AD+del+Blanquet+24+Calafell" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            Carrer Molí del Blanquet, 24 — Calafell
+          </a>
+          <a href="mailto:info@villaquet.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            info@villaquet.com
+          </a>
+          <a href="tel:877643360">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+            877 643 360
+          </a>
+        </div>
+        <div class="topbar__hours">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Lun–Vie: 8:00–13:00 / 15:00–20:00
+        </div>
+      </div>
+    </div>
+
+    <header class="header" id="header">
+      <nav class="nav container">
+        <a href="/#inicio" class="nav__logo">
+          <img src="/images/logo.jpg" alt="Centre Sanitari Villaquet" width="48" height="48" />
+          <span>Villa<span class="nav__logo-accent">quet</span></span>
+        </a>
+        <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav__menu" id="nav-menu">
+          <li><a href="/#inicio" class="nav__link">Inicio</a></li>
+          <li class="nav-dropdown">
+            <details>
+              <summary class="nav__link nav-dropdown__summary">Servicios</summary>
+              <div class="nav-dropdown__menu">
+                <a href="/servicios" class="nav-dropdown__link">Ver todas</a>
+                {especialidades.map((especialidad) => (
+                  <a href={`/servicios/${especialidad.slug}`} class="nav-dropdown__link">
+                    {especialidad.title}
+                  </a>
+                ))}
+              </div>
+            </details>
+          </li>
+          <li><a href="/#equipo" class="nav__link">Equipo</a></li>
+          <li><a href="/#tecnologia" class="nav__link">Tecnología</a></li>
+          <li><a href="/#mutuas" class="nav__link">Mutuas</a></li>
+          <li><a href="/#club" class="nav__link">Club CSV</a></li>
+          <li><a href="/reservar-cita" class="nav__link nav__link--cta">Reservar cita</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <slot />
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div class="footer__brand">
+          <a href="/#inicio" class="nav__logo">
+            <img src="/images/logo.jpg" alt="Centre Sanitari Villaquet" width="40" height="40" />
+            <span>Villa<span class="nav__logo-accent">quet</span></span>
+          </a>
+          <p>Centre Sanitari Villaquet — Un centro médico de excelencia y proximidad en Calafell.</p>
+
+          <div class="footer__socials">
+            <h4>Síguenos</h4>
+            <div class="footer__social-list">
+              <a href="https://www.youtube.com/@villaquet" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.8 8.2a2.94 2.94 0 0 0-2.1-2.1C18.8 5.6 12 5.6 12 5.6s-6.8 0-8.7.5A2.94 2.94 0 0 0 1.2 8.2 30.2 30.2 0 0 0 1 12a30.2 30.2 0 0 0 .2 3.8 2.94 2.94 0 0 0 2.1 2.1c1.9.5 8.7.5 8.7.5s6.8 0 8.7-.5a2.94 2.94 0 0 0 2.1-2.1A30.2 30.2 0 0 0 23 12a30.2 30.2 0 0 0-.2-3.8ZM10 15.5v-7l6 3.5-6 3.5Z"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/company/centre-sanitari-villaquet" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 8.5A1.56 1.56 0 1 1 6.94 5.4a1.56 1.56 0 0 1 0 3.1ZM5.5 9.9h2.88v8.6H5.5V9.9Zm4.68 0h2.76v1.18h.04c.38-.72 1.31-1.48 2.7-1.48 2.88 0 3.41 1.89 3.41 4.35v4.55h-2.88v-4.26c0-1.01-.02-2.31-1.41-2.31-1.4 0-1.62 1.1-1.62 2.23v4.34H10.18V9.9Z"/></svg>
+              </a>
+              <a href="https://www.instagram.com/villaquet" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.2A4.8 4.8 0 1 1 7.2 12 4.8 4.8 0 0 1 12 7.2Zm0 2A2.8 2.8 0 1 0 14.8 12 2.8 2.8 0 0 0 12 9.2Zm5.1-3.1a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1Z"/></svg>
+              </a>
+              <a href="https://www.facebook.com/villaquet" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.2 22v-8h2.7l.4-3.2h-3.1V7.6c0-.9.3-1.6 1.7-1.6H16V3.1c-.3-.1-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.6H7v3.2h2.6v8h3.6Z"/></svg>
+              </a>
+              <a href="/rss.xml" aria-label="RSS Feed">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6.5" cy="17.5" r="2.5"/><path d="M4 10.5a9.5 9.5 0 0 1 9.5 9.5h-3.2A6.3 6.3 0 0 0 4 13.8v-3.3Zm0-6.2A15.7 15.7 0 0 1 19.7 20h-3.2A12.5 12.5 0 0 0 4 7.5V4.3Z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="footer__links">
+          <h4>Secciones</h4>
+          <ul>
+            <li><a href="/#servicios">Servicios</a></li>
+            <li><a href="/#equipo">Equipo médico</a></li>
+            <li><a href="/#tecnologia">Tecnología</a></li>
+            <li><a href="/#mutuas">Mutuas</a></li>
+            <li><a href="/#club">Club CSV</a></li>
+          </ul>
+        </div>
+        <div class="footer__links">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="tel:877643360">877 643 360</a></li>
+            <li><a href="mailto:info@villaquet.com">info@villaquet.com</a></li>
+            <li><a href="/reservar-cita">Reservar cita</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom container">
+        <p>&copy; 2026 Centre Sanitari Villaquet. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <script is:inline src="/js/main.js"></script>
+
+    <script is:inline>
+      (function () {
+        var CLINICA = 'Dricloud_centresanitarivillaquet_21026811';
+        var BASE_URL = 'https://citaonline.dricloud.net';
+        var POSICION_DERECHA = '24px';
+        var POSICION_ABAJO = '24px';
+        var TAMANO_BOTON = '120px';
+        var ANCHO_CHAT = '380px';
+        var ALTO_CHAT = '600px';
+
+        var container = document.createElement('div');
+        container.id = 'dricloud-chat-container';
+        container.style.cssText = [
+          'position:fixed',
+          'bottom:' + POSICION_ABAJO,
+          'right:' + POSICION_DERECHA,
+          'z-index:9999',
+          'width:' + TAMANO_BOTON,
+          'height:' + TAMANO_BOTON,
+          'overflow:hidden',
+          'transition:width .3s ease, height .3s ease, border-radius .3s ease, box-shadow .3s ease',
+          'border-radius:50%',
+          'box-shadow:0 20px 45px rgba(11, 83, 88, 0.22)',
+          'background:linear-gradient(135deg, #0d7377 0%, #11a7a3 100%)',
+          'border:2px solid rgba(255,255,255,0.6)'
+        ].join(';');
+
+        var buttonVisual = document.createElement('div');
+        buttonVisual.style.cssText = [
+          'position:absolute',
+          'inset:0',
+          'display:flex',
+          'align-items:center',
+          'justify-content:center',
+          'flex-direction:column',
+          'gap:4px',
+          'color:#ffffff',
+          'font-family:Inter, Arial, sans-serif',
+          'font-size:11px',
+          'font-weight:700',
+          'letter-spacing:0.04em',
+          'text-transform:uppercase',
+          'pointer-events:none',
+          'transition:opacity .25s ease'
+        ].join(';');
+
+        buttonVisual.innerHTML = [
+          '<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">',
+          '<path d="M8 12.5C8 9.46243 10.4624 7 13.5 7H18.5C21.5376 7 24 9.46243 24 12.5V16.5C24 19.5376 21.5376 22 18.5 22H15.5L11.5 25V22H13.5C10.4624 22 8 19.5376 8 16.5V12.5Z" fill="white" fill-opacity="0.96"/>',
+          '<circle cx="13.5" cy="15" r="1.2" fill="#0d7377"/>',
+          '<circle cx="18.5" cy="15" r="1.2" fill="#0d7377"/>',
+          '<path d="M14.7 18.2C15.5 18.9 16.5 19.2 17.7 18.7" stroke="#0d7377" stroke-width="1.4" stroke-linecap="round"/>',
+          '</svg>',
+          '<span>Asistente</span>'
+        ].join('');
+
+        var iframe = document.createElement('iframe');
+        iframe.src = BASE_URL + '/Home/ChatWidget?URL=' + encodeURIComponent(CLINICA);
+        iframe.setAttribute('allowtransparency', 'true');
+        iframe.style.cssText = 'width:100%;height:100%;border:none;background:transparent;';
+        iframe.allow = 'clipboard-write';
+
+        container.appendChild(iframe);
+        container.appendChild(buttonVisual);
+        document.body.appendChild(container);
+
+        function setChatOpenState(open) {
+          if (open) {
+            buttonVisual.style.opacity = '0';
+            container.style.boxShadow = '0 28px 55px rgba(11, 83, 88, 0.3)';
+          } else {
+            buttonVisual.style.opacity = '1';
+            container.style.boxShadow = '0 20px 45px rgba(11, 83, 88, 0.22)';
+          }
+        }
+
+        window.addEventListener('message', function (e) {
+          if (e.origin !== BASE_URL) return;
+
+          if (e.data === 'dricloud-open') {
+            setChatOpenState(true);
+            if (window.innerWidth < 480) {
+              container.style.width = '100vw';
+              container.style.height = '85vh';
+              container.style.right = '0';
+              container.style.bottom = '0';
+              container.style.borderRadius = '16px 16px 0 0';
+            } else {
+              container.style.width = ANCHO_CHAT;
+              container.style.height = ALTO_CHAT;
+              container.style.borderRadius = '16px';
+            }
+          }
+
+          if (e.data === 'dricloud-close') {
+            setChatOpenState(false);
+            container.style.width = TAMANO_BOTON;
+            container.style.height = TAMANO_BOTON;
+            container.style.right = POSICION_DERECHA;
+            container.style.bottom = POSICION_ABAJO;
+            container.style.borderRadius = '50%';
+          }
+        });
+
+        window.addEventListener('resize', function () {
+          if (parseInt(container.style.height, 10) > 70) {
+            setChatOpenState(true);
+            if (window.innerWidth < 480) {
+              container.style.width = '100vw';
+              container.style.height = '85vh';
+              container.style.right = '0';
+              container.style.bottom = '0';
+              container.style.borderRadius = '16px 16px 0 0';
+            } else {
+              container.style.width = ANCHO_CHAT;
+              container.style.height = ALTO_CHAT;
+              container.style.right = POSICION_DERECHA;
+              container.style.bottom = POSICION_ABAJO;
+              container.style.borderRadius = '16px';
+            }
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Centre Sanitari Villaquet</title>
+    <link>https://www.villaquet.com</link>
+    <description>Noticias, novedades y contenido del centro médico Centre Sanitari Villaquet en Calafell.</description>
+    <language>es-es</language>
+    <lastBuildDate>Sat, 09 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Centre Sanitari Villaquet</title>
+      <link>https://www.villaquet.com/</link>
+      <description>Centro médico en Calafell con medicina general, ginecología, dermatología, psicología, fisioterapia, podología y diagnóstico por imagen.</description>
+      <guid>https://www.villaquet.com/</guid>
+    </item>
+  </channel>
+</rss>
