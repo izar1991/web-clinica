@@ -139,6 +139,17 @@ ul {
   color: #fff;
 }
 
+.btn--ghost {
+  background: rgba(13, 115, 119, 0.06);
+  color: var(--color-primary);
+  border-color: rgba(13, 115, 119, 0.14);
+}
+
+.btn--ghost:hover {
+  background: rgba(13, 115, 119, 0.12);
+  color: var(--color-primary-dark);
+}
+
 .btn--full {
   width: 100%;
 }
@@ -382,6 +393,47 @@ ul {
   flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 3rem;
+}
+
+.hero__quickbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(13, 115, 119, 0.12);
+  box-shadow: 0 18px 36px rgba(13, 115, 119, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem auto 0;
+  max-width: 1140px;
+}
+
+.hero__quickbar-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.hero__quickbar-copy span {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.hero__quickbar-copy strong {
+  font-size: 0.98rem;
+  color: var(--color-text);
+}
+
+.hero__quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.75rem;
 }
 
 .hero__image {
@@ -779,6 +831,25 @@ ul {
 }
 
 @media (max-width: 768px) {
+  .hero__quickbar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+  }
+
+  .hero__quickbar-copy {
+    text-align: center;
+  }
+
+  .hero__quick-actions {
+    justify-content: stretch;
+  }
+
+  .hero__quick-actions .btn {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
   .topbar__inner {
     flex-direction: column;
     justify-content: center;

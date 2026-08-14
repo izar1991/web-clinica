@@ -12,6 +12,20 @@ const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
   <main>
     <section class="hero" id="inicio">
       <div class="hero__bg"></div>
+      <div class="container">
+        <div class="hero__quickbar" aria-label="Acceso rápido">
+          <div class="hero__quickbar-copy">
+            <span>Acceso rápido</span>
+            <strong>Atención médica clara y cercana</strong>
+          </div>
+          <div class="hero__quick-actions">
+            <a href={`${base}reservar-cita`} class="btn btn--primary">Pedir cita</a>
+            <a href={`${base}#servicios`} class="btn btn--outline">Especialidades</a>
+            <a href={`${base}#mutuas`} class="btn btn--outline">Mutuas</a>
+            <a href={`${base}#contacto`} class="btn btn--ghost">Portal del paciente</a>
+          </div>
+        </div>
+      </div>
       <div class="container hero__grid">
         <div class="hero__content">
           <p class="hero__tag">Centre Sanitari Villaquet · Calafell</p>
@@ -20,6 +34,20 @@ const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
           <div class="hero__actions">
             <a href={`${base}reservar-cita`} class="btn btn--primary">Reservar cita</a>
             <a href="tel:877643360" class="btn btn--outline">877 643 360</a>
+          </div>
+          <div class="hero__stats" aria-label="Datos del centro">
+            <div class="hero__stat">
+              <strong>8:00–20:00</strong>
+              <span>Horario de atención</span>
+            </div>
+            <div class="hero__stat">
+              <strong>+10</strong>
+              <span>Especialidades</span>
+            </div>
+            <div class="hero__stat">
+              <strong>Calafell</strong>
+              <span>Centro médico local</span>
+            </div>
           </div>
         </div>
         <div class="hero__image">
