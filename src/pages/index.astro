@@ -310,12 +310,6 @@ const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
           <p>Diseñado para cuidar de tu salud y la de tu familia con beneficios preferentes, descuentos y acceso a servicios de alto valor.</p>
         </div>
 
-        <div class="club__mobile-nav" aria-label="Planes Club CSV">
-          <a href="#club-plan-general" class="club__mobile-chip is-active" data-plan-target="club-plan-general">General</a>
-          <a href="#club-plan-sport" class="club__mobile-chip" data-plan-target="club-plan-sport">Sport</a>
-          <a href="#club-plan-senior" class="club__mobile-chip" data-plan-target="club-plan-senior">Senior</a>
-        </div>
-
         <div class="club__plans">
           <article class="club__plan club__plan--featured" id="club-plan-general">
             <div class="club__plan-head">
@@ -377,12 +371,6 @@ const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
             </ul>
             <a href={`${base}reservar-cita`} class="btn btn--outline btn--outline-light">Consultar plan</a>
           </article>
-        </div>
-
-        <div class="club__mobile-dots" aria-label="Indicador de planes Club CSV">
-          <button type="button" class="club__mobile-dot is-active" data-plan-target="club-plan-general" aria-label="Ver plan General"></button>
-          <button type="button" class="club__mobile-dot" data-plan-target="club-plan-sport" aria-label="Ver plan Sport"></button>
-          <button type="button" class="club__mobile-dot" data-plan-target="club-plan-senior" aria-label="Ver plan Senior"></button>
         </div>
 
         <p class="club__note">Tres modalidades diferentes, totalmente adaptadas a tus necesidades, con precios especiales y beneficios en todos nuestros servicios.</p>
