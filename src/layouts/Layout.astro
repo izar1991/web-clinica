@@ -8,6 +8,48 @@ const defaultTitle = 'Centre Sanitari Villaquet — Centro médico en Calafell';
 const defaultDescription = 'Centro médico en Calafell. Medicina general, ginecología, dermatología, psicología, fisioterapia, podología y diagnóstico por imagen.';
 const { title = defaultTitle, description = defaultDescription, image = '/images/about.jpg', keywords = 'centro médico Calafell, medicina general Calafell, ginecología Calafell, dermatología Calafell, fisioterapia Calafell, podología Calafell, psicología Calafell' } = Astro.props;
 const imageUrl = `${siteUrl}${base}${image.replace(/^\//, '')}`;
+const searchIndex = [
+  {
+    label: 'Inicio',
+    url: `${base}#inicio`,
+    keywords: ['home', 'portada', 'centro medico', 'villaquet'],
+  },
+  {
+    label: 'Servicios',
+    url: `${base}servicios`,
+    keywords: ['especialidades', 'cartera de servicios', 'medico'],
+  },
+  {
+    label: 'Reservar cita',
+    url: `${base}reservar-cita`,
+    keywords: ['cita', 'turno', 'agenda', 'pedir cita'],
+  },
+  {
+    label: 'Equipo medico',
+    url: `${base}#equipo`,
+    keywords: ['doctores', 'profesionales', 'especialistas'],
+  },
+  {
+    label: 'Tecnologia',
+    url: `${base}#tecnologia`,
+    keywords: ['equipos', 'diagnostico', 'tecnologia medica'],
+  },
+  {
+    label: 'Mutuas',
+    url: `${base}#mutuas`,
+    keywords: ['aseguradoras', 'seguros', 'cobertura'],
+  },
+  {
+    label: 'Club CSV',
+    url: `${base}#club`,
+    keywords: ['club', 'beneficios'],
+  },
+  ...especialidades.map((especialidad) => ({
+    label: especialidad.title,
+    url: `${base}servicios/${especialidad.slug}`,
+    keywords: ['especialidad', 'servicio medico', especialidad.slug.replace(/-/g, ' ')],
+  })),
+];
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'MedicalBusiness',
@@ -70,10 +112,22 @@ const jsonLd = {
           </span>
         </a>
 
-        <label class="search-panel__search" aria-label="Buscar en el sitio">
+        <div class="search-panel__search" aria-label="Buscar en el sitio" role="search">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m16 16 5 5"/></svg>
-          <input type="search" placeholder="Buscar especialidades, profesionales o servicios" aria-label="Buscar especialidades, profesionales o servicios" />
-        </label>
+          <input
+            id="site-search-input"
+            type="search"
+            placeholder="Buscar especialidades, profesionales o servicios"
+            aria-label="Buscar especialidades, profesionales o servicios"
+            aria-autocomplete="list"
+            aria-expanded="false"
+            aria-controls="site-search-results"
+            autocomplete="off"
+            data-search-index={JSON.stringify(searchIndex)}
+            data-base={base}
+          />
+          <ul id="site-search-results" class="search-panel__results" role="listbox" hidden></ul>
+        </div>
 
         <div class="search-panel__actions">
           <a href={`${base}reservar-cita`} class="btn btn--primary btn--icon">
@@ -248,7 +302,10 @@ const jsonLd = {
         container.appendChild(buttonVisual);
         document.body.appendChild(container);
 
+        var chatOpen = false;
+
         function setChatOpenState(open) {
+          chatOpen = open;
           if (open) {
             buttonVisual.style.opacity = '0';
             container.style.boxShadow = '0 28px 55px rgba(11, 83, 88, 0.3)';
@@ -301,14 +358,11 @@ const jsonLd = {
           }
         });
 
+        setChatOpenState(false);
+        applyChatViewportState(false);
+
         window.addEventListener('resize', function () {
-          var isExpanded = parseInt(container.style.height, 10) > 70;
-          if (isExpanded) {
-            setChatOpenState(true);
-            applyChatViewportState(true);
-          } else {
-            applyChatViewportState(false);
-          }
+          applyChatViewportState(chatOpen);
         });
       })();
     </script>
