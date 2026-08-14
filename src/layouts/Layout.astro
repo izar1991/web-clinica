@@ -86,7 +86,7 @@ const jsonLd = {
     <header class="header" id="header">
       <nav class="nav container">
         <a href={`${base}#inicio`} class="nav__logo">
-          <img src={`${base}images/logo.jpg`} alt="Centre Sanitari Villaquet" width="48" height="48" />
+          <img src={`${base}images/logo.svg`} alt="Centre Sanitari Villaquet" width="48" height="48" class="nav__logo-image" />
           <span>Villa<span class="nav__logo-accent">quet</span></span>
         </a>
         <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú">
@@ -122,7 +122,7 @@ const jsonLd = {
       <div class="container footer__grid">
         <div class="footer__brand">
           <a href={`${base}#inicio`} class="nav__logo">
-            <img src={`${base}images/logo.jpg`} alt="Centre Sanitari Villaquet" width="40" height="40" />
+            <img src={`${base}images/logo.svg`} alt="Centre Sanitari Villaquet" width="40" height="40" class="nav__logo-image nav__logo-image--footer" />
             <span>Villa<span class="nav__logo-accent">quet</span></span>
           </a>
           <p>Centre Sanitari Villaquet — Un centro médico de excelencia y proximidad en Calafell.</p>
@@ -199,9 +199,9 @@ const jsonLd = {
           'overflow:hidden',
           'transition:width .3s ease, height .3s ease, border-radius .3s ease, box-shadow .3s ease, left .3s ease, right .3s ease, transform .3s ease',
           'border-radius:50%',
-          'box-shadow:0 20px 45px rgba(11, 83, 88, 0.22)',
-          'background:linear-gradient(135deg, #0d7377 0%, #11a7a3 100%)',
-          'border:2px solid rgba(255,255,255,0.6)',
+          'box-shadow:none',
+          'background:transparent',
+          'border:none',
           'transform:none'
         ].join(';');
 
@@ -221,7 +221,11 @@ const jsonLd = {
           'letter-spacing:0.04em',
           'text-transform:uppercase',
           'pointer-events:none',
-          'transition:opacity .25s ease'
+          'transition:opacity .25s ease',
+          'border-radius:50%',
+          'background:linear-gradient(135deg, #0d7377 0%, #11a7a3 100%)',
+          'box-shadow:0 20px 45px rgba(11, 83, 88, 0.22)',
+          'border:2px solid rgba(255,255,255,0.6)'
         ].join(';');
 
         buttonVisual.innerHTML = [
@@ -285,11 +289,15 @@ const jsonLd = {
           if (e.data === 'dricloud-open') {
             setChatOpenState(true);
             applyChatViewportState(true);
+            container.style.background = 'transparent';
+            container.style.boxShadow = 'none';
           }
 
           if (e.data === 'dricloud-close') {
             setChatOpenState(false);
             applyChatViewportState(false);
+            container.style.background = 'transparent';
+            container.style.boxShadow = 'none';
           }
         });
 
