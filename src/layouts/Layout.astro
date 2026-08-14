@@ -190,15 +190,19 @@ const jsonLd = {
           'position:fixed',
           'bottom:' + POSICION_ABAJO,
           'right:' + POSICION_DERECHA,
+          'left:auto',
           'z-index:9999',
           'width:' + TAMANO_BOTON,
           'height:' + TAMANO_BOTON,
+          'max-width:calc(100vw - 16px)',
+          'max-height:calc(100vh - 16px)',
           'overflow:hidden',
-          'transition:width .3s ease, height .3s ease, border-radius .3s ease, box-shadow .3s ease',
+          'transition:width .3s ease, height .3s ease, border-radius .3s ease, box-shadow .3s ease, left .3s ease, right .3s ease, transform .3s ease',
           'border-radius:50%',
           'box-shadow:0 20px 45px rgba(11, 83, 88, 0.22)',
           'background:linear-gradient(135deg, #0d7377 0%, #11a7a3 100%)',
-          'border:2px solid rgba(255,255,255,0.6)'
+          'border:2px solid rgba(255,255,255,0.6)',
+          'transform:none'
         ].join(';');
 
         var buttonVisual = document.createElement('div');
@@ -250,50 +254,52 @@ const jsonLd = {
           }
         }
 
+        function applyChatViewportState(open) {
+          var isMobile = window.innerWidth < 480;
+
+          if (isMobile) {
+            var safeWidth = Math.max(Math.min(window.innerWidth - 12, 420), 0);
+            var safeHeight = Math.min(window.innerHeight * 0.85, 560);
+
+            container.style.width = open ? safeWidth + 'px' : TAMANO_BOTON;
+            container.style.height = open ? safeHeight + 'px' : TAMANO_BOTON;
+            container.style.left = '50%';
+            container.style.right = 'auto';
+            container.style.transform = 'translateX(-50%)';
+            container.style.bottom = open ? 'calc(env(safe-area-inset-bottom, 0px) + 8px)' : POSICION_ABAJO;
+            container.style.borderRadius = open ? '16px 16px 0 0' : '50%';
+          } else {
+            container.style.width = open ? ANCHO_CHAT : TAMANO_BOTON;
+            container.style.height = open ? ALTO_CHAT : TAMANO_BOTON;
+            container.style.left = 'auto';
+            container.style.right = POSICION_DERECHA;
+            container.style.transform = 'none';
+            container.style.bottom = POSICION_ABAJO;
+            container.style.borderRadius = open ? '16px' : '50%';
+          }
+        }
+
         window.addEventListener('message', function (e) {
           if (e.origin !== BASE_URL) return;
 
           if (e.data === 'dricloud-open') {
             setChatOpenState(true);
-            if (window.innerWidth < 480) {
-              container.style.width = '100vw';
-              container.style.height = '85vh';
-              container.style.right = '0';
-              container.style.bottom = '0';
-              container.style.borderRadius = '16px 16px 0 0';
-            } else {
-              container.style.width = ANCHO_CHAT;
-              container.style.height = ALTO_CHAT;
-              container.style.borderRadius = '16px';
-            }
+            applyChatViewportState(true);
           }
 
           if (e.data === 'dricloud-close') {
             setChatOpenState(false);
-            container.style.width = TAMANO_BOTON;
-            container.style.height = TAMANO_BOTON;
-            container.style.right = POSICION_DERECHA;
-            container.style.bottom = POSICION_ABAJO;
-            container.style.borderRadius = '50%';
+            applyChatViewportState(false);
           }
         });
 
         window.addEventListener('resize', function () {
-          if (parseInt(container.style.height, 10) > 70) {
+          var isExpanded = parseInt(container.style.height, 10) > 70;
+          if (isExpanded) {
             setChatOpenState(true);
-            if (window.innerWidth < 480) {
-              container.style.width = '100vw';
-              container.style.height = '85vh';
-              container.style.right = '0';
-              container.style.bottom = '0';
-              container.style.borderRadius = '16px 16px 0 0';
-            } else {
-              container.style.width = ANCHO_CHAT;
-              container.style.height = ALTO_CHAT;
-              container.style.right = POSICION_DERECHA;
-              container.style.bottom = POSICION_ABAJO;
-              container.style.borderRadius = '16px';
-            }
+            applyChatViewportState(true);
+          } else {
+            applyChatViewportState(false);
           }
         });
       })();
