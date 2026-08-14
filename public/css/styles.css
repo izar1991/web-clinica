@@ -224,8 +224,15 @@ body.is-scrolled .header {
 
 .nav__logo--compact {
   flex-shrink: 0;
-  min-width: 160px;
+  min-width: 0;
   font-size: 1.08rem;
+  display: inline-flex;
+  align-items: center;
+  height: 42px;
+}
+
+.nav__logo--brand {
+  gap: 0.7rem;
 }
 
 .nav__logo-image {
@@ -238,14 +245,45 @@ body.is-scrolled .header {
 }
 
 .nav__logo-image--horizontal {
-  width: 180px;
-  height: auto;
+  width: auto;
+  height: 50px;
+  max-width: 216px;
+  object-fit: contain;
   border-radius: 0;
 }
 
+.nav__brand-text {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 0.9;
+  white-space: nowrap;
+}
+
+.nav__brand-text--top,
+.nav__brand-text--bottom {
+  display: block;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.nav__brand-text--top {
+  font-size: 0.8rem;
+  color: var(--color-primary-dark);
+}
+
+.nav__brand-text--bottom {
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  margin-top: 0.16rem;
+}
+
 .nav__logo-image--footer {
-  width: 160px;
-  height: auto;
+  width: auto;
+  height: 34px;
+  max-width: 150px;
+  object-fit: contain;
   border-radius: 0;
 }
 

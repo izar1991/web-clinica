@@ -62,8 +62,12 @@ const jsonLd = {
   <body>
     <div class="search-panel">
       <div class="container search-panel__inner">
-        <a href={`${base}#inicio`} class="nav__logo nav__logo--compact" aria-label="Inicio">
-          <img src={`${base}images/logo_horizontal.png`} alt="Centre Sanitari Villaquet" width="180" height="42" class="nav__logo-image nav__logo-image--horizontal" />
+        <a href={`${base}#inicio`} class="nav__logo nav__logo--compact nav__logo--brand" aria-label="Inicio">
+          <img src={`${base}images/image.png`} alt="Centre Sanitari Villaquet" width="216" height="50" class="nav__logo-image nav__logo-image--horizontal" />
+          <span class="nav__brand-text" aria-label="Centre Sanitari Villaquet">
+            <span class="nav__brand-text--top">Centre Sanitari</span>
+            <span class="nav__brand-text--bottom">Villaquet</span>
+          </span>
         </a>
 
         <label class="search-panel__search" aria-label="Buscar en el sitio">
@@ -119,7 +123,7 @@ const jsonLd = {
       <div class="container footer__grid">
         <div class="footer__brand">
           <a href={`${base}#inicio`} class="nav__logo">
-            <img src={`${base}images/logo_horizontal.png`} alt="Centre Sanitari Villaquet" width="160" height="36" class="nav__logo-image nav__logo-image--horizontal nav__logo-image--footer" />
+            <img src={`${base}images/image.png`} alt="Centre Sanitari Villaquet" width="160" height="36" class="nav__logo-image nav__logo-image--horizontal nav__logo-image--footer" />
           </a>
           <p>Centre Sanitari Villaquet — Un centro médico de excelencia y proximidad en Calafell.</p>
 
