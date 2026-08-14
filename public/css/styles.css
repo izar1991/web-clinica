@@ -814,6 +814,55 @@ body.is-scrolled .search-panel__inner {
   margin-top: 1rem;
 }
 
+.club__mobile-nav {
+  display: none;
+}
+
+.club__mobile-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.club__mobile-chip:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.club__mobile-chip.is-active {
+  color: #0b3638;
+  background: #dff5f3;
+  border-color: rgba(223, 245, 243, 0.8);
+}
+
+.club__mobile-dots {
+  display: none;
+}
+
+.club__mobile-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.34);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.club__mobile-dot.is-active {
+  background: #dff5f3;
+  transform: scale(1.15);
+}
+
 .club__plans {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -999,6 +1048,53 @@ body.is-scrolled .search-panel__inner {
 }
 
 @media (max-width: 768px) {
+  .club__mobile-nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.55rem;
+  }
+
+  .club__mobile-chip {
+    width: 100%;
+  }
+
+  .club__mobile-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 0.45rem;
+  }
+
+  .club__plans {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.9rem;
+    overflow-x: auto;
+    padding: 0 0.2rem 0.45rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .club__plans::-webkit-scrollbar {
+    height: 7px;
+  }
+
+  .club__plans::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.28);
+    border-radius: 999px;
+  }
+
+  .club__plan {
+    flex: 0 0 86%;
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+
+  .club__plan--featured {
+    transform: none;
+  }
+
   .search-panel__inner {
     flex-wrap: wrap;
     gap: 0.6rem;
@@ -1123,6 +1219,15 @@ body.is-scrolled .search-panel__inner {
 }
 
 @media (max-width: 480px) {
+  .club__mobile-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .club__plan {
+    flex-basis: 92%;
+    padding: 1.4rem;
+  }
+
   .search-panel__actions {
     grid-template-columns: 1fr;
   }
