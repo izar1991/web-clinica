@@ -11,12 +11,18 @@ navMenu.querySelectorAll('.nav__link').forEach(link => {
   link.addEventListener('click', () => navMenu.classList.remove('open'));
 });
 
-// Header con sombra al hacer scroll
+// Header con sombra y ocultación del menú general al hacer scroll
 const header = document.getElementById('header');
+const body = document.body;
 
-window.addEventListener('scroll', () => {
-  header.classList.toggle('scrolled', window.scrollY > 20);
-});
+const updateScrollState = () => {
+  const scrolled = window.scrollY > 24;
+  body.classList.toggle('is-scrolled', scrolled);
+  header.classList.toggle('scrolled', scrolled);
+};
+
+window.addEventListener('scroll', updateScrollState, { passive: true });
+updateScrollState();
 
 // Resaltar enlace activo según sección visible
 const sections = document.querySelectorAll('section[id]');

@@ -60,35 +60,32 @@ const jsonLd = {
     <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)}></script>
   </head>
   <body>
-    <div class="topbar">
-      <div class="container topbar__inner">
-        <div class="topbar__info">
-          <a href="https://maps.google.com/?q=Carrer+Mol%C3%AD+del+Blanquet+24+Calafell" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-            Carrer Molí del Blanquet, 24 — Calafell
+    <div class="search-panel">
+      <div class="container search-panel__inner">
+        <a href={`${base}#inicio`} class="nav__logo nav__logo--compact" aria-label="Inicio">
+          <img src={`${base}images/logo_horizontal.png`} alt="Centre Sanitari Villaquet" width="180" height="42" class="nav__logo-image nav__logo-image--horizontal" />
+        </a>
+
+        <label class="search-panel__search" aria-label="Buscar en el sitio">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m16 16 5 5"/></svg>
+          <input type="search" placeholder="Buscar especialidades, profesionales o servicios" aria-label="Buscar especialidades, profesionales o servicios" />
+        </label>
+
+        <div class="search-panel__actions">
+          <a href={`${base}reservar-cita`} class="btn btn--primary btn--icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 7V5a4 4 0 1 1 8 0v2"/><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M12 12v4M10 14h4"/></svg>
+            Pedir cita
           </a>
-          <a href="mailto:info@villaquet.com">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            info@villaquet.com
+          <a href="https://portalpaciente.dricloud.net/Dricloud_centresanitarivillaquet_21026811" class="btn btn--portal btn--icon" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 11V7a5 5 0 0 1 10 0v4"/><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M12 15v2"/></svg>
+            Intranet del paciente
           </a>
-          <a href="tel:877643360">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
-            877 643 360
-          </a>
-        </div>
-        <div class="topbar__hours">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          Lun–Vie: 8:00–13:00 / 15:00–20:00
         </div>
       </div>
     </div>
 
     <header class="header" id="header">
       <nav class="nav container">
-        <a href={`${base}#inicio`} class="nav__logo">
-          <img src={`${base}images/logo.png`} alt="Centre Sanitari Villaquet" width="48" height="48" class="nav__logo-image" />
-          <span>Villa<span class="nav__logo-accent">quet</span></span>
-        </a>
         <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú">
           <span></span><span></span><span></span>
         </button>
@@ -122,8 +119,7 @@ const jsonLd = {
       <div class="container footer__grid">
         <div class="footer__brand">
           <a href={`${base}#inicio`} class="nav__logo">
-            <img src={`${base}images/logo.png`} alt="Centre Sanitari Villaquet" width="40" height="40" class="nav__logo-image nav__logo-image--footer" />
-            <span>Villa<span class="nav__logo-accent">quet</span></span>
+            <img src={`${base}images/logo_horizontal.png`} alt="Centre Sanitari Villaquet" width="160" height="36" class="nav__logo-image nav__logo-image--horizontal nav__logo-image--footer" />
           </a>
           <p>Centre Sanitari Villaquet — Un centro médico de excelencia y proximidad en Calafell.</p>
 
