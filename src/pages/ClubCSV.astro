@@ -95,6 +95,75 @@ const includedServices = [
     text: 'Tres modalidades pensadas para adultos, deportistas y mayores, con una base sólida y condiciones claramente diferenciadas en el Anexo I.',
   },
 ];
+
+const comparisonRows = [
+  {
+    concept: 'Precio',
+    general: '390 € / año o 35 € / mes',
+    sport: '449 € / año o 40 € / mes',
+    senior: '390 € / año o 35 € / mes',
+  },
+  {
+    concept: 'Medicina General',
+    general: '12 visitas / año',
+    sport: '12 visitas / año',
+    senior: '12 visitas / año',
+  },
+  {
+    concept: 'Visitas posteriores',
+    general: '25€',
+    sport: '25€',
+    senior: '25€',
+  },
+  {
+    concept: 'Enfermería',
+    general: '12 visitas / año (Curas e Inyectables*)',
+    sport: '12 visitas / año (Curas e Inyectables*)',
+    senior: '12 visitas / año (Curas e Inyectables*)',
+  },
+  {
+    concept: 'Analítica anual',
+    general: 'Básica',
+    sport: 'Deportiva',
+    senior: 'Senior',
+  },
+  {
+    concept: 'Analíticas posteriores',
+    general: '15% DTO',
+    sport: '15% DTO',
+    senior: '15% DTO',
+  },
+  {
+    concept: 'Fisioterapia incluida',
+    general: '5 sesiones (45\') / año',
+    sport: '10 sesiones (30\') / año',
+    senior: '5 sesiones (45\') / año',
+  },
+  {
+    concept: 'Condiciones extra fisio',
+    general: 'Sesiones posteriores: 36€',
+    sport: 'Sesiones posteriores: 30€ / Bono 5 sesiones: 135€ / MEP-EPI: 40€',
+    senior: 'Bono 5 sesiones (mensual): 180€',
+  },
+  {
+    concept: 'Podología incluida',
+    general: '1 quiropedia / año',
+    sport: '1 quiropedia / año + Estudio biomecánico anual',
+    senior: '2 quiropedias / año',
+  },
+  {
+    concept: 'Podología posterior',
+    general: 'Quiropedias posteriores: 25€',
+    sport: 'Quiropedias posteriores: 25€ / Plantillas: 160€',
+    senior: 'Quiropedias posteriores: Bono 3x2',
+  },
+  {
+    concept: 'Descuentos especiales',
+    general: 'Especialidades 50€ / Psicología 40€ / Eco-RX 20% DTO / Otros 10% DTO',
+    sport: 'Especialidades 50€ / Psicología 40€ / Eco-RX 20% DTO / Otros 10% DTO',
+    senior: 'Especialidades 50€ / Psicología 40€ / Eco-RX 20% DTO / Otros 10% DTO',
+  },
+];
 ---
 
 <Layout
@@ -157,6 +226,38 @@ const includedServices = [
     </section>
 
     <section class="section section--alt">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__tag">Comparativa rápida</span>
+          <h2 class="section__title">Compara las 3 modalidades de un vistazo</h2>
+        </div>
+
+        <div class="club-page__compare-wrap">
+          <table class="club-page__compare" aria-label="Comparativa de tarjetas Club CSV">
+            <thead>
+              <tr>
+                <th scope="col">Concepto</th>
+                <th scope="col">General</th>
+                <th scope="col">Sport</th>
+                <th scope="col">Senior (+60)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonRows.map((row) => (
+                <tr>
+                  <th scope="row">{row.concept}</th>
+                  <td>{row.general}</td>
+                  <td>{row.sport}</td>
+                  <td>{row.senior}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
       <div class="container">
         <div class="section__header">
           <span class="section__tag">Qué incluye</span>
