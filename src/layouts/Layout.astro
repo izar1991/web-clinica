@@ -20,6 +20,11 @@ const searchIndex = [
     keywords: ['especialidades', 'cartera de servicios', 'medico'],
   },
   {
+    label: 'Equipo Profesional',
+    url: `${base}Equipoyservicios`,
+    keywords: ['equipo profesional', 'especialistas', 'profesionales médicos', 'centro medico'],
+  },
+  {
     label: 'Reservar cita',
     url: `${base}reservar-cita`,
     keywords: ['cita', 'turno', 'agenda', 'pedir cita'],
@@ -105,7 +110,7 @@ const jsonLd = {
     <div class="search-panel">
       <div class="container search-panel__inner">
         <a href={`${base}#inicio`} class="nav__logo nav__logo--compact nav__logo--brand" aria-label="Inicio">
-          <img src={`${base}images/image.png`} alt="Centre Sanitari Villaquet" width="216" height="50" class="nav__logo-image nav__logo-image--horizontal" />
+          <img src={`${base}images/logo_solo.png`} alt="Centre Sanitari Villaquet" width="54" height="54" class="nav__logo-image nav__logo-image--solo" />
           <span class="nav__brand-text" aria-label="Centre Sanitari Villaquet">
             <span class="nav__brand-text--top">Centre Sanitari</span>
             <span class="nav__brand-text--bottom">Villaquet</span>
@@ -162,7 +167,7 @@ const jsonLd = {
               </div>
             </details>
           </li>
-          <li><a href={`${base}#equipo`} class="nav__link">Equipo</a></li>
+          <li><a href={`${base}Equipoyservicios`} class="nav__link">Equipo Profesional</a></li>
           <li><a href={`${base}#tecnologia`} class="nav__link">Tecnología</a></li>
           <li><a href={`${base}#mutuas`} class="nav__link">Mutuas</a></li>
           <li><a href={`${base}#club`} class="nav__link">Club CSV</a></li>
@@ -177,7 +182,7 @@ const jsonLd = {
       <div class="container footer__grid">
         <div class="footer__brand">
           <a href={`${base}#inicio`} class="nav__logo">
-            <img src={`${base}images/image.png`} alt="Centre Sanitari Villaquet" width="160" height="36" class="nav__logo-image nav__logo-image--horizontal nav__logo-image--footer" />
+            <img src={`${base}images/logo_solo.png`} alt="Centre Sanitari Villaquet" width="48" height="48" class="nav__logo-image nav__logo-image--solo nav__logo-image--footer" />
           </a>
           <p>Centre Sanitari Villaquet — Un centro médico de excelencia y proximidad en Calafell.</p>
 

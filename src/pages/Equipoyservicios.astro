@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { especialidades, profesionales } from '../data/especialidades';
+
+const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
+
+const profesionalesAgrupados = especialidades
+  .map((especialidad) => ({
+    ...especialidad,
+    profesionales: profesionales.filter((profesional) => profesional.especialidad === especialidad.slug),
+  }))
+  .filter((especialidad) => especialidad.profesionales.length > 0);
+---
+
+<Layout
+  title="Equipo Profesional | Centre Sanitari Villaquet"
+  description="Conoce a nuestro equipo profesional y la especialidad asociada a cada especialista en Centre Sanitari Villaquet."
+  keywords="equipo profesional Calafell, especialistas Calafell, profesionales médicos Calafell, ginecología Calafell, dermatología Calafell"
+>
+  <main>
+    <section class="specialties-page__hero">
+      <div class="container">
+        <span class="section__tag">Equipo Profesional</span>
+        <h1 class="section__title">Especialistas que acompañan cada etapa de tu salud</h1>
+        <p class="section__desc">Cada profesional está vinculado a una especialidad para ofrecer una atención más precisa, personalizada y coordinada.</p>
+      </div>
+    </section>
+
+    <section class="team section" id="equipo">
+      <div class="container">
+        {profesionalesAgrupados.map((grupo) => (
+          <div class="team__specialty-group" style="margin-bottom: 3rem;">
+            <div class="section__header" style="margin-bottom: 1.5rem;">
+              <span class="section__tag">{grupo.title}</span>
+              <h2 class="section__title">Profesionales de {grupo.title}</h2>
+            </div>
+
+            <div class="team__grid">
+              {grupo.profesionales.map((profesional) => (
+                <article class="doctor-card" id={profesional.id}>
+                  <div class="doctor-card__header">
+                    <div class="doctor-card__avatar">
+                      <img src={profesional.image} alt={profesional.nombre} />
+                    </div>
+                    <div>
+                      <h3>{profesional.nombre}</h3>
+                      <p class="doctor-card__role">{profesional.role}</p>
+                    </div>
+                  </div>
+                  <p class="doctor-card__specialty">Especialidad: {grupo.title}</p>
+                  <p class="doctor-card__bio">{profesional.bio}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="contact__cta">
+          <h3>¿Necesitas una cita o más información?</h3>
+          <p>Contamos con atención cercana, coordinación asistencial y procesos sencillos para que puedas reservar tu visita en pocos minutos.</p>
+          <div class="contact__cta-actions">
+            <a href={`${base}reservar-cita`} class="btn btn--primary">Reservar cita</a>
+            <a href={`${base}servicios`} class="btn btn--outline">Ver especialidades</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

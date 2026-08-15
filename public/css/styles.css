@@ -954,6 +954,192 @@ body.is-scrolled .search-panel__inner {
   text-align: center;
 }
 
+.club-page__hero {
+  padding: 6rem 0 3rem;
+  background: linear-gradient(135deg, rgba(15, 91, 95, 0.98), rgba(8, 50, 52, 0.94));
+  color: #fff;
+}
+
+.club-page__hero-inner {
+  max-width: 860px;
+}
+
+.club-page__intro {
+  max-width: 900px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--color-text);
+}
+
+.club-page__plans {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.club-page__plan {
+  background: linear-gradient(180deg, rgba(7, 79, 81, 0.98), rgba(11, 55, 57, 0.96));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 26px;
+  padding: 1.8rem;
+  box-shadow: 0 18px 32px rgba(10, 49, 52, 0.18);
+  color: #fff;
+}
+
+.club-page__plan--featured {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.26);
+}
+
+.club-page__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.club-page__icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  font-size: 1.5rem;
+}
+
+.club-page__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.club-page__badge--soft {
+  background: rgba(76, 201, 240, 0.18);
+}
+
+.club-page__badge--warm {
+  background: rgba(255, 181, 92, 0.2);
+}
+
+.club-page__plan h2 {
+  font-size: 1.6rem;
+  margin: 0 0 0.7rem;
+}
+
+.club-page__audience {
+  margin: 0 0 1rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.6;
+  min-height: 72px;
+}
+
+.club-page__pricing {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.club-page__price-block {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.club-page__price-block span {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.club-page__price-block strong {
+  font-size: 1.15rem;
+  color: #fff;
+  font-weight: 800;
+}
+
+.club-page__list {
+  padding-left: 1.2rem;
+  margin: 0 0 1.5rem;
+  display: grid;
+  gap: 0.7rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.55;
+}
+
+.club-page__list li {
+  list-style: disc;
+}
+
+.club-page__features {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.club-page__feature {
+  background: rgba(10, 82, 84, 0.06);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 1.4rem;
+}
+
+.club-page__feature h3 {
+  margin: 0 0 0.7rem;
+  font-size: 1.1rem;
+}
+
+.club-page__feature p {
+  margin: 0;
+  color: var(--color-text-soft);
+  line-height: 1.7;
+}
+
+.club-page__cta {
+  display: grid;
+  gap: 1.2rem;
+  background: linear-gradient(135deg, rgba(15, 91, 95, 0.08), rgba(255, 255, 255, 0.9));
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  padding: 2rem;
+}
+
+.club-page__cta p {
+  margin: 0;
+  color: var(--color-text-soft);
+  line-height: 1.7;
+}
+
+.club-page__cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@media (max-width: 980px) {
+  .club-page__plans,
+  .club-page__features {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ===== Contact / CTA ===== */
 .contact__cta {
   background: linear-gradient(135deg, rgba(20, 163, 168, 0.12), #fff);
@@ -1476,22 +1662,43 @@ body.is-scrolled .search-panel__inner {
 }
 
 .doctor-card__avatar {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 1.25rem;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  width: 132px;
+  height: 132px;
+  margin: 0 auto 1rem;
+  background: transparent;
   color: #fff;
-  border-radius: 50%;
+  border: none;
+  border-radius: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 700;
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.doctor-card__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 18px;
+  background: transparent;
+  box-shadow: 0 18px 28px rgba(18, 34, 38, 0.10);
+}
+
+.doctor-card__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .doctor-card h3 {
   font-size: 1rem;
   margin-bottom: 0.25rem;
+  text-align: left;
 }
 
 .doctor-card__role {
@@ -1499,12 +1706,14 @@ body.is-scrolled .search-panel__inner {
   font-weight: 600;
   color: var(--color-primary);
   margin-bottom: 0.75rem;
+  text-align: left;
 }
 
 .doctor-card__bio {
   font-size: 0.825rem;
   color: var(--color-text-muted);
   line-height: 1.5;
+  text-align: left;
 }
 
 /* ===== Insurance ===== */
@@ -1794,15 +2003,21 @@ body.is-scrolled .search-panel__inner {
 }
 
 .reservation-page__steps strong {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
+  min-height: 2rem;
+  aspect-ratio: 1;
   background: var(--color-primary);
   color: #fff;
   border-radius: 50%;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
+  line-height: 1;
+  font-weight: 800;
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 .reservation-page__help p {
@@ -1983,6 +2198,48 @@ body.is-scrolled .search-panel__inner {
   margin-bottom: 1.5rem;
 }
 
+.specialty-page__media,
+.specialty-page__aside-image {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: #f3f8f8;
+  margin-bottom: 1.75rem;
+}
+
+.specialty-page__media img,
+.specialty-page__aside-image img {
+  display: block;
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.specialty-page__highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.specialty-page__highlight {
+  background: linear-gradient(180deg, rgba(20, 163, 168, 0.08), rgba(255, 255, 255, 0.9));
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  padding: 1.1rem;
+}
+
+.specialty-page__highlight h3 {
+  font-size: 1rem;
+  margin-bottom: 0.45rem;
+}
+
+.specialty-page__highlight p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
 .specialty-page__list {
   display: grid;
   gap: 0.8rem;
@@ -2023,11 +2280,17 @@ body.is-scrolled .search-panel__inner {
 
 .specialty-page__contact {
   display: grid;
-  gap: 0.6rem;
+  gap: 0.8rem;
+  margin-top: 1rem;
 }
 
 .specialty-page__contact a {
   font-weight: 600;
+}
+
+.specialty-page__contact .btn--full {
+  width: 100%;
+  justify-content: center;
 }
 
 .section__subtitle {

@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { contenidoEspecialidades } from '../../data/especialidades';
+import { contenidoEspecialidades, profesionales } from '../../data/especialidades';
 
 export async function getStaticPaths() {
   return Object.entries(contenidoEspecialidades).map(([slug, data]) => ({
@@ -12,6 +12,7 @@ export async function getStaticPaths() {
 const { slug } = Astro.params;
 const { data } = Astro.props;
 const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
+const profesionalesEspecialidad = profesionales.filter((profesional) => profesional.especialidad === slug);
 ---
 
 <Layout
@@ -32,11 +33,24 @@ const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
       <div class="container specialty-page__grid">
         <div class="specialty-page__content">
           <p>{data.intro}</p>
+
+          <div class="specialty-page__media">
+            <img src={data.image} alt={data.title} />
+          </div>
+
+          <div class="specialty-page__highlights">
+            {data.highlights.map((highlight) => (
+              <div class="specialty-page__highlight">
+                <h3>{highlight.title}</h3>
+                <p>{highlight.text}</p>
+              </div>
+            ))}
+          </div>
+
           <ul class="specialty-page__list">
             {data.bullets.map((bullet) => <li>{bullet}</li>)}
           </ul>
           <div class="specialty-page__actions">
-            <a href={`${base}reservar-cita`} class="btn btn--primary">{data.cta}</a>
             <a href={`${base}servicios`} class="btn btn--outline">Ver todas las especialidades</a>
           </div>
         </div>
@@ -45,10 +59,40 @@ const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
           <h3>¿Necesitas una valoración?</h3>
           <p>Contacto directo con nuestro centro para resolver dudas y programar la primera visita.</p>
           <div class="specialty-page__contact">
+            <a href={`${base}reservar-cita`} class="btn btn--primary btn--full">{data.cta}</a>
             <a href="tel:877643360">877 643 360</a>
             <a href="mailto:info@villaquet.com">info@villaquet.com</a>
           </div>
+          <div class="specialty-page__aside-image">
+            <img src={data.image} alt={`Atención en ${data.title}`} />
+          </div>
         </aside>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__tag">Profesionales</span>
+          <h2 class="section__title">Especialistas de {data.title}</h2>
+        </div>
+
+        <div class="team__grid">
+          {profesionalesEspecialidad.map((profesional) => (
+            <article class="doctor-card">
+              <div class="doctor-card__header">
+                <div class="doctor-card__avatar">
+                  <img src={profesional.image} alt={profesional.nombre} />
+                </div>
+                <div>
+                  <h3>{profesional.nombre}</h3>
+                  <p class="doctor-card__role">{profesional.role}</p>
+                </div>
+              </div>
+              <p class="doctor-card__bio">{profesional.bio}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   </main>

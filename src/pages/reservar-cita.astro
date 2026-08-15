@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const iframeSrc = 'https://citaonline.dricloud.net/?URL=dricloud_centresanitarivillaquet_21026811';
 ---
 
 <Layout title="Reservar cita | Centre Sanitari Villaquet" description="Reserva tu cita en Centre Sanitari Villaquet. Solicita una consulta médica en Calafell y contactaremos contigo lo antes posible.">
@@ -43,7 +45,7 @@ import Layout from '../layouts/Layout.astro';
           <iframe
             id="ifrModuloCitaonlineVisualizacion"
             title="Reserva online Centre Sanitari Villaquet"
-            src="https://citaonline.dricloud.net/?URL=dricloud_centresanitarivillaquet_21026811"
+            src={iframeSrc}
             frameborder="0"
             scrolling="auto"
             width="100%"
