@@ -1133,6 +1133,12 @@ body.is-scrolled .search-panel__inner {
   gap: 1rem;
 }
 
+.club-page__legal-note {
+  margin: 1.4rem 0 0;
+  font-size: 0.85rem;
+  color: var(--color-text-soft);
+}
+
 @media (max-width: 980px) {
   .club-page__plans,
   .club-page__features {

@@ -14,17 +14,17 @@ const plans = [
     monthly: '35 € / mes',
     audience: 'Ideal para adultos y familias que buscan atención médica preventiva, continuidad y servicios de salud integrales.',
     benefits: [
-      'Medicina General: 12 visitas al año',
-      'Visitas posteriores: 25€ por visita',
-      'Enfermería: 12 visitas al año (curas e inyectables*)',
-      'Analítica Básica anual incluida: hemograma, glucosa, colesterol total, HDL/LDL, triglicéridos, creatinina, TGO/TGP, urea y VSG',
-      'Analíticas posteriores: 15% de descuento',
-      'Ginecología: revisión anual con citología + ecografía + visita',
-      'Fisioterapia: 5 sesiones de 45 minutos al año',
-      'Sesiones posteriores: 36€ por sesión',
-      'Podología: 1 quiropedia al año',
+      'Medicina General: 12 visitas / año',
+      'Visitas posteriores: 25€',
+      'Enfermería: 12 visitas / año (Curas e Inyectables*)',
+      'Analítica Básica Anual: Hemograma, Glucosa, Colesterol Total, Colesterol HDL/LDL, Triglicéridos, Creatinina, Transaminasas TGO/TGP, Urea, VSG',
+      'Analíticas posteriores: 15% DTO',
+      'Ginecología: Revisión Anual (Citología + Ecografía + Visita)',
+      'Fisioterapia: 5 sesiones (45\') / año',
+      'Sesiones posteriores: 36€',
+      'Podología: 1 quiropedia / año',
       'Quiropedias posteriores: 25€',
-      'Descuentos especiales: 50% en especialidades, 40% en Psicología, 20% en pruebas diagnósticas Eco/RX y 10% en otros servicios',
+      'Descuentos especiales: Especialidades 50€, Psicología 40€, Pruebas diagnósticas Eco/RX 20% DTO, Otros servicios 10% DTO',
     ],
   },
   {
@@ -37,19 +37,20 @@ const plans = [
     monthly: '40 € / mes',
     audience: 'Pensado para personas activas y deportistas que quieren rendimiento, recuperación y atención preventiva orientada al movimiento.',
     benefits: [
-      'Medicina General: 12 visitas al año',
-      'Visitas posteriores: 25€ por visita',
-      'Enfermería: 12 visitas al año (curas e inyectables*)',
-      'Analítica Deportiva anual incluida: básica + gamma, fosfatasa, TSH/T3/T4, cortisol, vitamina D, creatina-cinasa, hierro y hemoglobina glicosilada',
-      'Analíticas posteriores: 15% de descuento',
-      'Fisioterapia: 10 sesiones de 30 minutos al año',
-      'Sesiones posteriores: 30€ por sesión',
-      'Bono de 5 sesiones mensuales: 135€',
+      'Medicina General: 12 visitas / año',
+      'Visitas posteriores: 25€',
+      'Enfermería: 12 visitas / año (Curas e Inyectables*)',
+      'Analítica Deportiva Anual: Básica + Gamma, Fosfatasa, TSH/T3/T4, Cortisol, Vitamina D, Creatina-Cinasa, Hierro, Hemoglobina Glicosilada',
+      'Analíticas posteriores: 15% DTO',
+      'Fisioterapia: 10 sesiones (30\') / año',
+      'Sesiones posteriores: 30€',
+      'Bono 5 sesiones (mensual): 135€',
       'Sesión MEP-EPI: 40€',
-      'Podología: 1 quiropedia al año + estudio biomecánico anual',
+      'Podología: 1 quiropedia / año',
+      'Estudio Biomecánico Anual',
       'Quiropedias posteriores: 25€',
-      'Plantillas: precio especial 160€',
-      'Descuentos especiales: 50% en especialidades, 40% en Psicología, 20% en pruebas diagnósticas Eco/RX y 10% en otros servicios',
+      'Precio especial plantillas: 160€',
+      'Descuentos especiales: Especialidades 50€, Psicología 40€, Pruebas diagnósticas Eco/RX 20% DTO, Otros servicios 10% DTO',
     ],
   },
   {
@@ -62,16 +63,16 @@ const plans = [
     monthly: '35 € / mes',
     audience: 'Diseñado para mayores de 60 años con atención preventiva, continuidad y bienestar integral para el día a día.',
     benefits: [
-      'Medicina General: 12 visitas al año',
-      'Visitas posteriores: 25€ por visita',
-      'Enfermería: 12 visitas al año (curas e inyectables*)',
-      'Analítica Senior anual incluida: básica + vitamina D, PSA, filtrado glomerular y TSH/T3/T4',
-      'Analíticas posteriores: 15% de descuento',
-      'Fisioterapia: 5 sesiones de 45 minutos al año',
-      'Bono de 5 sesiones mensuales: 180€',
-      'Podología: 2 quiropedias al año',
-      'Quiropedias posteriores: bono 3x2',
-      'Descuentos especiales: 50% en especialidades, 40% en Psicología, 20% en pruebas diagnósticas Eco/RX y 10% en otros servicios',
+      'Medicina General: 12 visitas / año',
+      'Visitas posteriores: 25€',
+      'Enfermería: 12 visitas / año (Curas e Inyectables*)',
+      'Analítica Senior Anual: Básica + Vitamina D, PSA, Filtrado Glomerular, TSH/T3/T4',
+      'Analíticas posteriores: 15% DTO',
+      'Fisioterapia: 5 sesiones (45\') / año',
+      'Bono 5 sesiones (mensual): 180€',
+      'Podología: 2 quiropedias / año',
+      'Quiropedias posteriores: Bono 3x2',
+      'Descuentos especiales: Especialidades 50€, Psicología 40€, Pruebas diagnósticas Eco/RX 20% DTO, Otros servicios 10% DTO',
     ],
   },
 ];
@@ -121,7 +122,7 @@ const includedServices = [
 
         <div class="club-page__plans">
           {plans.map((plan) => (
-            <article class={`club-page__plan ${plan.featured ? 'club-page__plan--featured' : ''}`}>
+            <article id={plan.slug} class={`club-page__plan ${plan.featured ? 'club-page__plan--featured' : ''}`}>
               <div class="club-page__head">
                 <div class="club-page__icon" aria-hidden="true">{plan.icon}</div>
                 <span class={`club-page__badge ${plan.slug === 'sport' ? 'club-page__badge--soft' : plan.slug === 'senior' ? 'club-page__badge--warm' : ''}`}>
@@ -151,6 +152,7 @@ const includedServices = [
             </article>
           ))}
         </div>
+        <p class="club-page__legal-note">*Sólo ACTO MÉDICO - Inyectable no incluido.</p>
       </div>
     </section>
 
