@@ -1,3 +1,5 @@
+const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
+
 export const especialidades = [
   { slug: 'medicina-general', title: 'Medicina General' },
   { slug: 'ginecologia-obstetricia', title: 'Ginecología y Obstetricia' },
@@ -15,7 +17,7 @@ export const profesionales = [
     nombre: 'Dr. Jaime Paredes',
     role: 'Director Médico · Medicina General · Urgencias',
     especialidad: 'medicina-general',
-    image: `${import.meta.env.BASE_URL || '/'}images/Dr.Paredes_Amaya.png`,
+    image: `${base}images/Dr.Paredes_Amaya.png`,
     bio: 'Más de 25 años de experiencia en urgencias y medicina general. Especialista en atención primaria, diagnóstico clínico y coordinación de tratamientos complejos.',
   },
   {
@@ -23,7 +25,7 @@ export const profesionales = [
     nombre: 'Dr. Esteban Pedro Mussin',
     role: 'Ginecología y Obstetricia',
     especialidad: 'ginecologia-obstetricia',
-    image: `${import.meta.env.BASE_URL || '/'}images/Dr.Esteban_Pedro_Mussin.png`,
+    image: `${base}images/Dr.Esteban_Pedro_Mussin.png`,
     bio: 'Más de 20 años de experiencia internacional en ginecología y obstetricia, con especial interés en cirugía ginecológica y atención integral a la salud femenina.',
   },
   {
@@ -31,7 +33,7 @@ export const profesionales = [
     nombre: 'Dra. Yolanda Medrano de Blas',
     role: 'Ginecología y Obstetricia',
     especialidad: 'ginecologia-obstetricia',
-    image: `${import.meta.env.BASE_URL || '/'}images/Dra.Yolanda_Medrano_de_Blas.jpg`,
+    image: `${base}images/Dra.Yolanda_Medrano_de_Blas.jpg`,
     bio: 'Especialista con una sólida trayectoria de más de 20 años de experiencia en salud femenina. Cuenta con formación de posgrado de Máster en Anticoncepción, Salud Sexual y Reproductiva por la Universidad de Alcalá. Es referente en el abordaje de la menopausia, ecografía avanzada, reproducción asistida y citología. Su perfil combina una preparación técnica avanzada y una dilatada experiencia clínica para ofrecer una atención integral de la mujer, enfocada en la prevención, el diagnóstico preciso y el tratamiento de las diferentes etapas de la salud reproductiva.',
   },
   {
@@ -39,7 +41,7 @@ export const profesionales = [
     nombre: 'Dr. Álvaro Gómez Tomás',
     role: 'Dermatología',
     especialidad: 'dermatologia',
-    image: `${import.meta.env.BASE_URL || '/'}images/Dr.Alvaro_Gomez_Tomas.png`,
+    image: `${base}images/Dr.Alvaro_Gomez_Tomas.png`,
     bio: 'Formación en dermatología integral y pediátrica con especialidad en diagnóstico de patologías cutáneas, prevención y tratamiento estético y terapéutico.',
   },
   {
@@ -47,7 +49,7 @@ export const profesionales = [
     nombre: 'María Cecilia Cristaldi',
     role: 'Psicología',
     especialidad: 'psicologia',
-    image: `${import.meta.env.BASE_URL || '/'}images/Dra.Maria_Cecilia_.png`,
+    image: `${base}images/Dra.Maria_Cecilia_.png`,
     bio: 'Psicóloga con amplia experiencia en terapia individual, acompañamiento emocional y abordaje del trauma, con enfoque cercano y personalizado para adolescentes y adultos.',
   },
   {
@@ -55,7 +57,7 @@ export const profesionales = [
     nombre: 'Klay del Carmen Escobar',
     role: 'Psicología',
     especialidad: 'psicologia',
-    image: `${import.meta.env.BASE_URL || '/'}images/Klay.png`,
+    image: `${base}images/Klay.png`,
     bio: 'Especializada en psicología infantil, terapia breve y acompañamiento en procesos emocionales y familiares, con más de 25 años de experiencia profesional.',
   },
   {
@@ -63,7 +65,7 @@ export const profesionales = [
     nombre: 'Lic. Luciano Ezequiel Herlein',
     role: 'Fisioterapia y Rehabilitación',
     especialidad: 'fisioterapia',
-    image: `${import.meta.env.BASE_URL || '/'}images/Lic.Luciano_Ezequiel_Herlein.png`,
+    image: `${base}images/Lic.Luciano_Ezequiel_Herlein.png`,
     bio: 'Fisioterapeuta especializado en traumatología, rehabilitación funcional y deporte. Trabaja con técnicas avanzadas para la recuperación y la prevención de lesiones.',
   },
   {
@@ -71,7 +73,7 @@ export const profesionales = [
     nombre: 'Dídac Melero',
     role: 'Podología',
     especialidad: 'podologia',
-    image: `${import.meta.env.BASE_URL || '/'}images/Didac_Melero.png`,
+    image: `${base}images/Didac_Melero.png`,
     bio: 'Especialista en Podología, con formación universitaria por la Universitat de Barcelona y una sólida especialización en imagen diagnóstica, medicina nuclear y cirugía de antepié, gracias a su formación de posgrado en la Universitat de Manresa. Su perfil combina preparación técnica avanzada y experiencia clínica para ofrecer una atención integral del pie, enfocada en la prevención, el diagnóstico preciso y el tratamiento personalizado de las patologías podológicas.',
   },
   {
@@ -79,7 +81,7 @@ export const profesionales = [
     nombre: 'Dra. Meritxell Paredes',
     role: 'Medicina',
     especialidad: 'medicina-general',
-    image: `${import.meta.env.BASE_URL || '/'}images/Dra.Meritxell_Paredes.png`,
+    image: `${base}images/Dra.Meritxell_Paredes.png`,
     bio: 'Doctora con formación sanitaria y experiencia en Atención Primaria, lo que le aporta una visión médica integral del bienestar y del cuidado global del paciente. Su trayectoria combina la atención clínica general con tratamientos realzando el bienestar personal, siempre desde un enfoque basado en la seguridad, la confianza, la precisión profesional y la personalización de cada tratamiento.',
   },
   {
@@ -87,7 +89,7 @@ export const profesionales = [
     nombre: 'Calipso del Pino',
     role: 'Enfermería',
     especialidad: 'enfermeria',
-    image: `${import.meta.env.BASE_URL || '/'}images/Calipso_del_Pino.png`,
+    image: `${base}images/Calipso_del_Pino.png`,
     bio: 'Enfermera con amplia experiencia en extracciones, consultas, urgencias y control de tratamientos. Además, colabora en procedimientos diagnósticos y apoyo asistencial.',
   },
 ];
