@@ -1,0 +1,392 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { especialidades, profesionales } from '../../data/especialidades';
+
+const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
+const localeBase = `${base}ca/`;
+
+const serviceContent: Record<string, { title: string; description: string }> = {
+  'medicina-general': {
+    title: 'Medicina General',
+    description: 'Atención primaria, urgencias y certificados médicos para toda la familia.',
+  },
+  'ginecologia-obstetricia': {
+    title: 'Ginecología y Obstetricia',
+    description: 'Salud femenina integral con seguimiento personalizado y atención cercana.',
+  },
+  dermatologia: {
+    title: 'Dermatología',
+    description: 'Diagnóstico y tratamiento de patologías cutáneas con enfoque preventivo.',
+  },
+  psicologia: {
+    title: 'Psicología',
+    description: 'Acompañamiento emocional y terapéutico para adultos, familias y adolescentes.',
+  },
+  fisioterapia: {
+    title: 'Fisioterapia',
+    description: 'Recuperación funcional, movilidad y prevención de lesiones.',
+  },
+  podologia: {
+    title: 'Podología',
+    description: 'Diagnóstico y tratamiento del pie para mejorar la movilidad y el confort.',
+  },
+  enfermeria: {
+    title: 'Enfermería',
+    description: 'Extracciones, seguimiento clínico y coordinación asistencial.',
+  },
+  'diagnostico-por-imagen': {
+    title: 'Diagnóstico por imagen',
+    description: 'Tecnología avanzada para un diagnóstico preciso, ágil y seguro.',
+  },
+};
+---
+
+<Layout
+  title="Centro médico en Calafell | Centre Sanitari Villaquet"
+  description="Centro médico en Calafell con medicina general, ginecología, dermatología, psicología, fisioterapia, podología y diagnóstico por imagen."
+  keywords="centro médico Calafell, medicina general Calafell, ginecología Calafell, dermatología Calafell, fisioterapia Calafell, podología Calafell, psicología Calafell"
+>
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero__bg"></div>
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <div class="hero__content-panel">
+            <p class="hero__tag">Centre Sanitari Villaquet · Calafell</p>
+            <h1 class="hero__title">Tu centro de confianza en <em>Calafell</em></h1>
+            <p class="hero__subtitle">Un centro médico de excelencia y proximidad. Profesionales de sólida trayectoria, tecnología de vanguardia y atención personalizada.</p>
+
+            <div class="hero__cta-group">
+              <a href={`${localeBase}reservar-cita`} class="btn btn--primary btn--icon btn--hero-primary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 7V5a4 4 0 1 1 8 0v2"/><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M12 12v4M10 14h4"/></svg>
+                Reservar cita
+              </a>
+            </div>
+
+            <div class="hero__secondary-actions">
+              <a href={`${localeBase}#servicios`} class="btn btn--outline btn--icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
+                Especialidades
+              </a>
+              <a href={`${localeBase}#mutuas`} class="btn btn--outline btn--icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-8-4.35-8-10a4 4 0 0 1 7-2.65A4 4 0 0 1 20 11c0 5.65-8 10-8 10Z"/><path d="M12 9v3M9.5 11.5h5"/></svg>
+                Mutuas
+              </a>
+            </div>
+
+            <div class="hero__stats" aria-label="Datos del centro">
+              <div class="hero__stat">
+                <strong>8:00–20:00</strong>
+                <span>Horario de atención</span>
+              </div>
+              <div class="hero__stat">
+                <strong>+10</strong>
+                <span>Especialidades</span>
+              </div>
+              <div class="hero__stat">
+                <strong>Calafell</strong>
+                <span>Centro médico local</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="why section" id="nosotros">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__tag">Por qué elegirnos</span>
+          <h2 class="section__title">Calidad, rapidez y atención cercana</h2>
+          <p class="section__desc">Profesionales de sólida trayectoria y reputación, comprometidos con tu bienestar.</p>
+        </div>
+        <div class="why__grid">
+          <article class="why-card">
+            <div class="why-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>Profesionales altamente cualificados</h3>
+            <p>Equipo con sólida trayectoria clínica y amplia experiencia en distintas especialidades médicas y sanitarias. Atención cercana, rigurosa y personalizada.</p>
+          </article>
+          <article class="why-card">
+            <div class="why-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <h3>Instalaciones punteras</h3>
+            <p>Tecnología de última generación: ecógrafos, rayos X, electrocardiógrafos y cardiotocógrafos. Resonancias magnéticas y TACs en centros colaboradores.</p>
+          </article>
+          <article class="why-card">
+            <div class="why-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </div>
+            <h3>Salud integral</h3>
+            <p>Fisioterapia, medicina estética avanzada y podología con instrumental de alta calidad. Enfoque profesional orientado al bienestar y la prevención.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="services section section--alt" id="servicios">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__tag">Nuestra cartera de servicios</span>
+          <h2 class="section__title">Atención integral y multidisciplinar</h2>
+          <p class="section__desc">Amplia cartera de especialidades médicas y servicios complementarios para una atención completa, ágil y de máxima calidad.</p>
+        </div>
+        <div class="services__grid">
+          {especialidades.map((especialidad) => (
+            <a href={`${localeBase}servicios/${especialidad.slug}`} class="service-card service-card--link" aria-label={`Ir a ${especialidad.title}`}>
+              <div class="service-card__icon">
+                {especialidad.slug === 'medicina-general' && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                )}
+                {especialidad.slug === 'ginecologia-obstetricia' && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                )}
+                {especialidad.slug === 'dermatologia' && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                )}
+                {especialidad.slug === 'psicologia' && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a8 8 0 0 0-8 8c0 6 8 12 8 12s8-6 8-12a8 8 0 0 0-8-8Z"/></svg>
+                )}
+                {especialidad.slug === 'fisioterapia' && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                )}
+                {especialidad.slug === 'podologia' && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                )}
+                {especialidad.slug === 'enfermeria' && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                )}
+                {especialidad.slug === 'diagnostico-por-imagen' && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                )}
+              </div>
+              <h3>{serviceContent[especialidad.slug]?.title || especialidad.title}</h3>
+              <p>{serviceContent[especialidad.slug]?.description || 'Descubre más sobre esta especialidad.'}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="team section" id="equipo">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__tag">Equipo médico</span>
+          <h2 class="section__title">Un equipo profesional de la mejor calidad</h2>
+          <p class="section__desc">Especialistas con amplia trayectoria, formación continuada y vocación asistencial.</p>
+        </div>
+        <div class="team__grid">
+          {profesionales.map((profesional) => {
+            const especialidad = especialidades.find((item) => item.slug === profesional.especialidad);
+            const nombreEspecialidad = especialidad?.title || profesional.role;
+
+            return (
+              <a href={`${localeBase}Equipoyservicios#${profesional.id}`} class="doctor-card doctor-card--link" aria-label={`Ir al perfil de ${profesional.nombre}`}>
+                <div class="doctor-card__header">
+                  <div class="doctor-card__avatar">
+                    <img src={profesional.image} alt={profesional.nombre} />
+                  </div>
+                  <div>
+                    <h3>{profesional.nombre}</h3>
+                    <p class="doctor-card__role">{nombreEspecialidad}</p>
+                  </div>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <section class="tech section section--alt" id="tecnologia">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__tag">La mejor tecnología</span>
+          <h2 class="section__title">Equipos de ayuda diagnóstica</h2>
+          <p class="section__desc">Tecnología de última generación para un diagnóstico preciso, ágil y de máxima calidad.</p>
+        </div>
+        <div class="tech__grid">
+          <article class="tech-card">
+            <div class="tech-card__label">Ecografía</div>
+            <h3>CHISON QBit 7</h3>
+            <p>Ecógrafo Doppler color de última generación con alta definición y excelente precisión diagnóstica. Ideal para ginecología, obstetricia, ecografía abdominal, vascular, músculo-esquelética, urológica, pediátrica y cardiológica.</p>
+            <ul class="tech-card__features">
+              <li>Ecografía 4D y elastografía</li>
+              <li>Alta calidad Doppler</li>
+              <li>Procedimientos guiados</li>
+            </ul>
+          </article>
+          <article class="tech-card">
+            <div class="tech-card__label">Radiología</div>
+            <h3>Sistema Universal Vertix</h3>
+            <p>Sala de radiología convencional digitalizada con imágenes de alta calidad y máxima precisión diagnóstica. Generador trifásico de alta frecuencia y digitalización CR.</p>
+            <ul class="tech-card__features">
+              <li>Radiología general y traumatología</li>
+              <li>Tórax, extremidades y abdomen</li>
+              <li>Diagnóstico ágil y seguro</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="mutuas section" id="mutuas">
+      <div class="container mutuas__inner">
+        <div class="section__header">
+          <span class="section__tag">Mutuas colaboradoras</span>
+          <h2 class="section__title">Cobertura de seguros</h2>
+        </div>
+        <div class="mutuas__coming">
+          <div class="mutuas__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+          </div>
+          <h3>Próximamente nuevas colaboraciones</h3>
+          <p>Permanece atento a las novedades. Estamos ampliando nuestra red de mutuas y seguros colaboradores.</p>
+          <a href={`${localeBase}reservar-cita`} class="btn btn--outline">Consultar cobertura</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="club section section--dark" id="club">
+      <div class="container club__wrapper">
+        <div class="club__header">
+          <span class="section__tag section__tag--light">Club CSV</span>
+          <h2 class="section__title section__title--light">Únete a nuestro club y disfruta de ventajas exclusivas</h2>
+          <p>Diseñado para cuidar de tu salud y la de tu familia con beneficios preferentes, descuentos y acceso a servicios de alto valor.</p>
+        </div>
+
+        <div class="club__plans">
+          <article class="club__plan club__plan--featured" id="club-plan-general">
+            <div class="club__plan-head">
+              <div class="club__plan-icon" aria-hidden="true">👤</div>
+              <span class="club__plan-badge">General</span>
+            </div>
+            <h3>Club CSV General</h3>
+            <p class="club__plan-audience">Ideal para adultos y familias que buscan salud, prevención y atención completa.</p>
+            <div class="club__plan-price">
+              <span>Desde 35 € / mes</span>
+            </div>
+            <ul class="club__plan-list">
+              <li>Medicina General</li>
+              <li>Enfermería</li>
+              <li>Analítica General Completa</li>
+              <li>Revisión Anual Ginecológica</li>
+              <li>Fisioterapia (5 sesiones)</li>
+              <li>Podología (Quiropedia)</li>
+            </ul>
+            <a href={`${localeBase}ClubCSV#general`} class="btn btn--light">Ver detalle completo</a>
+          </article>
+
+          <article class="club__plan club__plan--sport" id="club-plan-sport">
+            <div class="club__plan-head">
+              <div class="club__plan-icon" aria-hidden="true">⚡</div>
+              <span class="club__plan-badge club__plan-badge--soft">Sport</span>
+            </div>
+            <h3>Club CSV Sport</h3>
+            <p class="club__plan-audience">Pensado para personas activas y deportistas que quieren rendimiento y recuperación.</p>
+            <div class="club__plan-price">
+              <span>Desde 40 € / mes</span>
+            </div>
+            <ul class="club__plan-list">
+              <li>Medicina General</li>
+              <li>Enfermería</li>
+              <li>Analítica “Sport” Completa</li>
+              <li>Fisioterapia (10 sesiones)</li>
+              <li>Podología (Quiropedia + Estudio Biomecánico)</li>
+            </ul>
+            <a href={`${localeBase}ClubCSV#sport`} class="btn btn--outline btn--outline-light">Ver detalle completo</a>
+          </article>
+
+          <article class="club__plan club__plan--senior" id="club-plan-senior">
+            <div class="club__plan-head">
+              <div class="club__plan-icon" aria-hidden="true">🌿</div>
+              <span class="club__plan-badge club__plan-badge--warm">Senior</span>
+            </div>
+            <h3>Club CSV Senior (+60)</h3>
+            <p class="club__plan-audience">Diseñado para mayores de 60 años con atención preventiva y bienestar integral.</p>
+            <div class="club__plan-price">
+              <span>Desde 35 € / mes</span>
+            </div>
+            <ul class="club__plan-list">
+              <li>Medicina General</li>
+              <li>Enfermería</li>
+              <li>Analítica Senior Completa</li>
+              <li>Fisioterapia (5 sesiones)</li>
+              <li>Podología (2 Quiropedias)</li>
+            </ul>
+            <a href={`${localeBase}ClubCSV#senior`} class="btn btn--outline btn--outline-light">Ver detalle completo</a>
+          </article>
+        </div>
+
+        <p class="club__note">Tres modalidades adaptadas a cada etapa. Consulta coberturas, analíticas, sesiones y condiciones detalladas de cada tarjeta en la página de Club CSV.</p>
+        <div class="club__actions">
+          <a href={`${localeBase}ClubCSV`} class="btn btn--outline btn--outline-light">Ver todas las modalidades</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact section" id="contacto">
+      <div class="container contact__grid">
+        <div class="contact__info">
+          <span class="section__tag">Contacto</span>
+          <h2 class="section__title">Estamos aquí para ayudarte</h2>
+
+          <div class="contact__item">
+            <div class="contact__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <strong>Dirección</strong>
+              <p>Carrer Molí del Blanquet, 24, baixos<br />El Vilarenc, 43820 Calafell, Tarragona</p>
+            </div>
+          </div>
+
+          <div class="contact__item">
+            <div class="contact__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+            </div>
+            <div>
+              <strong>Teléfono</strong>
+              <p><a href="tel:877643360">877 643 360</a></p>
+            </div>
+          </div>
+
+          <div class="contact__item">
+            <div class="contact__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div>
+              <strong>Email</strong>
+              <p><a href="mailto:info@villaquet.com">info@villaquet.com</a></p>
+            </div>
+          </div>
+
+          <div class="contact__item">
+            <div class="contact__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <strong>Horario</strong>
+              <p>Lunes – Viernes: 8:00–13:00 / 15:00–20:00</p>
+            </div>
+          </div>
+
+          <div class="contact__map">
+            <iframe title="Ubicación Centre Sanitari Villaquet" src="https://maps.google.com/maps?q=Carrer+Mol%C3%AD+del+Blanquet+24+Calafell&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="contact__cta">
+          <h3>Reserva tu cita online</h3>
+          <p>La solicitud se realiza en una página dedicada para que puedas completar tus datos sin distraerte del resto de la web.</p>
+          <div class="contact__cta-actions">
+            <a href={`${localeBase}reservar-cita`} class="btn btn--primary">Reservar cita</a>
+            <a href="tel:877643360" class="btn btn--outline">Llamar ahora</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

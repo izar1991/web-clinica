@@ -3,7 +3,21 @@ import { especialidades } from '../data/especialidades';
 
 const siteUrl = 'https://www.villaquet.com';
 const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
-const canonicalURL = new URL(Astro.url.pathname, siteUrl).toString().replace(/\/$/, '');
+const currentPath = Astro.url.pathname;
+const relativePath = currentPath.startsWith(base) ? currentPath.slice(base.length) : currentPath.replace(/^\//, '');
+const currentLocale = relativePath === 'ca' || relativePath.startsWith('ca/') ? 'ca' : 'es';
+const normalizedPath = relativePath.replace(/^ca\/?/, '');
+const localeBase = currentLocale === 'ca' ? `${base}ca/` : base;
+const getLocalePath = (locale: 'es' | 'ca') => {
+  const prefix = locale === 'ca' ? 'ca/' : '';
+  const composed = `${base}${prefix}${normalizedPath}`;
+  return composed.replace(/\/+$/, '') || '/';
+};
+const esPath = getLocalePath('es');
+const caPath = getLocalePath('ca');
+const canonicalURL = new URL(currentPath, siteUrl).toString().replace(/\/$/, '');
+const esAlternateURL = new URL(esPath, siteUrl).toString().replace(/\/$/, '');
+const caAlternateURL = new URL(caPath, siteUrl).toString().replace(/\/$/, '');
 const defaultTitle = 'Centre Sanitari Villaquet — Centro médico en Calafell';
 const defaultDescription = 'Centro médico en Calafell. Medicina general, ginecología, dermatología, psicología, fisioterapia, podología y diagnóstico por imagen.';
 const { title = defaultTitle, description = defaultDescription, image = '/images/about.jpg', keywords = 'centro médico Calafell, medicina general Calafell, ginecología Calafell, dermatología Calafell, fisioterapia Calafell, podología Calafell, psicología Calafell' } = Astro.props;
@@ -11,47 +25,47 @@ const imageUrl = `${siteUrl}${base}${image.replace(/^\//, '')}`;
 const searchIndex = [
   {
     label: 'Inicio',
-    url: `${base}#inicio`,
+    url: `${localeBase}#inicio`,
     keywords: ['home', 'portada', 'centro medico', 'villaquet'],
   },
   {
     label: 'Servicios',
-    url: `${base}servicios`,
+    url: `${localeBase}servicios`,
     keywords: ['especialidades', 'cartera de servicios', 'medico'],
   },
   {
     label: 'Equipo Profesional',
-    url: `${base}Equipoyservicios`,
+    url: `${localeBase}Equipoyservicios`,
     keywords: ['equipo profesional', 'especialistas', 'profesionales médicos', 'centro medico'],
   },
   {
     label: 'Reservar cita',
-    url: `${base}reservar-cita`,
+    url: `${localeBase}reservar-cita`,
     keywords: ['cita', 'turno', 'agenda', 'pedir cita'],
   },
   {
     label: 'Equipo medico',
-    url: `${base}#equipo`,
+    url: `${localeBase}#equipo`,
     keywords: ['doctores', 'profesionales', 'especialistas'],
   },
   {
     label: 'Tecnologia',
-    url: `${base}#tecnologia`,
+    url: `${localeBase}#tecnologia`,
     keywords: ['equipos', 'diagnostico', 'tecnologia medica'],
   },
   {
     label: 'Mutuas',
-    url: `${base}#mutuas`,
+    url: `${localeBase}#mutuas`,
     keywords: ['aseguradoras', 'seguros', 'cobertura'],
   },
   {
     label: 'Club CSV',
-    url: `${base}#club`,
+    url: `${localeBase}#club`,
     keywords: ['club', 'beneficios'],
   },
   ...especialidades.map((especialidad) => ({
     label: especialidad.title,
-    url: `${base}servicios/${especialidad.slug}`,
+    url: `${localeBase}servicios/${especialidad.slug}`,
     keywords: ['especialidad', 'servicio medico', especialidad.slug.replace(/-/g, ' ')],
   })),
 ];
@@ -78,7 +92,7 @@ const jsonLd = {
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={currentLocale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -99,6 +113,9 @@ const jsonLd = {
     <meta name="twitter:image" content={imageUrl} />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang="es" href={esAlternateURL} />
+    <link rel="alternate" hreflang="ca" href={caAlternateURL} />
+    <link rel="alternate" hreflang="x-default" href={esAlternateURL} />
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -109,7 +126,7 @@ const jsonLd = {
   <body>
     <div class="search-panel">
       <div class="container search-panel__inner">
-        <a href={`${base}#inicio`} class="nav__logo nav__logo--compact nav__logo--brand" aria-label="Inicio">
+        <a href={`${localeBase}#inicio`} class="nav__logo nav__logo--compact nav__logo--brand" aria-label="Inicio">
           <img src={`${base}images/logo_solo.png`} alt="Centre Sanitari Villaquet" width="54" height="54" class="nav__logo-image nav__logo-image--solo" />
           <span class="nav__brand-text" aria-label="Centre Sanitari Villaquet">
             <span class="nav__brand-text--top">Centre Sanitari</span>
@@ -129,13 +146,13 @@ const jsonLd = {
             aria-controls="site-search-results"
             autocomplete="off"
             data-search-index={JSON.stringify(searchIndex)}
-            data-base={base}
+            data-base={localeBase}
           />
           <ul id="site-search-results" class="search-panel__results" role="listbox" hidden></ul>
         </div>
 
         <div class="search-panel__actions">
-          <a href={`${base}reservar-cita`} class="btn btn--primary btn--icon">
+          <a href={`${localeBase}reservar-cita`} class="btn btn--primary btn--icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 7V5a4 4 0 1 1 8 0v2"/><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M12 12v4M10 14h4"/></svg>
             Pedir cita
           </a>
@@ -143,6 +160,10 @@ const jsonLd = {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 11V7a5 5 0 0 1 10 0v4"/><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M12 15v2"/></svg>
             Intranet del paciente
           </a>
+          <div class="lang-switch" aria-label="Idioma del sitio">
+            <a href={esPath} class={`lang-switch__link ${currentLocale === 'es' ? 'is-active' : ''}`}>ES</a>
+            <a href={caPath} class={`lang-switch__link ${currentLocale === 'ca' ? 'is-active' : ''}`}>CA</a>
+          </div>
         </div>
       </div>
     </div>
@@ -153,25 +174,25 @@ const jsonLd = {
           <span></span><span></span><span></span>
         </button>
         <ul class="nav__menu" id="nav-menu">
-          <li><a href={`${base}#inicio`} class="nav__link">Inicio</a></li>
+          <li><a href={`${localeBase}#inicio`} class="nav__link">Inicio</a></li>
           <li class="nav-dropdown">
             <details>
               <summary class="nav__link nav-dropdown__summary">Servicios</summary>
               <div class="nav-dropdown__menu">
-                <a href={`${base}servicios`} class="nav-dropdown__link">Ver todas</a>
+                <a href={`${localeBase}servicios`} class="nav-dropdown__link">Ver todas</a>
                 {especialidades.map((especialidad) => (
-                  <a href={`${base}servicios/${especialidad.slug}`} class="nav-dropdown__link">
+                  <a href={`${localeBase}servicios/${especialidad.slug}`} class="nav-dropdown__link">
                     {especialidad.title}
                   </a>
                 ))}
               </div>
             </details>
           </li>
-          <li><a href={`${base}Equipoyservicios`} class="nav__link">Equipo Profesional</a></li>
-          <li><a href={`${base}#tecnologia`} class="nav__link">Tecnología</a></li>
-          <li><a href={`${base}#mutuas`} class="nav__link">Mutuas</a></li>
-          <li><a href={`${base}#club`} class="nav__link">Club CSV</a></li>
-          <li><a href={`${base}reservar-cita`} class="nav__link nav__link--cta">Reservar cita</a></li>
+          <li><a href={`${localeBase}Equipoyservicios`} class="nav__link">Equipo Profesional</a></li>
+          <li><a href={`${localeBase}#tecnologia`} class="nav__link">Tecnología</a></li>
+          <li><a href={`${localeBase}#mutuas`} class="nav__link">Mutuas</a></li>
+          <li><a href={`${localeBase}#club`} class="nav__link">Club CSV</a></li>
+          <li><a href={`${localeBase}reservar-cita`} class="nav__link nav__link--cta">Reservar cita</a></li>
         </ul>
       </nav>
     </header>
@@ -181,7 +202,7 @@ const jsonLd = {
     <footer class="footer">
       <div class="container footer__grid">
         <div class="footer__brand">
-          <a href={`${base}#inicio`} class="nav__logo">
+          <a href={`${localeBase}#inicio`} class="nav__logo">
             <img src={`${base}images/logo_solo.png`} alt="Centre Sanitari Villaquet" width="48" height="48" class="nav__logo-image nav__logo-image--solo nav__logo-image--footer" />
           </a>
           <p>Centre Sanitari Villaquet — Un centro médico de excelencia y proximidad en Calafell.</p>
@@ -210,11 +231,11 @@ const jsonLd = {
         <div class="footer__links">
           <h4>Secciones</h4>
           <ul>
-            <li><a href={`${base}#servicios`}>Servicios</a></li>
-            <li><a href={`${base}#equipo`}>Equipo médico</a></li>
-            <li><a href={`${base}#tecnologia`}>Tecnología</a></li>
-            <li><a href={`${base}#mutuas`}>Mutuas</a></li>
-            <li><a href={`${base}#club`}>Club CSV</a></li>
+            <li><a href={`${localeBase}#servicios`}>Servicios</a></li>
+            <li><a href={`${localeBase}#equipo`}>Equipo médico</a></li>
+            <li><a href={`${localeBase}#tecnologia`}>Tecnología</a></li>
+            <li><a href={`${localeBase}#mutuas`}>Mutuas</a></li>
+            <li><a href={`${localeBase}#club`}>Club CSV</a></li>
           </ul>
         </div>
         <div class="footer__links">
@@ -222,7 +243,7 @@ const jsonLd = {
           <ul>
             <li><a href="tel:877643360">877 643 360</a></li>
             <li><a href="mailto:info@villaquet.com">info@villaquet.com</a></li>
-            <li><a href={`${base}reservar-cita`}>Reservar cita</a></li>
+            <li><a href={`${localeBase}reservar-cita`}>Reservar cita</a></li>
           </ul>
         </div>
       </div>

@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { especialidades } from '../data/especialidades';
+
+const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
+const localeBase = `${base}ca/`;
+---
+
+<Layout
+  title="Servicios médicos en Calafell | Centre Sanitari Villaquet"
+  description="Descubre la cartera de servicios médicos en Calafell: medicina general, ginecología, dermatología, psicología, fisioterapia, podología y diagnóstico por imagen."
+  keywords="servicios médicos Calafell, centro médico Calafell, medicina general Calafell, ginecología Calafell, dermatología Calafell, fisioterapia Calafell, podología Calafell"
+>
+  <main>
+    <section class="specialties-page__hero">
+      <div class="container">
+        <span class="section__tag">Especialidades</span>
+        <h1 class="section__title">Servicios médicos para todas tus necesidades</h1>
+        <p class="section__desc">Consulta nuestra cartera de especialidades y encuentra la atención más adecuada para ti y tu familia.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container specialties-page__grid">
+        {especialidades.map((especialidad) => (
+          <article class="specialty-page-card">
+            <div class="specialty-page-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2v20M2 12h20"/></svg>
+            </div>
+            <h2>{especialidad.title}</h2>
+            <p>Atención especializada, cercana y centrada en tu bienestar.</p>
+            <a href={`${localeBase}servicios/${especialidad.slug}`} class="btn btn--outline">Ver más</a>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>

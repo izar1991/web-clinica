@@ -1,0 +1,71 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const iframeSrc = 'https://citaonline.dricloud.net/?URL=dricloud_centresanitarivillaquet_21026811';
+---
+
+<Layout title="Reservar cita | Centre Sanitari Villaquet" description="Reserva tu cita en Centre Sanitari Villaquet. Solicita una consulta médica en Calafell y contactaremos contigo lo antes posible.">
+  <main>
+    <section class="reservation-page__hero">
+      <div class="container reservation-page__intro">
+        <span class="section__tag">Reserva tu cita</span>
+        <h1 class="section__title">Solicita una consulta con nosotros</h1>
+        <p class="section__desc">Rellena el formulario y te contactaremos para confirmar la cita o indicarte el siguiente paso según la especialidad que necesites.</p>
+      </div>
+    </section>
+
+    <section class="container reservation-page__grid">
+      <aside class="reservation-page__info">
+        <div class="reservation-page__info-card">
+          <h3>¿Cómo funciona?</h3>
+          <ul class="reservation-page__steps">
+            <li><strong>1</strong><span>Selecciona la especialidad y la fecha disponible.</span></li>
+            <li><strong>2</strong><span>Confirma la solicitud desde el módulo online.</span></li>
+            <li><strong>3</strong><span>Recibirás la confirmación de tu cita en el horario indicado.</span></li>
+          </ul>
+        </div>
+
+        <div class="reservation-page__help">
+          <h3>¿Necesitas ayuda?</h3>
+          <p>Puedes hablar con nosotros directamente para resolver dudas sobre horarios, servicios, seguros o cobertura.</p>
+          <div class="reservation-page__actions">
+            <a href="tel:877643360" class="btn btn--primary">877 643 360</a>
+            <a href="mailto:info@villaquet.com" class="btn btn--outline">info@villaquet.com</a>
+          </div>
+        </div>
+      </aside>
+
+      <div class="reservation-widget">
+        <div class="reservation-widget__header">
+          <span class="section__tag">Cita online</span>
+          <h2>Reserva tu visita con nuestro sistema</h2>
+        </div>
+
+        <div class="reservation-widget__wrapper">
+          <iframe
+            id="ifrModuloCitaonlineVisualizacion"
+            title="Reserva online Centre Sanitari Villaquet"
+            src={iframeSrc}
+            frameborder="0"
+            scrolling="auto"
+            width="100%"
+            height="600"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <script is:inline>
+      window.addEventListener('message', function (event) {
+        if (event.origin !== 'https://citaonline.dricloud.net') return;
+
+        const iframe = document.getElementById('ifrModuloCitaonlineVisualizacion');
+        if (!iframe) return;
+
+        const heightIframe = Number(event.data) || 300;
+        iframe.height = String(heightIframe);
+      });
+    </script>
+  </main>
+</Layout>
