@@ -164,6 +164,16 @@ const comparisonRows = [
     senior: 'Especialidades 50€ / Psicología 40€ / Eco-RX 20% DTO / Otros 10% DTO',
   },
 ];
+
+const isDifferentRow = (row: { general: string; sport: string; senior: string }) => {
+  return new Set([row.general, row.sport, row.senior]).size > 1;
+};
+
+const isUniqueValueInRow = (row: { general: string; sport: string; senior: string }, value: string) => {
+  if (!isDifferentRow(row)) return false;
+  const values = [row.general, row.sport, row.senior];
+  return values.filter((item) => item === value).length === 1;
+};
 ---
 
 <Layout
@@ -232,6 +242,8 @@ const comparisonRows = [
           <h2 class="section__title">Compara las 3 modalidades de un vistazo</h2>
         </div>
 
+        <p class="club-page__compare-legend">Las diferencias entre modalidades están resaltadas para que puedas decidir más rápido.</p>
+
         <div class="club-page__compare-wrap">
           <table class="club-page__compare" aria-label="Comparativa de tarjetas Club CSV">
             <thead>
@@ -244,11 +256,11 @@ const comparisonRows = [
             </thead>
             <tbody>
               {comparisonRows.map((row) => (
-                <tr>
+                <tr class={isDifferentRow(row) ? 'club-page__compare-row--different' : 'club-page__compare-row--same'}>
                   <th scope="row">{row.concept}</th>
-                  <td>{row.general}</td>
-                  <td>{row.sport}</td>
-                  <td>{row.senior}</td>
+                  <td class={isUniqueValueInRow(row, row.general) ? 'club-page__compare-cell--unique' : ''}>{row.general}</td>
+                  <td class={isUniqueValueInRow(row, row.sport) ? 'club-page__compare-cell--unique' : ''}>{row.sport}</td>
+                  <td class={isUniqueValueInRow(row, row.senior) ? 'club-page__compare-cell--unique' : ''}>{row.senior}</td>
                 </tr>
               ))}
             </tbody>
