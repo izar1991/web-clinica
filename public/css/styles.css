@@ -1224,6 +1224,59 @@ body.is-scrolled .search-panel__inner {
   font-size: 0.92rem;
 }
 
+.club-page__common-wrap {
+  overflow-x: auto;
+  border: 1px solid rgba(10, 82, 84, 0.2);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 10px 22px rgba(9, 77, 79, 0.06);
+}
+
+.club-page__common {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 0;
+  table-layout: fixed;
+}
+
+.club-page__common th,
+.club-page__common td {
+  padding: 0.95rem 1rem;
+  border-right: 1px solid rgba(10, 82, 84, 0.12);
+  border-bottom: 1px solid rgba(10, 82, 84, 0.12);
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.45;
+}
+
+.club-page__common th:last-child,
+.club-page__common td:last-child {
+  border-right: 0;
+}
+
+.club-page__common thead th {
+  background: #dff1f1;
+  color: #0b4f52;
+  font-weight: 700;
+}
+
+.club-page__common tbody th {
+  width: 36%;
+  background: #f4fbfb;
+  color: #0b4f52;
+  font-weight: 700;
+}
+
+.club-page__common tbody tr:nth-child(even) td {
+  background: #f9fdfd;
+}
+
+.club-page__common tbody tr:last-child th,
+.club-page__common tbody tr:last-child td {
+  border-bottom: 0;
+}
+
 .club-page__compare tbody tr:last-child th,
 .club-page__compare tbody tr:last-child td {
   border-bottom: 0;
@@ -1247,6 +1300,113 @@ body.is-scrolled .search-panel__inner {
 
   .club-page__compare thead th:first-child {
     z-index: 4;
+  }
+}
+
+@media (max-width: 768px) {
+  .club-page__common-wrap {
+    overflow-x: auto;
+  }
+
+  .club-page__common th,
+  .club-page__common td {
+    padding: 0.8rem 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .club-page__common tbody th {
+    width: 40%;
+  }
+
+  .club-page__compare-wrap {
+    overflow-x: visible;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .club-page__compare {
+    min-width: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  .club-page__compare thead {
+    display: none;
+  }
+
+  .club-page__compare tbody {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .club-page__compare tbody tr {
+    display: block;
+    border: 1px solid rgba(10, 82, 84, 0.2);
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 6px 16px rgba(9, 77, 79, 0.06);
+  }
+
+  .club-page__compare tbody th,
+  .club-page__compare tbody td {
+    display: block;
+    width: 100%;
+    border-right: 0;
+    border-bottom: 1px solid rgba(10, 82, 84, 0.12);
+    position: static;
+    box-shadow: none;
+    left: auto;
+  }
+
+  .club-page__compare tbody th {
+    background: #0d7377;
+    color: #fff;
+    font-size: 0.92rem;
+    letter-spacing: 0.01em;
+  }
+
+  .club-page__compare tbody td {
+    display: grid;
+    grid-template-columns: minmax(92px, 34%) 1fr;
+    gap: 0.65rem;
+    align-items: start;
+    background: #fff;
+    font-size: 0.9rem;
+    padding: 0.8rem 0.9rem;
+  }
+
+  .club-page__compare tbody td::before {
+    content: attr(data-plan);
+    font-weight: 700;
+    color: #0b4f52;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .club-page__compare tbody td:nth-child(2),
+  .club-page__compare tbody td:nth-child(3),
+  .club-page__compare tbody td:nth-child(4),
+  .club-page__compare tbody tr:nth-child(even):not(.club-page__compare-row--different) td:nth-child(2),
+  .club-page__compare tbody tr:nth-child(even):not(.club-page__compare-row--different) td:nth-child(3),
+  .club-page__compare tbody tr:nth-child(even):not(.club-page__compare-row--different) td:nth-child(4) {
+    background: #fff;
+  }
+
+  .club-page__compare-row--different th {
+    box-shadow: none;
+    background: #0b6568;
+  }
+
+  .club-page__compare-cell--unique {
+    background: #fff5da !important;
+  }
+
+  .club-page__compare tbody tr td:last-child {
+    border-bottom: 0;
   }
 }
 .club-page__cta {
