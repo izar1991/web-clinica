@@ -438,8 +438,17 @@ ul {
 }
 
 .contact-strip .lang-switch__code {
-  background: rgba(9, 84, 86, 0.78);
-  color: #fff;
+  display: block !important;
+  visibility: visible !important;
+  overflow: visible;
+  text-overflow: clip;
+  z-index: 3;
+  min-width: 18px;
+  padding: 1px 3px;
+  background: #fff;
+  color: var(--color-primary-dark);
+  font-size: 0.56rem;
+  line-height: 1.15;
 }
 
 .search-panel {
