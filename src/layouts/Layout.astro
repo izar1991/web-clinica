@@ -1,5 +1,6 @@
 ---
 import { especialidades } from '../data/especialidades';
+import { getLocaleContent } from '../i18n/localized';
 
 const siteUrl = 'https://www.villaquet.com';
 const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
@@ -19,46 +20,52 @@ const getLocalePath = (locale: (typeof supportedLocales)[number]) => {
 };
 const esPath = getLocalePath('es');
 const caPath = getLocalePath('ca');
+const enPath = getLocalePath('en-GB');
+const dePath = getLocalePath('de-DE');
+const frPath = getLocalePath('fr-FR');
+const zhPath = getLocalePath('zh-CN');
+const arPath = getLocalePath('ar');
+const localeContent = getLocaleContent(currentLocale);
 const canonicalURL = new URL(currentPath, siteUrl).toString().replace(/\/$/, '');
 const esAlternateURL = new URL(esPath, siteUrl).toString().replace(/\/$/, '');
 const caAlternateURL = new URL(caPath, siteUrl).toString().replace(/\/$/, '');
-const defaultTitle = isCatalan ? 'Centre Sanitari Villaquet — Centre mèdic a Calafell' : 'Centre Sanitari Villaquet — Centro médico en Calafell';
-const defaultDescription = isCatalan ? 'Centre mèdic a Calafell. Medicina general, ginecologia, dermatologia, psicologia, fisioteràpia, podologia i diagnòstic per la imatge.' : 'Centro médico en Calafell. Medicina general, ginecología, dermatología, psicología, fisioterapia, podología y diagnóstico por imagen.';
+const defaultTitle = currentLocale === 'ca' ? 'Centre Sanitari Villaquet — Centre mèdic a Calafell' : 'Centre Sanitari Villaquet — Centro médico en Calafell';
+const defaultDescription = currentLocale === 'ca' ? 'Centre mèdic a Calafell. Medicina general, ginecologia, dermatologia, psicologia, fisioteràpia, podologia i diagnòstic per la imatge.' : 'Centro médico en Calafell. Medicina general, ginecología, dermatología, psicología, fisioterapia, podología y diagnóstico por imagen.';
 const { title = defaultTitle, description = defaultDescription, image = '/images/about.jpg', keywords = 'centro médico Calafell, medicina general Calafell, ginecología Calafell, dermatología Calafell, fisioterapia Calafell, podología Calafell, psicología Calafell' } = Astro.props;
 const imageUrl = `${siteUrl}${base}${image.replace(/^\//, '')}`;
 const searchIndex = [
   {
-    label: isCatalan ? 'Inici' : 'Inicio',
+    label: localeContent.home,
     url: `${localeBase}#inicio`,
     keywords: ['home', 'portada', 'centro medico', 'villaquet'],
   },
   {
-    label: isCatalan ? 'Serveis' : 'Servicios',
+    label: localeContent.services,
     url: `${localeBase}servicios`,
     keywords: ['especialidades', 'cartera de servicios', 'medico'],
   },
   {
-    label: isCatalan ? 'Equip professional' : 'Equipo Profesional',
+    label: localeContent.team,
     url: `${localeBase}Equipoyservicios`,
     keywords: ['equipo profesional', 'especialistas', 'profesionales médicos', 'centro medico'],
   },
   {
-    label: isCatalan ? 'Reservar visita' : 'Reservar cita',
+    label: localeContent.book,
     url: `${localeBase}reservar-cita`,
     keywords: ['cita', 'turno', 'agenda', 'pedir cita'],
   },
   {
-    label: isCatalan ? 'Equip mèdic' : 'Equipo medico',
+    label: localeContent.team,
     url: `${localeBase}#equipo`,
     keywords: ['doctores', 'profesionales', 'especialistas'],
   },
   {
-    label: isCatalan ? 'Tecnologia' : 'Tecnologia',
+    label: localeContent.services,
     url: `${localeBase}#tecnologia`,
     keywords: ['equipos', 'diagnostico', 'tecnologia medica'],
   },
   {
-    label: isCatalan ? 'Mútues' : 'Mutuas',
+    label: localeContent.contact,
     url: `${localeBase}#mutuas`,
     keywords: ['aseguradoras', 'seguros', 'cobertura'],
   },
@@ -138,13 +145,13 @@ const jsonLd = {
           </span>
         </a>
 
-        <div class="search-panel__search" aria-label={isCatalan ? 'Cercar al lloc web' : 'Buscar en el sitio'} role="search">
+        <div class="search-panel__search" aria-label={localeContent.searchLabel} role="search">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m16 16 5 5"/></svg>
           <input
             id="site-search-input"
             type="search"
-            placeholder={isCatalan ? 'Cercar especialitats, professionals o serveis' : 'Buscar especialidades, profesionales o servicios'}
-            aria-label={isCatalan ? 'Cercar especialitats, professionals o serveis' : 'Buscar especialidades, profesionales o servicios'}
+            placeholder={localeContent.searchPlaceholder}
+            aria-label={localeContent.searchPlaceholder}
             aria-autocomplete="list"
             aria-expanded="false"
             aria-controls="site-search-results"
@@ -158,13 +165,13 @@ const jsonLd = {
         <div class="search-panel__actions">
           <a href={`${localeBase}reservar-cita`} class="btn btn--primary btn--icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 7V5a4 4 0 1 1 8 0v2"/><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M12 12v4M10 14h4"/></svg>
-            {isCatalan ? 'Demanar visita' : 'Pedir cita'}
+            {localeContent.book}
           </a>
           <a href="https://portalpaciente.dricloud.net/Dricloud_centresanitarivillaquet_21026811" class="btn btn--portal btn--icon" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 11V7a5 5 0 0 1 10 0v4"/><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M12 15v2"/></svg>
-            {isCatalan ? 'Intranet del pacient' : 'Intranet del paciente'}
+            {localeContent.portal}
           </a>
-          <div class="lang-switch" aria-label={isCatalan ? 'Idioma del lloc web' : 'Idioma del sitio'}>
+          <div class="lang-switch" aria-label={localeContent.localeName}>
             <a href={esPath} class={`lang-switch__link ${currentLocale === 'es' ? 'is-active' : ''}`} aria-label="Español" title="Español">
               <svg class="lang-switch__flag" viewBox="0 0 36 24" aria-hidden="true">
                 <path fill="#c60b1e" d="M0 0h36v24H0z" />
@@ -181,6 +188,11 @@ const jsonLd = {
               </svg>
               <span class="lang-switch__code">CA</span>
             </a>
+            <a href={enPath} class={`lang-switch__link ${currentLocale === 'en-GB' ? 'is-active' : ''}`} aria-label="English" title="English"><span class="lang-switch__emoji" aria-hidden="true">🇬🇧</span><span class="lang-switch__code">EN</span></a>
+            <a href={dePath} class={`lang-switch__link ${currentLocale === 'de-DE' ? 'is-active' : ''}`} aria-label="Deutsch" title="Deutsch"><span class="lang-switch__emoji" aria-hidden="true">🇩🇪</span><span class="lang-switch__code">DE</span></a>
+            <a href={frPath} class={`lang-switch__link ${currentLocale === 'fr-FR' ? 'is-active' : ''}`} aria-label="Français" title="Français"><span class="lang-switch__emoji" aria-hidden="true">🇫🇷</span><span class="lang-switch__code">FR</span></a>
+            <a href={zhPath} class={`lang-switch__link ${currentLocale === 'zh-CN' ? 'is-active' : ''}`} aria-label="简体中文" title="简体中文"><span class="lang-switch__emoji" aria-hidden="true">🇨🇳</span><span class="lang-switch__code">中</span></a>
+            <a href={arPath} class={`lang-switch__link ${currentLocale === 'ar' ? 'is-active' : ''}`} aria-label="العربية" title="العربية"><span class="lang-switch__emoji" aria-hidden="true">ع</span><span class="lang-switch__code">ع</span></a>
           </div>
         </div>
       </div>
@@ -188,16 +200,16 @@ const jsonLd = {
 
     <header class="header" id="header">
       <nav class="nav container">
-        <button class="nav__toggle" id="nav-toggle" aria-label={isCatalan ? 'Obrir el menú' : 'Abrir menú'}>
+        <button class="nav__toggle" id="nav-toggle" aria-label={localeContent.menu}>
           <span></span><span></span><span></span>
         </button>
         <ul class="nav__menu" id="nav-menu">
-          <li><a href={`${localeBase}#inicio`} class="nav__link">{isCatalan ? 'Inici' : 'Inicio'}</a></li>
+          <li><a href={`${localeBase}#inicio`} class="nav__link">{localeContent.home}</a></li>
           <li class="nav-dropdown">
             <details>
-              <summary class="nav__link nav-dropdown__summary">{isCatalan ? 'Serveis' : 'Servicios'}</summary>
+              <summary class="nav__link nav-dropdown__summary">{localeContent.services}</summary>
               <div class="nav-dropdown__menu">
-                <a href={`${localeBase}servicios`} class="nav-dropdown__link">{isCatalan ? 'Veure’ls tots' : 'Ver todas'}</a>
+                <a href={`${localeBase}servicios`} class="nav-dropdown__link">{localeContent.viewAll}</a>
                 {especialidades.map((especialidad) => (
                   <a href={`${localeBase}servicios/${especialidad.slug}`} class="nav-dropdown__link">
                     {especialidad.title}
@@ -206,11 +218,11 @@ const jsonLd = {
               </div>
             </details>
           </li>
-          <li><a href={`${localeBase}Equipoyservicios`} class="nav__link">{isCatalan ? 'Equip professional' : 'Equipo Profesional'}</a></li>
-          <li><a href={`${localeBase}#tecnologia`} class="nav__link">{isCatalan ? 'Tecnologia' : 'Tecnología'}</a></li>
-          <li><a href={`${localeBase}#mutuas`} class="nav__link">{isCatalan ? 'Mútues' : 'Mutuas'}</a></li>
+          <li><a href={`${localeBase}Equipoyservicios`} class="nav__link">{localeContent.team}</a></li>
+          <li><a href={`${localeBase}#tecnologia`} class="nav__link">{localeContent.technology}</a></li>
+          <li><a href={`${localeBase}#mutuas`} class="nav__link">{localeContent.insurers}</a></li>
           <li><a href={`${localeBase}#club`} class="nav__link">Club CSV</a></li>
-          <li><a href={`${localeBase}reservar-cita`} class="nav__link nav__link--cta">{isCatalan ? 'Reservar visita' : 'Reservar cita'}</a></li>
+          <li><a href={`${localeBase}reservar-cita`} class="nav__link nav__link--cta">{localeContent.book}</a></li>
         </ul>
       </nav>
     </header>
@@ -223,10 +235,10 @@ const jsonLd = {
           <a href={`${localeBase}#inicio`} class="nav__logo">
             <img src={`${base}images/logo_solo.png`} alt="Centre Sanitari Villaquet" width="48" height="48" class="nav__logo-image nav__logo-image--solo nav__logo-image--footer" />
           </a>
-          <p>{isCatalan ? 'Centre Sanitari Villaquet — Un centre mèdic d’excel·lència i proximitat a Calafell.' : 'Centre Sanitari Villaquet — Un centro médico de excelencia y proximidad en Calafell.'}</p>
+          <p>{localeContent.localeName === 'Català' ? 'Centre Sanitari Villaquet — Un centre mèdic d’excel·lència i proximitat a Calafell.' : 'Centre Sanitari Villaquet — Un centro médico de excelencia y proximidad en Calafell.'}</p>
 
           <div class="footer__socials">
-            <h4>{isCatalan ? 'Segueix-nos' : 'Síguenos'}</h4>
+            <h4>{localeContent.follow}</h4>
             <div class="footer__social-list">
               <a href="https://www.youtube.com/@villaquet" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.8 8.2a2.94 2.94 0 0 0-2.1-2.1C18.8 5.6 12 5.6 12 5.6s-6.8 0-8.7.5A2.94 2.94 0 0 0 1.2 8.2 30.2 30.2 0 0 0 1 12a30.2 30.2 0 0 0 .2 3.8 2.94 2.94 0 0 0 2.1 2.1c1.9.5 8.7.5 8.7.5s6.8 0 8.7-.5a2.94 2.94 0 0 0 2.1-2.1A30.2 30.2 0 0 0 23 12a30.2 30.2 0 0 0-.2-3.8ZM10 15.5v-7l6 3.5-6 3.5Z"/></svg>
@@ -247,26 +259,26 @@ const jsonLd = {
           </div>
         </div>
         <div class="footer__links">
-          <h4>{isCatalan ? 'Seccions' : 'Secciones'}</h4>
+          <h4>{localeContent.sections}</h4>
           <ul>
-            <li><a href={`${localeBase}#servicios`}>{isCatalan ? 'Serveis' : 'Servicios'}</a></li>
-            <li><a href={`${localeBase}#equipo`}>{isCatalan ? 'Equip mèdic' : 'Equipo médico'}</a></li>
-            <li><a href={`${localeBase}#tecnologia`}>{isCatalan ? 'Tecnologia' : 'Tecnología'}</a></li>
-            <li><a href={`${localeBase}#mutuas`}>{isCatalan ? 'Mútues' : 'Mutuas'}</a></li>
+            <li><a href={`${localeBase}#servicios`}>{localeContent.services}</a></li>
+            <li><a href={`${localeBase}#equipo`}>{localeContent.team}</a></li>
+            <li><a href={`${localeBase}#tecnologia`}>{localeContent.technology}</a></li>
+            <li><a href={`${localeBase}#mutuas`}>{localeContent.insurers}</a></li>
             <li><a href={`${localeBase}#club`}>Club CSV</a></li>
           </ul>
         </div>
         <div class="footer__links">
-          <h4>{isCatalan ? 'Contacte' : 'Contacto'}</h4>
+          <h4>{localeContent.contact}</h4>
           <ul>
             <li><a href="tel:877643360">877 643 360</a></li>
             <li><a href="mailto:info@villaquet.com">info@villaquet.com</a></li>
-            <li><a href={`${localeBase}reservar-cita`}>{isCatalan ? 'Reservar visita' : 'Reservar cita'}</a></li>
+            <li><a href={`${localeBase}reservar-cita`}>{localeContent.book}</a></li>
           </ul>
         </div>
       </div>
       <div class="footer__bottom container">
-        <p>&copy; 2026 Centre Sanitari Villaquet. {isCatalan ? 'Tots els drets reservats.' : 'Todos los derechos reservados.'}</p>
+        <p>&copy; 2026 Centre Sanitari Villaquet. {localeContent.rights}</p>
       </div>
     </footer>
 

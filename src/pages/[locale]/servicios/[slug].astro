@@ -1,0 +1,12 @@
+---
+import LocalizedPage from '../../../components/LocalizedPage.astro';
+import { serviceSlugs } from '../../../i18n/localized';
+
+export function getStaticPaths() {
+  const locales = ['en-GB', 'de-DE', 'fr-FR', 'zh-CN', 'ar'];
+  return locales.flatMap((locale) => serviceSlugs.map((slug) => ({ params: { locale, slug }, props: { locale, slug } })));
+}
+const { locale, slug } = Astro.props;
+---
+
+<LocalizedPage locale={locale} page="service" slug={slug} />
