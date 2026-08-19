@@ -9,6 +9,7 @@ type ServiceItem = { slug: string; title: string; description: string };
 type WhyItem = [string, string];
 type TechItem = [string, string];
 type PlanItem = [string, string, string];
+type ServiceHighlight = { title: string; text: string };
 const serviceList = content.serviceList as ServiceItem[];
 const whyItems = content.why as WhyItem[];
 const techItems = content.tech as TechItem[];
@@ -16,6 +17,8 @@ const planItems = content.plans as PlanItem[];
 const clubBenefits = content.clubBenefits as string[][];
 const clubCardBenefits = content.clubCardBenefits as string[][];
 const service = slug ? getServiceContent(locale, slug) : null;
+const serviceHighlights = (service?.highlights || []) as ServiceHighlight[];
+const serviceBullets = (service?.bullets || []) as string[];
 const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
 const localeBase = `${base}${locale}/`;
 const pageTitle = service ? `${service.title} | Centre Sanitari Villaquet` : `${content[page === 'home' ? 'home' : page]} | Centre Sanitari Villaquet`;
@@ -74,7 +77,7 @@ const pageTitle = service ? `${service.title} | Centre Sanitari Villaquet` : `${
           <div class="container mutuas__inner"><div class="section__header"><span class="section__tag">{content.insurers}</span><h2 class="section__title">{content.insurers}</h2></div><div class="mutuas__coming"><h3>{content.insurerNotice[0]}</h3><p>{content.insurerNotice[1]}</p><a href={`${localeBase}reservar-cita`} class="btn btn--outline">{content.contact}</a></div></div>
         </section>
         <section class="club section section--dark" id="club">
-          <div class="container club__wrapper"><div class="club__header"><span class="section__tag section__tag--light">{content.club}</span><h2 class="section__title section__title--light">{content.clubTitle}</h2><p>{content.clubText}</p></div><div class="club__plans">{planItems.map(([name, audience, price], index) => <article class={`club__plan ${index === 0 ? 'club__plan--featured' : ''}`}><div class="club__plan-head"><div class="club__plan-icon" aria-hidden="true">{index === 0 ? '👤' : index === 1 ? '⚡' : '🌿'}</div><span class="club__plan-badge">{name}</span></div><h3>{content.club} {name}</h3><p class="club__plan-audience">{audience}</p><div class="club__plan-price"><span>{price}</span></div><ul class="club__plan-list">{clubCardBenefits[index].map((benefit) => <li>{benefit}</li>)}</ul><a href={`${localeBase}ClubCSV#${index === 0 ? 'general' : index === 1 ? 'sport' : 'senior'}`} class="btn btn--light">{content.viewAll}</a></article>)}</div><div class="club__actions"><a href={`${localeBase}ClubCSV`} class="btn btn--outline btn--outline-light">{content.viewAll}</a></div></div>
+          <div class="container club__wrapper"><div class="club__header"><span class="section__tag section__tag--light">{content.club}</span><h2 class="section__title section__title--light">{content.clubTitle}</h2><p>{content.clubText}</p></div><div class="club__plans">{planItems.map(([name, audience, price], index) => <article class={`club__plan ${index === 0 ? 'club__plan--featured' : ''}`}><div class="club__plan-head"><div class="club__plan-icon" aria-hidden="true">{index === 0 ? '👤' : index === 1 ? '⚡' : '🌿'}</div><span class="club__plan-badge">{name}</span></div><h3>{content.club} {name}</h3><p class="club__plan-audience">{audience}</p><div class="club__plan-price"><span>{price}</span></div><ul class="club__plan-list">{clubCardBenefits[index].map((benefit) => <li>{benefit}</li>)}</ul><a href={`${localeBase}ClubCSV#${index === 0 ? 'general' : index === 1 ? 'sport' : 'senior'}`} class="btn btn--light">{content.viewDetails}</a></article>)}</div><div class="club__actions"><a href={`${localeBase}ClubCSV`} class="btn btn--outline btn--outline-light">{content.viewAll}</a></div></div>
         </section>
         <section class="contact section" id="contacto">
           <div class="container contact__grid"><div class="contact__info"><span class="section__tag">{content.contact}</span><h2 class="section__title">{content.appointment}</h2><div class="contact__item"><div><strong>{content.address}</strong><p>{content.address}<br />{content.city}</p></div></div><div class="contact__item"><div><strong>{content.phone}</strong><p><a href="tel:877643360">877 643 360</a></p></div></div><div class="contact__item"><div><strong>{content.email}</strong><p><a href="mailto:info@villaquet.com">info@villaquet.com</a></p></div></div><div class="contact__item"><div><strong>{content.hoursLabel}</strong><p>{content.hours}</p></div></div><div class="contact__map"><iframe title={content.map} src="https://maps.google.com/maps?q=Carrer+Mol%C3%AD+del+Blanquet+24+Calafell&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div></div><div class="contact__cta"><h3>{content.online}</h3><p>{content.onlineText}</p><div class="contact__cta-actions"><a href={`${localeBase}reservar-cita`} class="btn btn--primary">{content.book}</a><a href="tel:877643360" class="btn btn--outline">{content.call}</a></div></div></div>
@@ -85,7 +88,7 @@ const pageTitle = service ? `${service.title} | Centre Sanitari Villaquet` : `${
     {page === 'services' && (
       <>
         <section class="specialties-page__hero"><div class="container"><span class="section__tag">{content.services}</span><h1 class="section__title">{content.viewAll}</h1><p class="section__desc">{content.appointmentText}</p></div></section>
-        <section class="section"><div class="container specialties-page__grid">{serviceList.map((item) => <article class="specialty-page-card"><h2>{item.title}</h2><p>{item.description}</p><a href={`${localeBase}servicios/${item.slug}`} class="btn btn--outline">{content.viewAll}</a></article>)}</div></section>
+        <section class="section"><div class="container specialties-page__grid">{serviceList.map((item) => <article class="specialty-page-card"><h2>{item.title}</h2><p>{item.description}</p><a href={`${localeBase}servicios/${item.slug}`} class="btn btn--outline">{content.viewDetails}</a></article>)}</div></section>
       </>
     )}
 
@@ -100,6 +103,7 @@ const pageTitle = service ? `${service.title} | Centre Sanitari Villaquet` : `${
       <>
         <section class="club-page__hero"><div class="container club-page__hero-inner"><span class="section__tag">{content.club}</span><h1 class="section__title">{content.clubTitle}</h1><p class="section__desc">{content.appointmentText}</p></div></section>
         <section class="section section--dark"><div class="container club__wrapper"><div class="club__plans">{['General', 'Sport', 'Senior (+60)'].map((plan, index) => <article class={`club__plan ${index === 0 ? 'club__plan--featured' : ''}`}><span class="club__plan-badge">{plan}</span><h3>{content.club} {plan}</h3><p class="club__plan-audience">{content.appointmentText}</p><a href={`${localeBase}reservar-cita`} class="btn btn--light">{content.book}</a></article>)}</div></div></section>
+        <section class="section section--alt"><div class="container"><div class="section__header"><span class="section__tag">{content.club}</span><h2 class="section__title">{content.clubComparison.title}</h2></div><div class="club-page__compare-wrap"><table class="club-page__compare"><thead><tr><th scope="col">{content.clubComparison.concept}</th><th scope="col">General</th><th scope="col">Sport</th><th scope="col">Senior (+60)</th></tr></thead><tbody><tr><th scope="row">{content.clubComparison.concept}</th><td>{content.clubComparison.general}</td><td>{content.clubComparison.sport}</td><td>{content.clubComparison.senior}</td></tr></tbody></table></div></div></section>
       </>
     )}
 
@@ -113,7 +117,7 @@ const pageTitle = service ? `${service.title} | Centre Sanitari Villaquet` : `${
     {page === 'service' && service && (
       <>
         <section class="specialty-page__hero"><div class="container"><span class="section__tag">{content.services}</span><h1 class="section__title">{service.title}</h1><p class="section__subtitle">{service.subtitle}</p></div></section>
-        <section class="section"><div class="container specialty-page__grid"><div class="specialty-page__content"><p>{service.intro}</p><div class="specialty-page__media"><img src="/web-clinica/images/about.jpg" alt={service.title} /></div><div class="specialty-page__actions"><a href={`${localeBase}servicios`} class="btn btn--outline">{content.viewAll}</a></div></div><aside class="specialty-page__card"><h3>{content.appointment}</h3><p>{content.appointmentText}</p><a href={`${localeBase}reservar-cita`} class="btn btn--primary btn--full">{content.book}</a></aside></div></section>
+        <section class="section"><div class="container specialty-page__grid"><div class="specialty-page__content"><p>{service.intro}</p><div class="specialty-page__media"><img src="/web-clinica/images/about.jpg" alt={service.title} /></div><div class="specialty-page__highlights">{serviceHighlights.map((highlight) => <div class="specialty-page__highlight"><h3>{highlight.title}</h3><p>{highlight.text}</p></div>)}</div><ul class="specialty-page__list">{serviceBullets.map((bullet) => <li>{bullet}</li>)}</ul><div class="specialty-page__actions"><a href={`${localeBase}servicios`} class="btn btn--outline">{content.viewAll}</a></div></div><aside class="specialty-page__card"><h3>{content.appointment}</h3><p>{content.appointmentText}</p><div class="specialty-page__contact"><a href={`${localeBase}reservar-cita`} class="btn btn--primary btn--full">{content.book}</a><a href="tel:877643360">877 643 360</a><a href="mailto:info@villaquet.com">info@villaquet.com</a></div></aside></div></section>
       </>
     )}
   </main>
