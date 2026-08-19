@@ -32,6 +32,8 @@ const caAlternateURL = new URL(caPath, siteUrl).toString().replace(/\/$/, '');
 const defaultTitle = currentLocale === 'ca' ? 'Centre Sanitari Villaquet — Centre mèdic a Calafell' : 'Centre Sanitari Villaquet — Centro médico en Calafell';
 const defaultDescription = currentLocale === 'ca' ? 'Centre mèdic a Calafell. Medicina general, ginecologia, dermatologia, psicologia, fisioteràpia, podologia i diagnòstic per la imatge.' : 'Centro médico en Calafell. Medicina general, ginecología, dermatología, psicología, fisioterapia, podología y diagnóstico por imagen.';
 const { title = defaultTitle, description = defaultDescription, image = '/images/about.jpg', keywords = 'centro médico Calafell, medicina general Calafell, ginecología Calafell, dermatología Calafell, fisioterapia Calafell, podología Calafell, psicología Calafell' } = Astro.props;
+type LocalizedService = { slug: string; title: string; description: string };
+const localizedServices = localeContent.serviceList as LocalizedService[];
 const imageUrl = `${siteUrl}${base}${image.replace(/^\//, '')}`;
 const searchIndex = [
   {
@@ -74,10 +76,10 @@ const searchIndex = [
     url: `${localeBase}#club`,
     keywords: ['club', 'beneficios'],
   },
-  ...especialidades.map((especialidad) => ({
-    label: especialidad.title,
-    url: `${localeBase}servicios/${especialidad.slug}`,
-    keywords: ['especialidad', 'servicio medico', especialidad.slug.replace(/-/g, ' ')],
+  ...localizedServices.map((service) => ({
+    label: service.title,
+    url: `${localeBase}servicios/${service.slug}`,
+    keywords: ['especialidad', 'servicio medico', service.slug.replace(/-/g, ' ')],
   })),
 ];
 const jsonLd = {
@@ -210,9 +212,9 @@ const jsonLd = {
               <summary class="nav__link nav-dropdown__summary">{localeContent.services}</summary>
               <div class="nav-dropdown__menu">
                 <a href={`${localeBase}servicios`} class="nav-dropdown__link">{localeContent.viewAll}</a>
-                {especialidades.map((especialidad) => (
-                  <a href={`${localeBase}servicios/${especialidad.slug}`} class="nav-dropdown__link">
-                    {especialidad.title}
+                {localizedServices.map((service) => (
+                  <a href={`${localeBase}servicios/${service.slug}`} class="nav-dropdown__link">
+                    {service.title}
                   </a>
                 ))}
               </div>

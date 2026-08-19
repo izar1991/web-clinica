@@ -6,7 +6,15 @@ import { getLocaleContent, getServiceContent } from '../i18n/localized';
 const { locale, page, slug } = Astro.props;
 const content = getLocaleContent(locale);
 type ServiceItem = { slug: string; title: string; description: string };
+type WhyItem = [string, string];
+type TechItem = [string, string];
+type PlanItem = [string, string, string];
 const serviceList = content.serviceList as ServiceItem[];
+const whyItems = content.why as WhyItem[];
+const techItems = content.tech as TechItem[];
+const planItems = content.plans as PlanItem[];
+const clubBenefits = content.clubBenefits as string[][];
+const clubCardBenefits = content.clubCardBenefits as string[][];
 const service = slug ? getServiceContent(locale, slug) : null;
 const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
 const localeBase = `${base}${locale}/`;
@@ -45,8 +53,31 @@ const pageTitle = service ? `${service.title} | Centre Sanitari Villaquet` : `${
             </div>
           </div>
         </section>
+        <section class="why section section--alt" id="nosotros">
+          <div class="container">
+            <div class="section__header"><span class="section__tag">{content.team}</span><h2 class="section__title">{content.whyTitle}</h2><p class="section__desc">{content.whyText}</p></div>
+            <div class="why__grid">
+              {whyItems.map(([title, text]) => <article class="why-card"><h3>{title}</h3><p>{text}</p></article>)}
+            </div>
+          </div>
+        </section>
+        <section class="team section" id="equipo">
+          <div class="container">
+            <div class="section__header"><span class="section__tag">{content.team}</span><h2 class="section__title">{content.teamTitle}</h2><p class="section__desc">{content.whyText}</p></div>
+            <div class="team__grid">{profesionales.map((professional) => <a href={`${localeBase}Equipoyservicios#${professional.id}`} class="doctor-card doctor-card--link"><div class="doctor-card__header"><div class="doctor-card__avatar"><img src={professional.image} alt={professional.nombre} /></div><div><h3>{professional.nombre}</h3><p class="doctor-card__role">{serviceList.find((item) => item.slug === professional.especialidad)?.title}</p></div></div></a>)}</div>
+          </div>
+        </section>
+        <section class="tech section" id="tecnologia">
+          <div class="container"><div class="section__header"><span class="section__tag">{content.technology}</span><h2 class="section__title">{content.techTitle}</h2><p class="section__desc">{content.techText}</p></div><div class="tech__grid">{techItems.map(([label, text]) => <article class="tech-card"><div class="tech-card__label">{label}</div><h3>{label === techItems[0][0] ? 'CHISON QBit 7' : 'Universal Vertix'}</h3><p>{text}</p></article>)}</div></div>
+        </section>
+        <section class="mutuas section" id="mutuas">
+          <div class="container mutuas__inner"><div class="section__header"><span class="section__tag">{content.insurers}</span><h2 class="section__title">{content.insurers}</h2></div><div class="mutuas__coming"><h3>{content.insurerNotice[0]}</h3><p>{content.insurerNotice[1]}</p><a href={`${localeBase}reservar-cita`} class="btn btn--outline">{content.contact}</a></div></div>
+        </section>
+        <section class="club section section--dark" id="club">
+          <div class="container club__wrapper"><div class="club__header"><span class="section__tag section__tag--light">{content.club}</span><h2 class="section__title section__title--light">{content.clubTitle}</h2><p>{content.clubText}</p></div><div class="club__plans">{planItems.map(([name, audience, price], index) => <article class={`club__plan ${index === 0 ? 'club__plan--featured' : ''}`}><div class="club__plan-head"><div class="club__plan-icon" aria-hidden="true">{index === 0 ? '👤' : index === 1 ? '⚡' : '🌿'}</div><span class="club__plan-badge">{name}</span></div><h3>{content.club} {name}</h3><p class="club__plan-audience">{audience}</p><div class="club__plan-price"><span>{price}</span></div><ul class="club__plan-list">{clubCardBenefits[index].map((benefit) => <li>{benefit}</li>)}</ul><a href={`${localeBase}ClubCSV#${index === 0 ? 'general' : index === 1 ? 'sport' : 'senior'}`} class="btn btn--light">{content.viewAll}</a></article>)}</div><div class="club__actions"><a href={`${localeBase}ClubCSV`} class="btn btn--outline btn--outline-light">{content.viewAll}</a></div></div>
+        </section>
         <section class="contact section" id="contacto">
-          <div class="container contact__cta"><span class="section__tag">{content.contact}</span><h2 class="section__title">{content.appointment}</h2><p>{content.appointmentText}</p><a href={`${localeBase}reservar-cita`} class="btn btn--primary">{content.book}</a></div>
+          <div class="container contact__grid"><div class="contact__info"><span class="section__tag">{content.contact}</span><h2 class="section__title">{content.appointment}</h2><div class="contact__item"><div><strong>{content.address}</strong><p>{content.address}<br />{content.city}</p></div></div><div class="contact__item"><div><strong>{content.phone}</strong><p><a href="tel:877643360">877 643 360</a></p></div></div><div class="contact__item"><div><strong>{content.email}</strong><p><a href="mailto:info@villaquet.com">info@villaquet.com</a></p></div></div><div class="contact__item"><div><strong>{content.hoursLabel}</strong><p>{content.hours}</p></div></div><div class="contact__map"><iframe title={content.map} src="https://maps.google.com/maps?q=Carrer+Mol%C3%AD+del+Blanquet+24+Calafell&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div></div><div class="contact__cta"><h3>{content.online}</h3><p>{content.onlineText}</p><div class="contact__cta-actions"><a href={`${localeBase}reservar-cita`} class="btn btn--primary">{content.book}</a><a href="tel:877643360" class="btn btn--outline">{content.call}</a></div></div></div>
         </section>
       </>
     )}
