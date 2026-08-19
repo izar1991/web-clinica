@@ -54,7 +54,8 @@ const header = document.getElementById('header');
 const body = document.body;
 
 const updateScrollState = () => {
-  const scrolled = window.scrollY > 24;
+  const currentlyScrolled = body.classList.contains('is-scrolled');
+  const scrolled = currentlyScrolled ? window.scrollY > 4 : window.scrollY > 80;
   body.classList.toggle('is-scrolled', scrolled);
   if (header) {
     header.classList.toggle('scrolled', scrolled);

@@ -181,13 +181,18 @@ ul {
 
 /* ===== Header ===== */
 .header {
-  position: static;
-  height: 0;
-  z-index: 100;
+  position: sticky;
+  top: var(--search-panel-height, 54px);
+  height: var(--header-height);
+  z-index: 110;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: height 0.28s ease, opacity 0.28s ease, visibility 0.28s ease, border-color var(--transition), box-shadow var(--transition);
 }
 
 .header .nav {
-  height: 0;
+  height: 100%;
 }
 
 .header .nav__toggle {
@@ -195,10 +200,43 @@ ul {
 }
 
 .header .nav__menu {
+  position: static;
+  width: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+  transform: none;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.header .nav__menu .nav__link {
+  padding: 0.48rem 0.78rem;
+}
+
+body.is-scrolled .header {
+  position: absolute;
+  top: var(--search-panel-height, 54px);
+  width: 100%;
+  height: 0;
+  z-index: 140;
+  background: transparent;
+  border-bottom-color: transparent;
+  pointer-events: none;
+}
+
+body.is-scrolled .header .nav,
+body.is-scrolled .header .nav__menu {
+  height: 0;
+}
+
+body.is-scrolled .header .nav__menu {
   position: fixed;
   top: calc(var(--search-panel-height, 54px) + 0.45rem);
   left: 50%;
-  right: auto;
   width: min(1120px, 92vw);
   padding: 0.7rem;
   border: 1px solid rgba(12, 94, 88, 0.14);
@@ -211,14 +249,11 @@ ul {
   transform: translate(-50%, -8px);
   opacity: 0;
   pointer-events: none;
+  z-index: 130;
   transition: transform var(--transition), opacity var(--transition);
 }
 
-.header .nav__menu .nav__link {
-  padding: 0.48rem 0.78rem;
-}
-
-.header .nav__menu.open {
+body.is-scrolled .header .nav__menu.open {
   transform: translate(-50%, 0);
   opacity: 1;
   pointer-events: auto;
