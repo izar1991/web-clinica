@@ -218,25 +218,30 @@ ul {
 }
 
 body.is-scrolled .header {
-  position: absolute;
-  top: var(--search-panel-height, 54px);
+  position: static;
   width: 100%;
   height: 0;
   z-index: 140;
   background: transparent;
+  backdrop-filter: none;
+  transform: none;
+  contain: none;
   border-bottom-color: transparent;
   pointer-events: none;
 }
 
-body.is-scrolled .header .nav,
-body.is-scrolled .header .nav__menu {
+body.is-scrolled .header .nav {
   height: 0;
 }
 
 body.is-scrolled .header .nav__menu {
-  position: fixed;
-  top: calc(var(--search-panel-height, 54px) + 0.45rem);
-  left: 50%;
+  position: fixed !important;
+  top: calc(var(--search-panel-height, 54px) + 0.45rem) !important;
+  left: 50% !important;
+  right: auto !important;
+  inset-block-start: calc(var(--search-panel-height, 54px) + 0.45rem);
+  inset-inline-start: 50%;
+  inset-inline-end: auto;
   width: min(1120px, 92vw);
   padding: 0.7rem;
   border: 1px solid rgba(12, 94, 88, 0.14);
@@ -250,6 +255,7 @@ body.is-scrolled .header .nav__menu {
   opacity: 0;
   pointer-events: none;
   z-index: 130;
+  visibility: visible;
   transition: transform var(--transition), opacity var(--transition);
 }
 
@@ -501,7 +507,7 @@ body.is-scrolled .search-panel {
 }
 
 .search-panel__menu-toggle {
-  display: inline-flex;
+  display: none;
   align-items: center;
   justify-content: center;
   width: 42px;
@@ -527,6 +533,10 @@ body.is-scrolled .search-panel {
 .search-panel__menu-toggle {
   gap: 4px;
   flex-direction: column;
+}
+
+body.is-scrolled .search-panel__menu-toggle {
+  display: inline-flex;
 }
 
 .search-panel__menu-toggle:hover,
@@ -1840,6 +1850,10 @@ body.is-scrolled .search-panel__inner {
 
   .search-panel__menu-toggle {
     order: 4;
+    display: none;
+  }
+
+  body.is-scrolled .search-panel__menu-toggle {
     display: inline-flex;
   }
 
