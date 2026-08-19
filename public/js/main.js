@@ -1,15 +1,53 @@
 // Navegación móvil
 const navToggle = document.getElementById('nav-toggle');
+const topMenuToggle = document.getElementById('top-menu-toggle');
 const navMenu = document.getElementById('nav-menu');
+const searchPanel = document.querySelector('.search-panel');
 
-navToggle.addEventListener('click', () => {
-  navMenu.classList.toggle('open');
-});
+const syncTopbarHeight = () => {
+  if (!searchPanel) return;
+  document.documentElement.style.setProperty('--search-panel-height', `${Math.round(searchPanel.getBoundingClientRect().height)}px`);
+};
+
+const setMenuExpanded = expanded => {
+  if (navToggle) navToggle.setAttribute('aria-expanded', String(expanded));
+  if (topMenuToggle) topMenuToggle.setAttribute('aria-expanded', String(expanded));
+};
+
+const toggleMenu = () => {
+  if (!navMenu) return;
+  const isOpen = navMenu.classList.toggle('open');
+  setMenuExpanded(isOpen);
+};
+
+const closeMenu = () => {
+  if (!navMenu) return;
+  navMenu.classList.remove('open');
+  setMenuExpanded(false);
+};
+
+if (navToggle) {
+  navToggle.addEventListener('click', toggleMenu);
+}
+
+if (topMenuToggle) {
+  topMenuToggle.addEventListener('click', toggleMenu);
+}
 
 // Cerrar menú al hacer clic en un enlace
-navMenu.querySelectorAll('.nav__link').forEach(link => {
-  link.addEventListener('click', () => navMenu.classList.remove('open'));
+if (navMenu) {
+  navMenu.querySelectorAll('.nav__link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+}
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    closeMenu();
+  }
 });
+
+window.addEventListener('resize', syncTopbarHeight);
 
 // Header con sombra y ocultación del menú general al hacer scroll
 const header = document.getElementById('header');
@@ -18,7 +56,10 @@ const body = document.body;
 const updateScrollState = () => {
   const scrolled = window.scrollY > 24;
   body.classList.toggle('is-scrolled', scrolled);
-  header.classList.toggle('scrolled', scrolled);
+  if (header) {
+    header.classList.toggle('scrolled', scrolled);
+  }
+  syncTopbarHeight();
 };
 
 window.addEventListener('scroll', updateScrollState, { passive: true });

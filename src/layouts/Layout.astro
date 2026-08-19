@@ -147,6 +147,10 @@ const jsonLd = {
           </span>
         </a>
 
+        <button class="search-panel__menu-toggle" id="top-menu-toggle" type="button" aria-label={localeContent.menu} aria-controls="nav-menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
         <div class="search-panel__search" aria-label={localeContent.searchLabel} role="search">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m16 16 5 5"/></svg>
           <input
@@ -190,11 +194,56 @@ const jsonLd = {
               </svg>
               <span class="lang-switch__code">CA</span>
             </a>
-            <a href={enPath} class={`lang-switch__link ${currentLocale === 'en-GB' ? 'is-active' : ''}`} aria-label="English" title="English"><span class="lang-switch__emoji" aria-hidden="true">🇬🇧</span><span class="lang-switch__code">EN</span></a>
-            <a href={dePath} class={`lang-switch__link ${currentLocale === 'de-DE' ? 'is-active' : ''}`} aria-label="Deutsch" title="Deutsch"><span class="lang-switch__emoji" aria-hidden="true">🇩🇪</span><span class="lang-switch__code">DE</span></a>
-            <a href={frPath} class={`lang-switch__link ${currentLocale === 'fr-FR' ? 'is-active' : ''}`} aria-label="Français" title="Français"><span class="lang-switch__emoji" aria-hidden="true">🇫🇷</span><span class="lang-switch__code">FR</span></a>
-            <a href={zhPath} class={`lang-switch__link ${currentLocale === 'zh-CN' ? 'is-active' : ''}`} aria-label="简体中文" title="简体中文"><span class="lang-switch__emoji" aria-hidden="true">🇨🇳</span><span class="lang-switch__code">中</span></a>
-            <a href={arPath} class={`lang-switch__link ${currentLocale === 'ar' ? 'is-active' : ''}`} aria-label="العربية" title="العربية"><span class="lang-switch__emoji" aria-hidden="true">ع</span><span class="lang-switch__code">ع</span></a>
+            <a href={enPath} class={`lang-switch__link ${currentLocale === 'en-GB' ? 'is-active' : ''}`} aria-label="English" title="English">
+              <svg class="lang-switch__flag" viewBox="0 0 36 24" aria-hidden="true">
+                <path fill="#012169" d="M0 0h36v24H0z" />
+                <path fill="#fff" d="M0 0l14.6 9.4V0h6.8v9.4L36 0v4.2L23.5 12 36 19.8V24l-14.6-9.4V24h-6.8v-9.4L0 24v-4.2L12.5 12 0 4.2z" />
+                <path fill="#C8102E" d="M0 0l12.7 8.2V0h10.6v8.2L36 0v2.8L25.5 12 36 21.2V24l-12.7-8.2V24H12.7v-8.2L0 24v-2.8L10.5 12 0 2.8z" />
+                <path fill="#fff" d="M14.2 0h7.6v24h-7.6zM0 8.2h36v7.6H0z" />
+                <path fill="#C8102E" d="M15.3 0h5.4v24h-5.4zM0 9.3h36v5.4H0z" />
+              </svg>
+              <span class="lang-switch__code">EN</span>
+            </a>
+            <a href={dePath} class={`lang-switch__link ${currentLocale === 'de-DE' ? 'is-active' : ''}`} aria-label="Deutsch" title="Deutsch">
+              <svg class="lang-switch__flag" viewBox="0 0 36 24" aria-hidden="true">
+                <path fill="#000" d="M0 0h36v8H0z" />
+                <path fill="#DD0000" d="M0 8h36v8H0z" />
+                <path fill="#FFCE00" d="M0 16h36v8H0z" />
+              </svg>
+              <span class="lang-switch__code">DE</span>
+            </a>
+            <a href={frPath} class={`lang-switch__link ${currentLocale === 'fr-FR' ? 'is-active' : ''}`} aria-label="Français" title="Français">
+              <svg class="lang-switch__flag" viewBox="0 0 36 24" aria-hidden="true">
+                <path fill="#0055A4" d="M0 0h12v24H0z" />
+                <path fill="#fff" d="M12 0h12v24H12z" />
+                <path fill="#EF4135" d="M24 0h12v24H24z" />
+              </svg>
+              <span class="lang-switch__code">FR</span>
+            </a>
+            <a href={zhPath} class={`lang-switch__link ${currentLocale === 'zh-CN' ? 'is-active' : ''}`} aria-label="简体中文" title="简体中文">
+              <svg class="lang-switch__flag" viewBox="0 0 36 24" aria-hidden="true">
+                <path fill="#DE2910" d="M0 0h36v24H0z" />
+                <polygon fill="#FFDE00" points="8,4 9,6.8 12,6.8 9.6,8.5 10.6,11.2 8,9.5 5.4,11.2 6.4,8.5 4,6.8 7,6.8" />
+              </svg>
+              <span class="lang-switch__code">中</span>
+            </a>
+            <a href={arPath} class={`lang-switch__link ${currentLocale === 'ar' ? 'is-active' : ''}`} aria-label="العربية (الفصحى)" title="العربية (الفصحى)">
+              <svg class="lang-switch__flag" viewBox="0 0 600 400" aria-hidden="true">
+                <rect width="600" height="400" fill="#087843" />
+                <text
+                  x="300"
+                  y="300"
+                  font-family="'Amiri', 'Traditional Arabic', 'Times New Roman', serif"
+                  font-size="280"
+                  fill="#FFFFFF"
+                  text-anchor="middle"
+                  font-weight="700"
+                >
+                  ض
+                </text>
+              </svg>
+              <span class="lang-switch__code">ع</span>
+            </a>
           </div>
         </div>
       </div>
