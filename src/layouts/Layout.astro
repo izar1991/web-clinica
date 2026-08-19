@@ -165,8 +165,22 @@ const jsonLd = {
             {isCatalan ? 'Intranet del pacient' : 'Intranet del paciente'}
           </a>
           <div class="lang-switch" aria-label={isCatalan ? 'Idioma del lloc web' : 'Idioma del sitio'}>
-            <a href={esPath} class={`lang-switch__link ${currentLocale === 'es' ? 'is-active' : ''}`}>ES</a>
-            <a href={caPath} class={`lang-switch__link ${currentLocale === 'ca' ? 'is-active' : ''}`}>CA</a>
+            <a href={esPath} class={`lang-switch__link ${currentLocale === 'es' ? 'is-active' : ''}`} aria-label="Español" title="Español">
+              <svg class="lang-switch__flag" viewBox="0 0 36 24" aria-hidden="true">
+                <path fill="#c60b1e" d="M0 0h36v24H0z" />
+                <path fill="#ffc400" d="M0 6h36v12H0z" />
+                <path fill="#9b1c2c" d="M8 9h3v6H8z" />
+                <circle cx="11" cy="12" r="1.5" fill="#ffc400" />
+              </svg>
+              <span class="lang-switch__code">ES</span>
+            </a>
+            <a href={caPath} class={`lang-switch__link ${currentLocale === 'ca' ? 'is-active' : ''}`} aria-label="Català" title="Català">
+              <svg class="lang-switch__flag" viewBox="0 0 36 24" aria-hidden="true">
+                <path fill="#f9d616" d="M0 0h36v24H0z" />
+                <path stroke="#da121a" stroke-width="2.4" d="M0 5h36M0 10h36M0 15h36M0 20h36" />
+              </svg>
+              <span class="lang-switch__code">CA</span>
+            </a>
           </div>
         </div>
       </div>

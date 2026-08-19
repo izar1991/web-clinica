@@ -409,37 +409,65 @@ body.is-scrolled .search-panel__inner {
 .lang-switch {
   display: inline-flex;
   align-items: center;
-  border: 1px solid rgba(12, 94, 88, 0.22);
+  gap: 0.35rem;
+  padding: 0.18rem;
+  border: 1px solid rgba(12, 94, 88, 0.16);
   border-radius: 999px;
-  overflow: hidden;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .lang-switch__link {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 42px;
-  padding: 0.45rem 0.7rem;
-  font-size: 0.78rem;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  overflow: hidden;
+  font-size: 0.62rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  color: #0b4f52;
+  letter-spacing: 0.04em;
+  color: #12373a;
   text-transform: uppercase;
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 
-.lang-switch__link + .lang-switch__link {
-  border-left: 1px solid rgba(12, 94, 88, 0.18);
+.lang-switch__flag {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .lang-switch__link:hover {
-  background: #eff8f7;
   color: #0b4f52;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(13, 115, 119, 0.18);
 }
 
 .lang-switch__link.is-active {
-  background: #0d7377;
-  color: #fff;
+  border-color: #0d7377;
+  box-shadow: 0 0 0 2px rgba(13, 115, 119, 0.16), 0 5px 12px rgba(13, 115, 119, 0.18);
+}
+
+.lang-switch__link:focus-visible {
+  outline: 3px solid rgba(13, 115, 119, 0.38);
+  outline-offset: 3px;
+}
+
+.lang-switch__code {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  min-width: 18px;
+  padding: 1px 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
+  color: #12373a;
+  font-size: 0.58rem;
+  line-height: 1.1;
 }
 
 .search-panel__search {
@@ -1596,12 +1624,12 @@ body.is-scrolled .search-panel__inner {
 
   .lang-switch {
     grid-column: 1 / -1;
-    width: 100%;
-    justify-content: stretch;
+    width: fit-content;
+    justify-content: flex-start;
   }
 
   .lang-switch__link {
-    flex: 1 1 0;
+    flex: 0 0 42px;
   }
 
   .nav__logo-image--horizontal {
