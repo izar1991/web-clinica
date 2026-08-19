@@ -36,7 +36,7 @@ if (topMenuToggle) {
 
 // Cerrar menú al hacer clic en un enlace
 if (navMenu) {
-  navMenu.querySelectorAll('.nav__link').forEach(link => {
+  navMenu.querySelectorAll('.nav__link:not(.nav-dropdown__summary)').forEach(link => {
     link.addEventListener('click', closeMenu);
   });
 }
