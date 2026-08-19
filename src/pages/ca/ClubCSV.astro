@@ -11,21 +11,15 @@ const plans = [
     badge: 'General',
     icon: '👤',
     featured: true,
-    annual: '390 € / año',
+    annual: '390 € / any',
     monthly: '35 € / mes',
-    audience: 'Ideal para adultos y familias que buscan atención médica preventiva, continuidad y servicios de salud integrales.',
+    audience: 'Ideal per a adults i famílies que busquen atenció mèdica preventiva, continuïtat i serveis de salut integrals.',
     benefits: [
-      'Medicina General: 12 visitas / año',
-      'Visitas posteriores: 25€',
-      'Enfermería: 12 visitas / año (Curas e Inyectables*)',
-      'Analítica Básica Anual: Hemograma, Glucosa, Colesterol Total, Colesterol HDL/LDL, Triglicéridos, Creatinina, Transaminasas TGO/TGP, Urea, VSG',
-      'Analíticas posteriores: 15% DTO',
-      'Ginecología: Revisión Anual (Citología + Ecografía + Visita)',
-      'Fisioterapia: 5 sesiones (45\') / año',
-      'Sesiones posteriores: 36€',
-      'Podología: 1 quiropedia / año',
-      'Quiropedias posteriores: 25€',
-      'Descuentos especiales: Especialidades 50€, Psicología 40€, Pruebas diagnósticas Eco/RX 20% DTO, Otros servicios 10% DTO',
+      'Medicina general: 12 visites / any', 'Visites posteriors: 25€', 'Infermeria: 12 visites / any (cures i injectables*)',
+      'Analítica bàsica anual: hemograma, glucosa, colesterol total, colesterol HDL/LDL, triglicèrids, creatinina, transaminases TGO/TGP, urea, VSG',
+      'Analítiques posteriors: 15% de descompte', 'Ginecologia: revisió anual (citologia + ecografia + visita)',
+      'Fisioteràpia: 5 sessions (45\') / any', 'Sessions posteriors: 36€', 'Podologia: 1 quiropòdia / any', 'Quiropòdies posteriors: 25€',
+      'Descomptes especials: especialitats 50€, psicologia 40€, proves diagnòstiques Eco/RX 20%, altres serveis 10%',
     ],
   },
   {
@@ -34,24 +28,15 @@ const plans = [
     badge: 'Sport',
     icon: '⚡',
     featured: false,
-    annual: '449 € / año',
+    annual: '449 € / any',
     monthly: '40 € / mes',
-    audience: 'Pensado para personas activas y deportistas que quieren rendimiento, recuperación y atención preventiva orientada al movimiento.',
+    audience: 'Pensat per a persones actives i esportistes que volen rendiment, recuperació i atenció preventiva orientada al moviment.',
     benefits: [
-      'Medicina General: 12 visitas / año',
-      'Visitas posteriores: 25€',
-      'Enfermería: 12 visitas / año (Curas e Inyectables*)',
-      'Analítica Deportiva Anual: Básica + Gamma, Fosfatasa, TSH/T3/T4, Cortisol, Vitamina D, Creatina-Cinasa, Hierro, Hemoglobina Glicosilada',
-      'Analíticas posteriores: 15% DTO',
-      'Fisioterapia: 10 sesiones (30\') / año',
-      'Sesiones posteriores: 30€',
-      'Bono 5 sesiones (mensual): 135€',
-      'Sesión MEP-EPI: 40€',
-      'Podología: 1 quiropedia / año',
-      'Estudio Biomecánico Anual',
-      'Quiropedias posteriores: 25€',
-      'Precio especial plantillas: 160€',
-      'Descuentos especiales: Especialidades 50€, Psicología 40€, Pruebas diagnósticas Eco/RX 20% DTO, Otros servicios 10% DTO',
+      'Medicina general: 12 visites / any', 'Visites posteriors: 25€', 'Infermeria: 12 visites / any (cures i injectables*)',
+      'Analítica esportiva anual: bàsica + gamma, fosfatasa, TSH/T3/T4, cortisol, vitamina D, creatina-cinasa, ferro, hemoglobina glicosilada',
+      'Analítiques posteriors: 15% de descompte', 'Fisioteràpia: 10 sessions (30\') / any', 'Sessions posteriors: 30€',
+      'Bono de 5 sessions (mensual): 135€', 'Sessió MEP-EPI: 40€', 'Podologia: 1 quiropòdia / any', 'Estudi biomecànic anual',
+      'Quiropòdies posteriors: 25€', 'Preu especial plantilles: 160€', 'Descomptes especials: especialitats 50€, psicologia 40€, proves diagnòstiques Eco/RX 20%, altres serveis 10%',
     ],
   },
   {
@@ -60,83 +45,77 @@ const plans = [
     badge: 'Senior',
     icon: '🌿',
     featured: false,
-    annual: '390 € / año',
+    annual: '390 € / any',
     monthly: '35 € / mes',
-    audience: 'Diseñado para mayores de 60 años con atención preventiva, continuidad y bienestar integral para el día a día.',
+    audience: 'Dissenyat per a majors de 60 anys amb atenció preventiva, continuïtat i benestar integral per al dia a dia.',
     benefits: [
-      'Medicina General: 12 visitas / año',
-      'Visitas posteriores: 25€',
-      'Enfermería: 12 visitas / año (Curas e Inyectables*)',
-      'Analítica Senior Anual: Básica + Vitamina D, PSA, Filtrado Glomerular, TSH/T3/T4',
-      'Analíticas posteriores: 15% DTO',
-      'Fisioterapia: 5 sesiones (45\') / año',
-      'Bono 5 sesiones (mensual): 180€',
-      'Podología: 2 quiropedias / año',
-      'Quiropedias posteriores: Bono 3x2',
-      'Descuentos especiales: Especialidades 50€, Psicología 40€, Pruebas diagnósticas Eco/RX 20% DTO, Otros servicios 10% DTO',
+      'Medicina general: 12 visites / any', 'Visites posteriors: 25€', 'Infermeria: 12 visites / any (cures i injectables*)',
+      'Analítica sènior anual: bàsica + vitamina D, PSA, filtrat glomerular, TSH/T3/T4', 'Analítiques posteriors: 15% de descompte',
+      'Fisioteràpia: 5 sessions (45\') / any', 'Bono de 5 sessions (mensual): 180€', 'Podologia: 2 quiropòdies / any',
+      'Quiropòdies posteriors: bono 3x2', 'Descomptes especials: especialitats 50€, psicologia 40€, proves diagnòstiques Eco/RX 20%, altres serveis 10%',
     ],
   },
 ];
 
 const commonIncludes = [
   {
-    concept: 'Medicina General',
-    value: '12 visitas / año',
+    concept: 'Medicina general',
+    value: '12 visites / any',
   },
   {
-    concept: 'Visitas posteriores',
+    concept: 'Visites posteriors',
     value: '25€',
   },
   {
-    concept: 'Enfermería',
-    value: '12 visitas / año (Curas e Inyectables*)',
+    concept: 'Infermeria',
+    value: '12 visites / any (cures i injectables*)',
   },
   {
-    concept: 'Analíticas posteriores',
-    value: '15% DTO',
+    concept: 'Analítiques posteriors',
+    value: '15% de descompte',
   },
   {
-    concept: 'Descuentos especiales',
-    value: 'Especialidades 50€ / Psicología 40€ / Pruebas diagnósticas Eco/RX 20% DTO / Otros servicios 10% DTO',
+    concept: 'Descomptes especials',
+    value: 'Especialitats 50€ / Psicologia 40€ / Proves diagnòstiques Eco/RX 20% / Altres serveis 10%',
   },
 ];
 
 const comparisonRows = [
   {
-    concept: 'Precio',
-    general: '390 € / año o 35 € / mes',
-    sport: '449 € / año o 40 € / mes',
-    senior: '390 € / año o 35 € / mes',
+    concept: 'Preu',
+    general: '390 € / any o 35 € / mes',
+    sport: '449 € / any o 40 € / mes',
+    senior: '390 € / any o 35 € / mes',
   },
   {
     concept: 'Analítica anual',
-    general: 'Básica',
-    sport: 'Deportiva',
+    general: 'Bàsica',
+    sport: 'Esportiva',
     senior: 'Senior',
   },
   {
-    concept: 'Fisioterapia incluida',
-    general: '5 sesiones (45\') / año',
-    sport: '10 sesiones (30\') / año',
-    senior: '5 sesiones (45\') / año',
+    concept: 'Fisioteràpia inclosa',
+    general: '5 sessions (45\') / any',
+    sport: '10 sessions (30\') / any',
+    senior: '5 sessions (45\') / any',
   },
   {
-    concept: 'Condiciones extra fisio',
-    general: 'Sesiones posteriores: 36€',
-    sport: 'Sesiones posteriores: 30€ / Bono 5 sesiones: 135€ / MEP-EPI: 40€',
-    senior: 'Bono 5 sesiones (mensual): 180€',
+    concept: 'Condicions extra de fisio',
+    general: 'Sessions posteriors: 36€',
+    sport: 'Sessions posteriors: 30€ / Bono de 5 sessions: 135€ / MEP-EPI: 40€',
+    senior: 'Bono de 5 sessions (mensual): 180€',
   },
   {
-    concept: 'Podología incluida',
-    general: '1 quiropedia / año',
-    sport: '1 quiropedia / año + Estudio biomecánico anual',
-    senior: '2 quiropedias / año',
+    concept: 'Podologia inclosa',
+    general: '1 quiropòdia / any',
+    sport: '1 quiropòdia / any + estudi biomecànic anual',
+    senior: '2 quiropòdies / any',
   },
   {
-    concept: 'Podología posterior',
-    general: 'Quiropedias posteriores: 25€',
-    sport: 'Quiropedias posteriores: 25€ / Plantillas: 160€',
-    senior: 'Quiropedias posteriores: Bono 3x2',
+    concept: 'Podologia posterior',
+    general: 'Quiropòdies posteriors: 25€',
+    sport: 'Quiropòdies posteriors: 25€ / Plantilles: 160€',
+    senior: 'Quiropòdies posteriors: bono 3x2',
   },
 ];
 
@@ -153,15 +132,15 @@ const isUniqueValueInRow = (row: { general: string; sport: string; senior: strin
 
 <Layout
   title="Club CSV | Centre Sanitari Villaquet"
-  description="Descubre las tarjetas Club CSV de Centre Sanitari Villaquet: General, Sport y Senior (+60) con servicios médicos, analítica y descuentos."
-  keywords="Club CSV Calafell, tarjeta CSV, medicina general Calafell, fisioterapia Calafell, podología Calafell, tarjeta sanitaria"
+  description="Descobreix les targetes Club CSV de Centre Sanitari Villaquet: General, Sport i Sènior (+60), amb serveis mèdics, analítiques i descomptes."
+  keywords="Club CSV Calafell, targeta CSV, medicina general Calafell, fisioteràpia Calafell, podologia Calafell, targeta sanitària"
 >
   <main>
     <section class="club-page__hero">
       <div class="container club-page__hero-inner">
         <span class="section__tag">Club CSV</span>
-        <h1 class="section__title">Una forma más fácil de cuidar tu salud</h1>
-        <p class="section__desc">Tres modalidades pensadas para acompañarte con atención preventiva, continuidad médica y beneficios preferentes.</p>
+        <h1 class="section__title">Una manera més fàcil de cuidar la teva salut</h1>
+        <p class="section__desc">Tres modalitats pensades per acompanyar-te amb atenció preventiva, continuïtat mèdica i beneficis preferents.</p>
       </div>
     </section>
 
@@ -169,8 +148,8 @@ const isUniqueValueInRow = (row: { general: string; sport: string; senior: strin
       <div class="container">
         <div class="club-page__intro">
           <p>
-            El Club CSV está pensado para facilitar el acceso a servicios médicos de calidad con una estructura clara, flexible y orientada al bienestar.
-            La base es común: atención médica, prevención, diagnóstico y ahorro en servicios del centro, con condiciones específicas según la tarjeta elegida.
+            El Club CSV està pensat per facilitar l’accés a serveis mèdics de qualitat amb una estructura clara, flexible i orientada al benestar.
+            La base és comuna: atenció mèdica, prevenció, diagnòstic i estalvi en serveis del centre, amb condicions específiques segons la targeta escollida.
           </p>
         </div>
 
@@ -189,11 +168,11 @@ const isUniqueValueInRow = (row: { general: string; sport: string; senior: strin
 
               <div class="club-page__pricing">
                 <div class="club-page__price-block">
-                  <span>Pago anual</span>
+                  <span>Pagament anual</span>
                   <strong>{plan.annual}</strong>
                 </div>
                 <div class="club-page__price-block">
-                  <span>Pago mensual</span>
+                  <span>Pagament mensual</span>
                   <strong>{plan.monthly}</strong>
                 </div>
               </div>
@@ -202,27 +181,27 @@ const isUniqueValueInRow = (row: { general: string; sport: string; senior: strin
                 {plan.benefits.map((benefit) => <li>{benefit}</li>)}
               </ul>
 
-              <a href={`${localeBase}reservar-cita`} class="btn btn--primary btn--full">Solicitar información</a>
+              <a href={`${localeBase}reservar-cita`} class="btn btn--primary btn--full">Sol·licitar informació</a>
             </article>
           ))}
         </div>
-        <p class="club-page__legal-note">*Sólo ACTO MÉDICO - Inyectable no incluido.</p>
+        <p class="club-page__legal-note">*Només ACTE MÈDIC - Injectable no inclòs.</p>
       </div>
     </section>
 
     <section class="section section--alt">
       <div class="container">
         <div class="section__header">
-          <span class="section__tag">Incluye en todas</span>
-          <h2 class="section__title">Lo común de las 3 tarjetas, en una sola tabla</h2>
+          <span class="section__tag">Inclòs en totes</span>
+          <h2 class="section__title">El que tenen en comú les 3 targetes, en una sola taula</h2>
         </div>
 
         <div class="club-page__common-wrap">
-          <table class="club-page__common" aria-label="Servicios comunes de las tarjetas Club CSV">
+          <table class="club-page__common" aria-label="Serveis comuns de les targetes Club CSV">
             <thead>
               <tr>
-                <th scope="col">Incluye</th>
-                <th scope="col">Cobertura común</th>
+                <th scope="col">Inclou</th>
+                <th scope="col">Cobertura comuna</th>
               </tr>
             </thead>
             <tbody>
@@ -241,20 +220,20 @@ const isUniqueValueInRow = (row: { general: string; sport: string; senior: strin
     <section class="section">
       <div class="container">
         <div class="section__header">
-          <span class="section__tag">Diferencias clave</span>
-          <h2 class="section__title">Qué cambia entre General, Sport y Senior</h2>
+          <span class="section__tag">Diferències clau</span>
+          <h2 class="section__title">Què canvia entre General, Sport i Sènior</h2>
         </div>
 
-        <p class="club-page__compare-legend">Aquí solo se muestran los puntos que no son iguales entre modalidades.</p>
+        <p class="club-page__compare-legend">Aquí només es mostren els punts que no són iguals entre modalitats.</p>
 
         <div class="club-page__compare-wrap">
           <table class="club-page__compare" aria-label="Comparativa de tarjetas Club CSV">
             <thead>
               <tr>
-                <th scope="col">Concepto</th>
+                <th scope="col">Concepte</th>
                 <th scope="col">General</th>
                 <th scope="col">Sport</th>
-                <th scope="col">Senior (+60)</th>
+                <th scope="col">Sènior (+60)</th>
               </tr>
             </thead>
             <tbody>
@@ -277,14 +256,14 @@ const isUniqueValueInRow = (row: { general: string; sport: string; senior: strin
         <div class="club-page__cta">
           <div>
             <span class="section__tag">Club CSV</span>
-            <h2 class="section__title">Tu salud, con continuidad y ventajas</h2>
+            <h2 class="section__title">La teva salut, amb continuïtat i avantatges</h2>
           </div>
           <p>
-            La base de Club CSV se mantiene abierta a la incorporación de nuevas modalidades y servicios en función de las necesidades del centro y de sus pacientes.
+            La base del Club CSV es manté oberta a la incorporació de noves modalitats i serveis en funció de les necessitats del centre i dels seus pacients.
           </p>
           <div class="club-page__cta-actions">
-            <a href={`${localeBase}reservar-cita`} class="btn btn--primary">Reservar cita</a>
-            <a href="tel:877643360" class="btn btn--outline">Llamar al centro</a>
+            <a href={`${localeBase}reservar-cita`} class="btn btn--primary">Reservar visita</a>
+            <a href="tel:877643360" class="btn btn--outline">Trucar al centre</a>
           </div>
         </div>
       </div>

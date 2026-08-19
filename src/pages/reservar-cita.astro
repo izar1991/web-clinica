@@ -15,25 +15,9 @@ const iframeSrc = 'https://citaonline.dricloud.net/?URL=dricloud_centresanitariv
     </section>
 
     <section class="container reservation-page__grid">
-      <aside class="reservation-page__info">
-        <div class="reservation-page__info-card">
-          <h3>¿Cómo funciona?</h3>
-          <ul class="reservation-page__steps">
-            <li><strong>1</strong><span>Selecciona la especialidad y la fecha disponible.</span></li>
-            <li><strong>2</strong><span>Confirma la solicitud desde el módulo online.</span></li>
-            <li><strong>3</strong><span>Recibirás la confirmación de tu cita en el horario indicado.</span></li>
-          </ul>
-        </div>
-
-        <div class="reservation-page__help">
-          <h3>¿Necesitas ayuda?</h3>
-          <p>Puedes hablar con nosotros directamente para resolver dudas sobre horarios, servicios, seguros o cobertura.</p>
-          <div class="reservation-page__actions">
-            <a href="tel:877643360" class="btn btn--primary">877 643 360</a>
-            <a href="mailto:info@villaquet.com" class="btn btn--outline">info@villaquet.com</a>
-          </div>
-        </div>
-      </aside>
+      <div class="reservation-page__notice" aria-label="Información de reserva">
+        <p><strong>¿Cómo funciona?</strong> Selecciona la especialidad y la fecha disponible, confirma la solicitud desde el módulo online y recibirás la validación de tu cita en el horario indicado.</p>
+      </div>
 
       <div class="reservation-widget">
         <div class="reservation-widget__header">
@@ -52,6 +36,15 @@ const iframeSrc = 'https://citaonline.dricloud.net/?URL=dricloud_centresanitariv
             height="600"
             loading="lazy"
           ></iframe>
+        </div>
+      </div>
+
+      <div class="reservation-page__help">
+        <h3>¿Necesitas ayuda?</h3>
+        <p>Puedes hablar con nosotros directamente para resolver dudas sobre horarios, servicios, seguros o cobertura.</p>
+        <div class="reservation-page__actions">
+          <a href="tel:877643360" class="btn btn--primary">877 643 360</a>
+          <a href="mailto:info@villaquet.com" class="btn btn--outline">info@villaquet.com</a>
         </div>
       </div>
     </section>

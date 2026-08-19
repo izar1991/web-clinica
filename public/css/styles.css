@@ -2313,19 +2313,26 @@ body.is-scrolled .search-panel__inner {
 
 .reservation-page__grid {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 2.5rem;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
   align-items: start;
   padding-top: 2rem;
   padding-bottom: 5rem;
+  max-width: 920px;
+  margin-inline: auto;
 }
 
-.reservation-page__info {
-  display: grid;
-  gap: 1.25rem;
-  position: sticky;
-  top: 6.5rem;
-  align-self: start;
+.reservation-page__notice {
+  background: linear-gradient(135deg, #eef9f9 0%, #ffffff 100%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.1rem 1.25rem;
+}
+
+.reservation-page__notice p {
+  margin: 0;
+  color: var(--color-text-muted);
+  line-height: 1.65;
 }
 
 .reservation-page__info-card,
@@ -2384,6 +2391,10 @@ body.is-scrolled .search-panel__inner {
   gap: 0.75rem;
 }
 
+.reservation-page__actions .btn {
+  min-height: 44px;
+}
+
 .reservation-widget {
   background: #fff;
   border: 1px solid var(--color-border);
@@ -2417,7 +2428,7 @@ body.is-scrolled .search-panel__inner {
 .reservation-widget__wrapper iframe {
   display: block;
   width: 100%;
-  min-height: 600px;
+  min-height: 680px;
   border: 0;
   background: #fff;
 }
@@ -2842,6 +2853,57 @@ body.is-scrolled .search-panel__inner {
     min-width: 0;
     margin-top: 0.4rem;
   }
+
+  .reservation-page__hero {
+    padding: 7.4rem 0 2.3rem;
+  }
+
+  .reservation-page__grid {
+    gap: 1rem;
+    padding-top: 1.25rem;
+    padding-bottom: 3.2rem;
+  }
+
+  .reservation-page__notice {
+    padding: 1rem;
+    border-radius: 14px;
+  }
+
+  .reservation-widget {
+    padding: 1rem;
+    border-radius: 16px;
+  }
+
+  .reservation-widget__header {
+    margin-bottom: 0.9rem;
+  }
+
+  .reservation-widget__header h2 {
+    font-size: 1.35rem;
+    line-height: 1.25;
+  }
+
+  .reservation-widget__wrapper {
+    border-radius: 12px;
+  }
+
+  .reservation-widget__wrapper iframe {
+    min-height: 760px;
+  }
+
+  .reservation-page__help {
+    padding: 1rem;
+    border-radius: 14px;
+  }
+
+  .reservation-page__actions {
+    flex-direction: column;
+  }
+
+  .reservation-page__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 480px) {
@@ -2853,5 +2915,9 @@ body.is-scrolled .search-panel__inner {
 
   .section {
     padding: 3.5rem 0;
+  }
+
+  .reservation-widget__wrapper iframe {
+    min-height: 860px;
   }
 }

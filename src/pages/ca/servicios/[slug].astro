@@ -1,11 +1,12 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { contenidoEspecialidades, profesionales } from '../../data/especialidades';
+import Layout from '../../../layouts/Layout.astro';
+import { contenidoEspecialidades, especialidades, profesionales } from '../../../data/especialidades';
+import { contingutEspecialitatsCa, professionalsCa } from '../../../data/catala';
 
 export async function getStaticPaths() {
-  return Object.entries(contenidoEspecialidades).map(([slug, data]) => ({
+  return Object.entries(contingutEspecialitatsCa).map(([slug, data]) => ({
     params: { slug },
-    props: { data },
+    props: { data: { ...data, image: contenidoEspecialidades[slug as keyof typeof contenidoEspecialidades].image } },
   }));
 }
 
@@ -14,17 +15,18 @@ const { data } = Astro.props;
 const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
 const localeBase = `${base}ca/`;
 const profesionalesEspecialidad = profesionales.filter((profesional) => profesional.especialidad === slug);
+const professionals = professionalsCa as Record<string, { role: string; bio: string }>;
 ---
 
 <Layout
   title={`${data.title} | Centre Sanitari Villaquet`}
-  description={`${data.intro} Consulta a nuestro centro médico en Calafell y reserva tu cita.`}
-  keywords={`${data.title}, ${data.title.toLowerCase()} Calafell, centro médico Calafell`}
+  description={`${data.intro} Consulta el nostre centre mèdic a Calafell i reserva la teva visita.`}
+  keywords={`${data.title}, ${data.title.toLowerCase()} Calafell, centre mèdic Calafell`}
 >
   <main>
     <section class="specialty-page__hero">
       <div class="container">
-        <span class="section__tag">Especialidad</span>
+        <span class="section__tag">Especialitat</span>
         <h1 class="section__title">{data.title}</h1>
         <p class="section__subtitle">{data.subtitle}</p>
       </div>
@@ -40,10 +42,10 @@ const profesionalesEspecialidad = profesionales.filter((profesional) => profesio
           </div>
 
           <div class="specialty-page__highlights">
-            {data.highlights.map((highlight) => (
+            {data.highlights.map(([title, text]) => (
               <div class="specialty-page__highlight">
-                <h3>{highlight.title}</h3>
-                <p>{highlight.text}</p>
+                <h3>{title}</h3>
+                <p>{text}</p>
               </div>
             ))}
           </div>
@@ -52,20 +54,20 @@ const profesionalesEspecialidad = profesionales.filter((profesional) => profesio
             {data.bullets.map((bullet) => <li>{bullet}</li>)}
           </ul>
           <div class="specialty-page__actions">
-            <a href={`${localeBase}servicios`} class="btn btn--outline">Ver todas las especialidades</a>
+            <a href={`${localeBase}servicios`} class="btn btn--outline">Veure totes les especialitats</a>
           </div>
         </div>
 
         <aside class="specialty-page__card">
-          <h3>¿Necesitas una valoración?</h3>
-          <p>Contacto directo con nuestro centro para resolver dudas y programar la primera visita.</p>
+          <h3>Necessites una valoració?</h3>
+          <p>Contacte directe amb el nostre centre per resoldre dubtes i programar la primera visita.</p>
           <div class="specialty-page__contact">
             <a href={`${localeBase}reservar-cita`} class="btn btn--primary btn--full">{data.cta}</a>
             <a href="tel:877643360">877 643 360</a>
             <a href="mailto:info@villaquet.com">info@villaquet.com</a>
           </div>
           <div class="specialty-page__aside-image">
-            <img src={data.image} alt={`Atención en ${data.title}`} />
+            <img src={data.image} alt={`Atenció de ${data.title}`} />
           </div>
         </aside>
       </div>
@@ -74,8 +76,8 @@ const profesionalesEspecialidad = profesionales.filter((profesional) => profesio
     <section class="section section--alt">
       <div class="container">
         <div class="section__header">
-          <span class="section__tag">Profesionales</span>
-          <h2 class="section__title">Especialistas de {data.title}</h2>
+          <span class="section__tag">Professionals</span>
+          <h2 class="section__title">Especialistes de {data.title}</h2>
         </div>
 
         <div class="team__grid">
@@ -87,10 +89,10 @@ const profesionalesEspecialidad = profesionales.filter((profesional) => profesio
                 </div>
                 <div>
                   <h3>{profesional.nombre}</h3>
-                  <p class="doctor-card__role">{profesional.role}</p>
+                  <p class="doctor-card__role">{professionals[profesional.id]?.role || profesional.role}</p>
                 </div>
               </div>
-              <p class="doctor-card__bio">{profesional.bio}</p>
+              <p class="doctor-card__bio">{professionals[profesional.id]?.bio || profesional.bio}</p>
             </article>
           ))}
         </div>

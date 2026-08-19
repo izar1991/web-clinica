@@ -1,9 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { especialidades, profesionales } from '../../data/especialidades';
+import { especialitatsCa, professionalsCa } from '../../data/catala';
 
 const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
 const localeBase = `${base}ca/`;
+const especialitats = especialitatsCa as Record<string, string>;
+const professionals = professionalsCa as Record<string, { role: string; bio: string }>;
 
 const profesionalesAgrupados = especialidades
   .map((especialidad) => ({
@@ -14,16 +17,16 @@ const profesionalesAgrupados = especialidades
 ---
 
 <Layout
-  title="Equipo Profesional | Centre Sanitari Villaquet"
-  description="Conoce a nuestro equipo profesional y la especialidad asociada a cada especialista en Centre Sanitari Villaquet."
-  keywords="equipo profesional Calafell, especialistas Calafell, profesionales médicos Calafell, ginecología Calafell, dermatología Calafell"
+  title="Equip professional | Centre Sanitari Villaquet"
+  description="Coneix el nostre equip professional i l’especialitat associada a cada especialista de Centre Sanitari Villaquet."
+  keywords="equip professional Calafell, especialistes Calafell, professionals mèdics Calafell, ginecologia Calafell, dermatologia Calafell"
 >
   <main>
     <section class="specialties-page__hero">
       <div class="container">
-        <span class="section__tag">Equipo Profesional</span>
-        <h1 class="section__title">Especialistas que acompañan cada etapa de tu salud</h1>
-        <p class="section__desc">Cada profesional está vinculado a una especialidad para ofrecer una atención más precisa, personalizada y coordinada.</p>
+        <span class="section__tag">Equip professional</span>
+        <h1 class="section__title">Especialistes que t’acompanyen en cada etapa de la teva salut</h1>
+        <p class="section__desc">Cada professional està vinculat a una especialitat per oferir una atenció més precisa, personalitzada i coordinada.</p>
       </div>
     </section>
 
@@ -32,8 +35,8 @@ const profesionalesAgrupados = especialidades
         {profesionalesAgrupados.map((grupo) => (
           <div class="team__specialty-group" style="margin-bottom: 3rem;">
             <div class="section__header" style="margin-bottom: 1.5rem;">
-              <span class="section__tag">{grupo.title}</span>
-              <h2 class="section__title">Profesionales de {grupo.title}</h2>
+              <span class="section__tag">{especialitats[grupo.slug] || grupo.title}</span>
+              <h2 class="section__title">Professionals de {especialitats[grupo.slug] || grupo.title}</h2>
             </div>
 
             <div class="team__grid">
@@ -45,11 +48,11 @@ const profesionalesAgrupados = especialidades
                     </div>
                     <div>
                       <h3>{profesional.nombre}</h3>
-                      <p class="doctor-card__role">{profesional.role}</p>
+                      <p class="doctor-card__role">{professionals[profesional.id]?.role || profesional.role}</p>
                     </div>
                   </div>
-                  <p class="doctor-card__specialty">Especialidad: {grupo.title}</p>
-                  <p class="doctor-card__bio">{profesional.bio}</p>
+                  <p class="doctor-card__specialty">Especialitat: {especialitats[grupo.slug] || grupo.title}</p>
+                  <p class="doctor-card__bio">{professionals[profesional.id]?.bio || profesional.bio}</p>
                 </article>
               ))}
             </div>
@@ -61,11 +64,11 @@ const profesionalesAgrupados = especialidades
     <section class="section">
       <div class="container">
         <div class="contact__cta">
-          <h3>¿Necesitas una cita o más información?</h3>
-          <p>Contamos con atención cercana, coordinación asistencial y procesos sencillos para que puedas reservar tu visita en pocos minutos.</p>
+          <h3>Necessites una visita o més informació?</h3>
+          <p>Oferim atenció propera, coordinació assistencial i processos senzills perquè puguis reservar la teva visita en pocs minuts.</p>
           <div class="contact__cta-actions">
-            <a href={`${localeBase}reservar-cita`} class="btn btn--primary">Reservar cita</a>
-            <a href={`${localeBase}servicios`} class="btn btn--outline">Ver especialidades</a>
+            <a href={`${localeBase}reservar-cita`} class="btn btn--primary">Reservar visita</a>
+            <a href={`${localeBase}servicios`} class="btn btn--outline">Veure especialitats</a>
           </div>
         </div>
       </div>
