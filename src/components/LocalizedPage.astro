@@ -10,6 +10,8 @@ type WhyItem = [string, string];
 type TechItem = [string, string];
 type PlanItem = [string, string, string];
 type ServiceHighlight = { title: string; text: string };
+type ClubCommonItem = { concept: string; value: string };
+type ClubDifferenceRow = { concept: string; general: string; sport: string; senior: string };
 const serviceList = content.serviceList as ServiceItem[];
 const whyItems = content.why as WhyItem[];
 const techItems = content.tech as TechItem[];
@@ -22,6 +24,182 @@ const serviceBullets = (service?.bullets || []) as string[];
 const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
 const localeBase = `${base}${locale}/`;
 const pageTitle = service ? `${service.title} | Centre Sanitari Villaquet` : `${content[page === 'home' ? 'home' : page]} | Centre Sanitari Villaquet`;
+
+const clubTablesByLocale = {
+  es: {
+    commonTag: 'Incluyen todas',
+    commonTitle: 'Lo común de las 3 tarjetas, en una sola tabla',
+    commonHeaders: ['Incluye', 'Cobertura común'],
+    differencesTag: 'Diferencias clave',
+    differencesTitle: 'Qué cambia entre General, Sport y Senior',
+    differencesLegend: 'Aquí solo se muestran los puntos que no son iguales entre modalidades.',
+    commonIncludes: [
+      { concept: 'Medicina General', value: '12 visitas / año' },
+      { concept: 'Visitas posteriores', value: '25€' },
+      { concept: 'Enfermería', value: '12 visitas / año (Curas e Inyectables*)' },
+      { concept: 'Analíticas posteriores', value: '15% DTO' },
+      { concept: 'Descuentos especiales', value: 'Especialidades 50€ / Psicología 40€ / Pruebas diagnósticas Eco/RX 20% DTO / Otros servicios 10% DTO' },
+    ] as ClubCommonItem[],
+    differences: [
+      { concept: 'Precio', general: '390 € / año o 35 € / mes', sport: '449 € / año o 40 € / mes', senior: '390 € / año o 35 € / mes' },
+      { concept: 'Analítica anual', general: 'Básica', sport: 'Básica + Gamma, Fosfatasa, TSH/T3/T4, Cortisol, Vitamina D, Creatina-Cinasa, Hierro y Hemoglobina Glicosilada', senior: 'Básica + Vitamina D, PSA, Filtrado Glomerular y TSH/T3/T4' },
+      { concept: 'Fisioterapia incluida', general: '5 sesiones (45\') / año', sport: '10 sesiones (30\') / año', senior: '5 sesiones (45\') / año' },
+      { concept: 'Condiciones extra fisio', general: 'Sesiones posteriores: 36€', sport: 'Sesiones posteriores: 30€ / Bono 5 sesiones: 135€ / MEP-EPI: 40€', senior: 'Bono 5 sesiones (mensual): 180€' },
+      { concept: 'Podología incluida', general: '1 quiropedia / año', sport: '1 quiropedia / año + Estudio biomecánico anual', senior: '2 quiropedias / año' },
+      { concept: 'Podología posterior', general: 'Quiropedias posteriores: 25€', sport: 'Quiropedias posteriores: 25€ / Plantillas: 160€', senior: 'Quiropedias posteriores: Bono 3x2' },
+    ] as ClubDifferenceRow[],
+  },
+  ca: {
+    commonTag: 'Inclouen totes',
+    commonTitle: 'El que tenen en comú les 3 targetes, en una sola taula',
+    commonHeaders: ['Inclou', 'Cobertura comuna'],
+    differencesTag: 'Diferències clau',
+    differencesTitle: 'Què canvia entre General, Sport i Sènior',
+    differencesLegend: 'Aquí només es mostren els punts que no són iguals entre modalitats.',
+    commonIncludes: [
+      { concept: 'Medicina general', value: '12 visites / any' },
+      { concept: 'Visites posteriors', value: '25€' },
+      { concept: 'Infermeria', value: '12 visites / any (cures i injectables*)' },
+      { concept: 'Analítiques posteriors', value: '15% de descompte' },
+      { concept: 'Descomptes especials', value: 'Especialitats 50€ / Psicologia 40€ / Proves diagnòstiques Eco/RX 20% / Altres serveis 10%' },
+    ] as ClubCommonItem[],
+    differences: [
+      { concept: 'Preu', general: '390 € / any o 35 € / mes', sport: '449 € / any o 40 € / mes', senior: '390 € / any o 35 € / mes' },
+      { concept: 'Analítica anual', general: 'Bàsica', sport: 'Bàsica + Gamma, Fosfatasa, TSH/T3/T4, Cortisol, Vitamina D, Creatina-Cinasa, Ferro i Hemoglobina Glicosilada', senior: 'Bàsica + Vitamina D, PSA, Filtrat Glomerular i TSH/T3/T4' },
+      { concept: 'Fisioteràpia inclosa', general: '5 sessions (45\') / any', sport: '10 sessions (30\') / any', senior: '5 sessions (45\') / any' },
+      { concept: 'Condicions extra de fisio', general: 'Sessions posteriors: 36€', sport: 'Sessions posteriors: 30€ / Bono de 5 sessions: 135€ / MEP-EPI: 40€', senior: 'Bono de 5 sessions (mensual): 180€' },
+      { concept: 'Podologia inclosa', general: '1 quiropòdia / any', sport: '1 quiropòdia / any + estudi biomecànic anual', senior: '2 quiropòdies / any' },
+      { concept: 'Podologia posterior', general: 'Quiropòdies posteriors: 25€', sport: 'Quiropòdies posteriors: 25€ / Plantilles: 160€', senior: 'Quiropòdies posteriors: bono 3x2' },
+    ] as ClubDifferenceRow[],
+  },
+  'en-GB': {
+    commonTag: 'Included in all',
+    commonTitle: 'What the 3 plans share, in one table',
+    commonHeaders: ['Includes', 'Common coverage'],
+    differencesTag: 'Key differences',
+    differencesTitle: 'What changes between General, Sport and Senior',
+    differencesLegend: 'Only points that differ between plans are shown here.',
+    commonIncludes: [
+      { concept: 'General medicine', value: '12 visits / year' },
+      { concept: 'Further visits', value: '€25' },
+      { concept: 'Nursing', value: '12 visits / year (dressings and injections*)' },
+      { concept: 'Further blood tests', value: '15% discount' },
+      { concept: 'Special discounts', value: 'Specialties €50 / Psychology €40 / Diagnostic tests Eco/X-ray 20% discount / Other services 10% discount' },
+    ] as ClubCommonItem[],
+    differences: [
+      { concept: 'Price', general: '€390 / year or €35 / month', sport: '€449 / year or €40 / month', senior: '€390 / year or €35 / month' },
+      { concept: 'Annual blood test', general: 'Basic', sport: 'Basic + Gamma, phosphatase, TSH/T3/T4, cortisol, vitamin D, creatine kinase, iron and glycated haemoglobin', senior: 'Basic + vitamin D, PSA, glomerular filtration and TSH/T3/T4' },
+      { concept: 'Included physiotherapy', general: '5 sessions (45 minutes) / year', sport: '10 sessions (30 minutes) / year', senior: '5 sessions (45 minutes) / year' },
+      { concept: 'Extra physio conditions', general: 'Further sessions: €36', sport: 'Further sessions: €30 / 5-session package: €135 / MEP-EPI: €40', senior: '5-session monthly package: €180' },
+      { concept: 'Included podiatry', general: '1 treatment / year', sport: '1 treatment / year + annual biomechanical assessment', senior: '2 treatments / year' },
+      { concept: 'Further podiatry', general: 'Further treatments: €25', sport: 'Further treatments: €25 / Insoles: €160', senior: 'Further treatments: 3-for-2 package' },
+    ] as ClubDifferenceRow[],
+  },
+  'de-DE': {
+    commonTag: 'In allen enthalten',
+    commonTitle: 'Die gemeinsamen Leistungen der 3 Karten in einer Tabelle',
+    commonHeaders: ['Enthalten', 'Gemeinsame Leistungen'],
+    differencesTag: 'Wichtige Unterschiede',
+    differencesTitle: 'Was sich zwischen General, Sport und Senior unterscheidet',
+    differencesLegend: 'Hier werden nur die Punkte angezeigt, die sich zwischen den Varianten unterscheiden.',
+    commonIncludes: [
+      { concept: 'Allgemeinmedizin', value: '12 Besuche / Jahr' },
+      { concept: 'Weitere Besuche', value: '25 €' },
+      { concept: 'Krankenpflege', value: '12 Besuche / Jahr (Verbände und Injektionen*)' },
+      { concept: 'Weitere Analysen', value: '15 % Rabatt' },
+      { concept: 'Sonderrabatte', value: 'Fachgebiete 50 € / Psychologie 40 € / Diagnostik Eco/RX 20 % Rabatt / Andere Leistungen 10 % Rabatt' },
+    ] as ClubCommonItem[],
+    differences: [
+      { concept: 'Preis', general: '390 € / Jahr oder 35 € / Monat', sport: '449 € / Jahr oder 40 € / Monat', senior: '390 € / Jahr oder 35 € / Monat' },
+      { concept: 'Jährliche Analyse', general: 'Basis', sport: 'Basis + Gamma-GT, Phosphatase, TSH/T3/T4, Cortisol, Vitamin D, Kreatinkinase, Eisen und glykiertes Hämoglobin', senior: 'Basis + Vitamin D, PSA, glomeruläre Filtration und TSH/T3/T4' },
+      { concept: 'Enthaltene Physiotherapie', general: '5 Sitzungen (45 Minuten) / Jahr', sport: '10 Sitzungen (30 Minuten) / Jahr', senior: '5 Sitzungen (45 Minuten) / Jahr' },
+      { concept: 'Zusätzliche Physio-Bedingungen', general: 'Weitere Sitzungen: 36 €', sport: 'Weitere Sitzungen: 30 € / 5er-Paket: 135 € / MEP-EPI: 40 €', senior: 'Monatliches 5er-Paket: 180 €' },
+      { concept: 'Enthaltene Podologie', general: '1 Behandlung / Jahr', sport: '1 Behandlung / Jahr + jährliche biomechanische Untersuchung', senior: '2 Behandlungen / Jahr' },
+      { concept: 'Weitere Podologie', general: 'Weitere Behandlungen: 25 €', sport: 'Weitere Behandlungen: 25 € / Einlagen: 160 €', senior: 'Weitere Behandlungen: 3-für-2-Paket' },
+    ] as ClubDifferenceRow[],
+  },
+  'fr-FR': {
+    commonTag: 'Inclus dans toutes',
+    commonTitle: 'Le tronc commun des 3 cartes, en un seul tableau',
+    commonHeaders: ['Inclut', 'Couverture commune'],
+    differencesTag: 'Différences clés',
+    differencesTitle: 'Ce qui change entre General, Sport et Senior',
+    differencesLegend: 'Seuls les points qui diffèrent entre les formules sont affichés ici.',
+    commonIncludes: [
+      { concept: 'Médecine générale', value: '12 visites / an' },
+      { concept: 'Visites supplémentaires', value: '25 €' },
+      { concept: 'Soins infirmiers', value: '12 visites / an (pansements et injections*)' },
+      { concept: 'Analyses supplémentaires', value: '15 % de remise' },
+      { concept: 'Remises spéciales', value: 'Spécialités 50 € / Psychologie 40 € / Examens diagnostiques Écho/RX 20 % de remise / Autres services 10 % de remise' },
+    ] as ClubCommonItem[],
+    differences: [
+      { concept: 'Prix', general: '390 € / an ou 35 € / mois', sport: '449 € / an ou 40 € / mois', senior: '390 € / an ou 35 € / mois' },
+      { concept: 'Bilan annuel', general: 'De base', sport: 'Bilan de base + gamma-GT, phosphatase, TSH/T3/T4, cortisol, vitamine D, créatine kinase, fer et hémoglobine glyquée', senior: 'Bilan de base + vitamine D, PSA, filtration glomérulaire et TSH/T3/T4' },
+      { concept: 'Kinésithérapie incluse', general: '5 séances (45 minutes) / an', sport: '10 séances (30 minutes) / an', senior: '5 séances (45 minutes) / an' },
+      { concept: 'Conditions supplémentaires kiné', general: 'Séances supplémentaires : 36 €', sport: 'Séances supplémentaires : 30 € / Forfait 5 séances : 135 € / MEP-EPI : 40 €', senior: 'Forfait mensuel de 5 séances : 180 €' },
+      { concept: 'Podologie incluse', general: '1 soin / an', sport: '1 soin / an + bilan biomécanique annuel', senior: '2 soins / an' },
+      { concept: 'Podologie supplémentaire', general: 'Soins supplémentaires : 25 €', sport: 'Soins supplémentaires : 25 € / Semelles : 160 €', senior: 'Soins supplémentaires : forfait 3 pour 2' },
+    ] as ClubDifferenceRow[],
+  },
+  'zh-CN': {
+    commonTag: '全部包含',
+    commonTitle: '3 种会员共同包含内容一览',
+    commonHeaders: ['包含项目', '共同覆盖'],
+    differencesTag: '关键差异',
+    differencesTitle: 'General、Sport 与 Senior 的区别',
+    differencesLegend: '这里仅显示各方案之间不同的项目。',
+    commonIncludes: [
+      { concept: '全科医疗', value: '每年 12 次就诊' },
+      { concept: '后续就诊', value: '25 欧元' },
+      { concept: '护理', value: '每年 12 次（换药和注射*）' },
+      { concept: '后续检查', value: '优惠 15%' },
+      { concept: '专属折扣', value: '专科 50 欧元 / 心理 40 欧元 / 影像诊断检查（超声/X 光）8 折 / 其他服务 9 折' },
+    ] as ClubCommonItem[],
+    differences: [
+      { concept: '价格', general: '390 欧元 / 年 或 35 欧元 / 月', sport: '449 欧元 / 年 或 40 欧元 / 月', senior: '390 欧元 / 年 或 35 欧元 / 月' },
+      { concept: '年度检查', general: '基础检查', sport: '基础检查 + γ-GT、磷酸酶、TSH/T3/T4、皮质醇、维生素D、肌酸激酶、铁和糖化血红蛋白', senior: '基础检查 + 维生素D、PSA、肾小球滤过和TSH/T3/T4' },
+      { concept: '包含物理治疗', general: '每年 5 次（45 分钟）', sport: '每年 10 次（30 分钟）', senior: '每年 5 次（45 分钟）' },
+      { concept: '额外物理治疗条件', general: '后续治疗：36 欧元', sport: '后续治疗：30 欧元 / 5 次套餐：135 欧元 / MEP-EPI：40 欧元', senior: '每月 5 次套餐：180 欧元' },
+      { concept: '包含足病护理', general: '每年 1 次护理', sport: '每年 1 次护理 + 年度生物力学评估', senior: '每年 2 次护理' },
+      { concept: '后续足病护理', general: '后续护理：25 欧元', sport: '后续护理：25 欧元 / 鞋垫：160 欧元', senior: '后续护理：买二送一套餐' },
+    ] as ClubDifferenceRow[],
+  },
+  ar: {
+    commonTag: 'تشملها جميع البطاقات',
+    commonTitle: 'المشترك بين البطاقات الثلاث في جدول واحد',
+    commonHeaders: ['يشمل', 'التغطية المشتركة'],
+    differencesTag: 'الاختلافات الرئيسية',
+    differencesTitle: 'ما الذي يختلف بين General و Sport و Senior',
+    differencesLegend: 'يتم عرض النقاط المختلفة فقط بين البطاقات.',
+    commonIncludes: [
+      { concept: 'الطب العام', value: '12 زيارة / السنة' },
+      { concept: 'الزيارات اللاحقة', value: '25 يورو' },
+      { concept: 'التمريض', value: '12 زيارة / السنة (تغيير الضمادات والحقن*)' },
+      { concept: 'التحاليل اللاحقة', value: 'خصم 15%' },
+      { concept: 'خصومات خاصة', value: 'التخصصات 50 يورو / علم النفس 40 يورو / الفحوص التشخيصية إيكو/أشعة 20% خصم / خدمات أخرى 10% خصم' },
+    ] as ClubCommonItem[],
+    differences: [
+      { concept: 'السعر', general: '390 يورو / سنة أو 35 يورو / شهر', sport: '449 يورو / سنة أو 40 يورو / شهر', senior: '390 يورو / سنة أو 35 يورو / شهر' },
+      { concept: 'التحليل السنوي', general: 'أساسي', sport: 'أساسي + غاما وفوسفاتاز وTSH/T3/T4 وكورتيزول وفيتامين د وكرياتين كيناز وحديد وهيموغلوبين سكري', senior: 'أساسي + فيتامين د وPSA والترشيح الكبيبي وTSH/T3/T4' },
+      { concept: 'العلاج الطبيعي المشمول', general: '5 جلسات (45 دقيقة) / السنة', sport: '10 جلسات (30 دقيقة) / السنة', senior: '5 جلسات (45 دقيقة) / السنة' },
+      { concept: 'شروط إضافية للعلاج الطبيعي', general: 'الجلسات اللاحقة: 36 يورو', sport: 'الجلسات اللاحقة: 30 يورو / باقة 5 جلسات: 135 يورو / MEP-EPI: 40 يورو', senior: 'باقة شهرية من 5 جلسات: 180 يورو' },
+      { concept: 'العناية بالقدم المشمولة', general: 'جلسة واحدة / السنة', sport: 'جلسة واحدة / السنة + تقييم ميكانيكا حيوية سنوي', senior: 'جلستان / السنة' },
+      { concept: 'العناية اللاحقة بالقدم', general: 'جلسات لاحقة: 25 يورو', sport: 'جلسات لاحقة: 25 يورو / نعل طبي: 160 يورو', senior: 'جلسات لاحقة: باقة 3 مقابل 2' },
+    ] as ClubDifferenceRow[],
+  },
+} as const;
+
+const clubTable = clubTablesByLocale[locale as keyof typeof clubTablesByLocale] || clubTablesByLocale['en-GB'];
+
+const isDifferentRow = (row: ClubDifferenceRow) => {
+  return new Set([row.general, row.sport, row.senior]).size > 1;
+};
+
+const isUniqueValueInRow = (row: ClubDifferenceRow, value: string) => {
+  if (!isDifferentRow(row)) return false;
+  const values = [row.general, row.sport, row.senior];
+  return values.filter((item) => item === value).length === 1;
+};
 ---
 
 <Layout title={pageTitle} description={service?.intro || `${content.services} | Centre Sanitari Villaquet`}>
@@ -101,9 +279,10 @@ const pageTitle = service ? `${service.title} | Centre Sanitari Villaquet` : `${
 
     {page === 'club' && (
       <>
-        <section class="club-page__hero"><div class="container club-page__hero-inner"><span class="section__tag">{content.club}</span><h1 class="section__title">{content.clubTitle}</h1><p class="section__desc">{content.appointmentText}</p></div></section>
-        <section class="section section--dark"><div class="container club__wrapper"><div class="club__plans">{['General', 'Sport', 'Senior (+60)'].map((plan, index) => <article class={`club__plan ${index === 0 ? 'club__plan--featured' : ''}`}><span class="club__plan-badge">{plan}</span><h3>{content.club} {plan}</h3><p class="club__plan-audience">{content.appointmentText}</p><a href={`${localeBase}reservar-cita`} class="btn btn--light">{content.book}</a></article>)}</div></div></section>
-        <section class="section section--alt"><div class="container"><div class="section__header"><span class="section__tag">{content.club}</span><h2 class="section__title">{content.clubComparison.title}</h2></div><div class="club-page__compare-wrap"><table class="club-page__compare"><thead><tr><th scope="col">{content.clubComparison.concept}</th><th scope="col">General</th><th scope="col">Sport</th><th scope="col">Senior (+60)</th></tr></thead><tbody><tr><th scope="row">{content.clubComparison.concept}</th><td>{content.clubComparison.general}</td><td>{content.clubComparison.sport}</td><td>{content.clubComparison.senior}</td></tr></tbody></table></div></div></section>
+        <section class="club-page__hero"><div class="container club-page__hero-inner"><span class="section__tag">{content.club}</span><h1 class="section__title">{content.clubTitle}</h1><p class="section__desc">{content.clubText}</p></div></section>
+        <section class="section"><div class="container"><div class="club-page__plans">{planItems.map(([planName, audience, price], index) => <article id={index === 0 ? 'general' : index === 1 ? 'sport' : 'senior'} class={`club-page__plan ${index === 0 ? 'club-page__plan--featured' : ''}`}><div class="club-page__head"><div class="club-page__icon" aria-hidden="true">{index === 0 ? '👤' : index === 1 ? '⚡' : '🌿'}</div><span class={`club-page__badge ${index === 1 ? 'club-page__badge--soft' : index === 2 ? 'club-page__badge--warm' : ''}`}>{planName}</span></div><h2>{content.club} {planName}</h2><p class="club-page__audience">{audience}</p><div class="club-page__pricing"><div class="club-page__price-block"><strong>{price}</strong></div></div><ul class="club-page__list">{clubBenefits[index].map((benefit) => <li>{benefit}</li>)}</ul><a href={`${localeBase}reservar-cita`} class="btn btn--primary btn--full">{content.book}</a></article>)}</div><p class="club-page__legal-note">* {locale === 'zh-CN' ? '仅限医疗行为，注射药物不包含在内。' : locale === 'ar' ? 'يشمل الإجراء الطبي فقط، الدواء القابل للحقن غير مشمول.' : locale === 'de-DE' ? 'Nur medizinische Leistung. Injektionsmedikament nicht enthalten.' : locale === 'fr-FR' ? 'Uniquement acte médical. Médicament injectable non inclus.' : locale === 'en-GB' ? 'Medical procedure only. Injectable medication not included.' : locale === 'ca' ? 'Només acte mèdic. Injectable no inclòs.' : 'Sólo acto médico. Inyectable no incluido.'}</p></div></section>
+        <section class="section section--alt"><div class="container"><div class="section__header"><span class="section__tag">{clubTable.commonTag}</span><h2 class="section__title">{clubTable.commonTitle}</h2></div><div class="club-page__common-wrap"><table class="club-page__common"><thead><tr><th scope="col">{clubTable.commonHeaders[0]}</th><th scope="col">{clubTable.commonHeaders[1]}</th></tr></thead><tbody>{clubTable.commonIncludes.map((item) => <tr><th scope="row">{item.concept}</th><td>{item.value}</td></tr>)}</tbody></table></div></div></section>
+        <section class="section"><div class="container"><div class="section__header"><span class="section__tag">{clubTable.differencesTag}</span><h2 class="section__title">{clubTable.differencesTitle}</h2></div><p class="club-page__compare-legend">{clubTable.differencesLegend}</p><div class="club-page__compare-wrap"><table class="club-page__compare"><thead><tr><th scope="col">{content.clubComparison.concept}</th><th scope="col">General</th><th scope="col">Sport</th><th scope="col">Senior (+60)</th></tr></thead><tbody>{clubTable.differences.map((row) => <tr class={isDifferentRow(row) ? 'club-page__compare-row--different' : 'club-page__compare-row--same'}><th scope="row">{row.concept}</th><td data-plan="General" class={isUniqueValueInRow(row, row.general) ? 'club-page__compare-cell--unique' : ''}>{row.general}</td><td data-plan="Sport" class={isUniqueValueInRow(row, row.sport) ? 'club-page__compare-cell--unique' : ''}>{row.sport}</td><td data-plan="Senior (+60)" class={isUniqueValueInRow(row, row.senior) ? 'club-page__compare-cell--unique' : ''}>{row.senior}</td></tr>)}</tbody></table></div></div></section>
       </>
     )}
 
