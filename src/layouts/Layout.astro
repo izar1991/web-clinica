@@ -5,12 +5,15 @@ const siteUrl = 'https://www.villaquet.com';
 const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
 const currentPath = Astro.url.pathname;
 const relativePath = currentPath.startsWith(base) ? currentPath.slice(base.length) : currentPath.replace(/^\//, '');
-const currentLocale = relativePath === 'ca' || relativePath.startsWith('ca/') ? 'ca' : 'es';
+const supportedLocales = ['es', 'ca', 'en-GB', 'de-DE', 'fr-FR', 'zh-CN', 'ar'] as const;
+const localeSegment = relativePath.split('/')[0];
+const currentLocale = (supportedLocales.includes(localeSegment as (typeof supportedLocales)[number]) ? localeSegment : 'es') as (typeof supportedLocales)[number];
 const isCatalan = currentLocale === 'ca';
-const normalizedPath = relativePath.replace(/^ca\/?/, '');
-const localeBase = currentLocale === 'ca' ? `${base}ca/` : base;
-const getLocalePath = (locale: 'es' | 'ca') => {
-  const prefix = locale === 'ca' ? 'ca/' : '';
+const isRtl = currentLocale === 'ar';
+const normalizedPath = currentLocale === 'es' ? relativePath : relativePath.replace(new RegExp(`^${currentLocale}/?`), '');
+const localeBase = currentLocale === 'es' ? base : `${base}${currentLocale}/`;
+const getLocalePath = (locale: (typeof supportedLocales)[number]) => {
+  const prefix = locale === 'es' ? '' : `${locale}/`;
   const composed = `${base}${prefix}${normalizedPath}`;
   return composed.replace(/\/+$/, '') || '/';
 };
@@ -93,7 +96,7 @@ const jsonLd = {
 ---
 
 <!doctype html>
-<html lang={currentLocale}>
+  <html lang={currentLocale} dir={isRtl ? 'rtl' : 'ltr'}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
