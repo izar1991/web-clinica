@@ -1,3 +1,5 @@
+import { profesionales } from '../data/especialidades';
+
 const services = {
   'medicina-general': {
     es: ['Medicina General', 'Atención primaria, urgencias y seguimiento integral para toda la familia.'],
@@ -66,16 +68,92 @@ const services = {
 };
 
 const ui = {
-  es: { localeName: 'Español', home: 'Inicio', services: 'Servicios', team: 'Equipo profesional', book: 'Reservar cita', viewAll: 'Ver todas las especialidades', viewDetails: 'Ver detalle completo', appointment: 'Solicita una consulta con nosotros', appointmentText: 'Rellena el formulario y contactaremos contigo para confirmar tu visita.', teamTitle: 'Especialistas que acompañan cada etapa de tu salud', club: 'Club CSV', clubTitle: 'Una forma más fácil de cuidar tu salud', contact: 'Contacto', call: 'Llamar al centro', next: 'Próximamente nuevas colaboraciones' },
-  ca: { localeName: 'Català', home: 'Inici', services: 'Serveis', team: 'Equip professional', book: 'Reservar visita', viewAll: 'Veure totes les especialitats', viewDetails: 'Veure el detall complet', appointment: 'Sol·licita una consulta amb nosaltres', appointmentText: 'Omple el formulari i contactarem amb tu per confirmar la teva visita.', teamTitle: 'Especialistes que t’acompanyen en cada etapa de la teva salut', club: 'Club CSV', clubTitle: 'Una manera més fàcil de cuidar la teva salut', contact: 'Contacte', call: 'Trucar al centre', next: 'Properament, noves col·laboracions' },
-  'en-GB': { localeName: 'English', home: 'Home', services: 'Services', team: 'Professional team', book: 'Book an appointment', viewAll: 'View all specialties', viewDetails: 'View details', appointment: 'Request a consultation with us', appointmentText: 'Complete the form and we will contact you to confirm your visit.', teamTitle: 'Specialists supporting every stage of your health', club: 'CSV Club', clubTitle: 'A simpler way to care for your health', contact: 'Contact', call: 'Call the centre', next: 'New partnerships coming soon' },
-  'de-DE': { localeName: 'Deutsch', home: 'Startseite', services: 'Leistungen', team: 'Professionelles Team', book: 'Termin buchen', viewAll: 'Alle Fachbereiche ansehen', viewDetails: 'Details ansehen', appointment: 'Vereinbaren Sie eine Sprechstunde', appointmentText: 'Füllen Sie das Formular aus. Wir kontaktieren Sie zur Bestätigung Ihres Termins.', teamTitle: 'Spezialisten für jede Phase Ihrer Gesundheit', club: 'CSV Club', clubTitle: 'Gesundheit einfacher gestalten', contact: 'Kontakt', call: 'Zentrum anrufen', next: 'Neue Kooperationen folgen in Kürze' },
-  'fr-FR': { localeName: 'Français', home: 'Accueil', services: 'Services', team: 'Équipe professionnelle', book: 'Prendre rendez-vous', viewAll: 'Voir toutes les spécialités', viewDetails: 'Voir les détails', appointment: 'Demandez une consultation', appointmentText: 'Remplissez le formulaire et nous vous contacterons pour confirmer votre rendez-vous.', teamTitle: 'Des spécialistes à vos côtés à chaque étape de votre santé', club: 'Club CSV', clubTitle: 'Une façon plus simple de prendre soin de votre santé', contact: 'Contact', call: 'Appeler le centre', next: 'De nouvelles collaborations prochainement' },
-  'zh-CN': { localeName: '简体中文', home: '首页', services: '服务', team: '专业团队', book: '预约就诊', viewAll: '查看全部专科', viewDetails: '查看详情', appointment: '向我们申请咨询', appointmentText: '填写表格后，我们会联系您确认就诊安排。', teamTitle: '陪伴您每个健康阶段的专业团队', club: 'CSV 会员计划', clubTitle: '更轻松地守护您的健康', contact: '联系我们', call: '致电中心', next: '即将推出新的合作服务' },
-  ar: { localeName: 'العربية (الفصحى)', home: 'الرئيسية', services: 'الخدمات', team: 'الفريق الطبي', book: 'حجز موعد', viewAll: 'عرض جميع التخصصات', viewDetails: 'عرض التفاصيل', appointment: 'اطلب استشارة معنا', appointmentText: 'املأ النموذج وسنتواصل معك لتأكيد موعدك.', teamTitle: 'أخصائيون يرافقونك في كل مرحلة من مراحل صحتك', club: 'نادي CSV', clubTitle: 'طريقة أسهل للعناية بصحتك', contact: 'اتصل بنا', call: 'اتصل بالمركز', next: 'شراكات جديدة قريباً' },
+  es: { localeName: 'Español', home: 'Inicio', services: 'Servicios', team: 'Equipo profesional', book: 'Reservar cita', viewAll: 'Ver todas las especialidades', viewDetails: 'Ver detalle completo', appointment: 'Solicita una consulta con nosotros', appointmentText: 'Rellena el formulario y contactaremos contigo para confirmar tu visita.', teamTitle: 'Especialistas que acompañan cada etapa de tu salud', specialty: 'Especialidad', professionalsOf: 'Profesionales de', brandDescription: 'Centre Sanitari Villaquet — Un centro médico de excelencia y proximidad en Calafell.', club: 'Club CSV', clubTitle: 'Una forma más fácil de cuidar tu salud', contact: 'Contacto', call: 'Llamar al centro', next: 'Próximamente nuevas colaboraciones' },
+  ca: { localeName: 'Català', home: 'Inici', services: 'Serveis', team: 'Equip professional', book: 'Reservar visita', viewAll: 'Veure totes les especialitats', viewDetails: 'Veure el detall complet', appointment: 'Sol·licita una consulta amb nosaltres', appointmentText: 'Omple el formulari i contactarem amb tu per confirmar la teva visita.', teamTitle: 'Especialistes que t’acompanyen en cada etapa de la teva salut', specialty: 'Especialitat', professionalsOf: 'Professionals de', brandDescription: 'Centre Sanitari Villaquet — Un centre mèdic d’excel·lència i proximitat a Calafell.', club: 'Club CSV', clubTitle: 'Una manera més fàcil de cuidar la teva salut', contact: 'Contacte', call: 'Trucar al centre', next: 'Properament, noves col·laboracions' },
+  'en-GB': { localeName: 'English', home: 'Home', services: 'Services', team: 'Professional team', book: 'Book an appointment', viewAll: 'View all specialties', viewDetails: 'View details', appointment: 'Request a consultation with us', appointmentText: 'Complete the form and we will contact you to confirm your visit.', teamTitle: 'Specialists supporting every stage of your health', specialty: 'Specialty', professionalsOf: 'Professionals in', brandDescription: 'Centre Sanitari Villaquet — A centre of excellence and personal care in Calafell.', club: 'CSV Club', clubTitle: 'A simpler way to care for your health', contact: 'Contact', call: 'Call the centre', next: 'New partnerships coming soon' },
+  'de-DE': { localeName: 'Deutsch', home: 'Startseite', services: 'Leistungen', team: 'Professionelles Team', book: 'Termin buchen', viewAll: 'Alle Fachbereiche ansehen', viewDetails: 'Details ansehen', appointment: 'Vereinbaren Sie eine Sprechstunde', appointmentText: 'Füllen Sie das Formular aus. Wir kontaktieren Sie zur Bestätigung Ihres Termins.', teamTitle: 'Spezialisten für jede Phase Ihrer Gesundheit', specialty: 'Fachbereich', professionalsOf: 'Fachkräfte für', brandDescription: 'Centre Sanitari Villaquet — Ein medizinisches Zentrum für exzellente und persönliche Betreuung in Calafell.', club: 'CSV Club', clubTitle: 'Gesundheit einfacher gestalten', contact: 'Kontakt', call: 'Zentrum anrufen', next: 'Neue Kooperationen folgen in Kürze' },
+  'fr-FR': { localeName: 'Français', home: 'Accueil', services: 'Services', team: 'Équipe professionnelle', book: 'Prendre rendez-vous', viewAll: 'Voir toutes les spécialités', viewDetails: 'Voir les détails', appointment: 'Demandez une consultation', appointmentText: 'Remplissez le formulaire et nous vous contacterons pour confirmer votre rendez-vous.', teamTitle: 'Des spécialistes à vos côtés à chaque étape de votre santé', specialty: 'Spécialité', professionalsOf: 'Professionnels en', brandDescription: 'Centre Sanitari Villaquet — Un centre médical d’excellence et de proximité à Calafell.', club: 'Club CSV', clubTitle: 'Une façon plus simple de prendre soin de votre santé', contact: 'Contact', call: 'Appeler le centre', next: 'De nouvelles collaborations prochainement' },
+  'zh-CN': { localeName: '简体中文', home: '首页', services: '服务', team: '专业团队', book: '预约就诊', viewAll: '查看全部专科', viewDetails: '查看详情', appointment: '向我们申请咨询', appointmentText: '填写表格后，我们会联系您确认就诊安排。', teamTitle: '陪伴您每个健康阶段的专业团队', specialty: '专科', professionalsOf: '专科团队：', brandDescription: 'Centre Sanitari Villaquet — 位于加拉费尔的卓越且贴心的医疗中心。', club: 'CSV 会员计划', clubTitle: '更轻松地守护您的健康', contact: '联系我们', call: '致电中心', next: '即将推出新的合作服务' },
+  ar: { localeName: 'العربية (الفصحى)', home: 'الرئيسية', services: 'الخدمات', team: 'الفريق الطبي', book: 'حجز موعد', viewAll: 'عرض جميع التخصصات', viewDetails: 'عرض التفاصيل', appointment: 'اطلب استشارة معنا', appointmentText: 'املأ النموذج وسنتواصل معك لتأكيد موعدك.', teamTitle: 'أخصائيون يرافقونك في كل مرحلة من مراحل صحتك', specialty: 'التخصص', professionalsOf: 'متخصصو', brandDescription: 'Centre Sanitari Villaquet — مركز طبي للتميز والرعاية القريبة في كالافيل.', club: 'نادي CSV', clubTitle: 'طريقة أسهل للعناية بصحتك', contact: 'اتصل بنا', call: 'اتصل بالمركز', next: 'شراكات جديدة قريباً' },
 };
 
 const serviceSlugs = Object.keys(services);
+
+const professionalDetails = {
+  es: {},
+  ca: {
+    'jaime-paredes': { role: 'Director mèdic · Medicina general · Urgències', bio: "Més de 25 anys d'experiència en urgències i medicina general. Especialista en atenció primària, diagnòstic clínic i coordinació de tractaments complexos." },
+    'esteban-pedro-mussin': { role: 'Ginecologia i obstetrícia', bio: "Més de 20 anys d'experiència internacional en ginecologia i obstetrícia, amb especial interès en cirurgia ginecològica i atenció integral de la salut femenina." },
+    'yolanda-medrano': { role: 'Ginecologia i obstetrícia', bio: 'Especialista amb més de 20 anys d’experiència en salut femenina i formació de màster en anticoncepció, salut sexual i reproductiva. Referent en menopausa, ecografia avançada, reproducció assistida i citologia.' },
+    'alvaro-gomez-tomas': { role: 'Dermatologia', bio: 'Especialista en dermatologia integral i pediàtrica, diagnòstic de patologies cutànies, prevenció i tractaments estètics i terapèutics.' },
+    'maria-cecilia-cristaldi': { role: 'Psicologia', bio: 'Psicòloga amb experiència en teràpia individual, acompanyament emocional i abordatge del trauma per a adolescents i adults.' },
+    'klay-escobar': { role: 'Psicologia', bio: 'Especialitzada en psicologia infantil, teràpia breu i acompanyament de processos emocionals i familiars, amb més de 25 anys d’experiència.' },
+    'luciano-herlein': { role: 'Fisioteràpia i rehabilitació', bio: 'Fisioterapeuta especialitzat en traumatologia, rehabilitació funcional i esport, amb tècniques avançades per recuperar i prevenir lesions.' },
+    'didac-melero': { role: 'Podologia', bio: 'Especialista en podologia, imatge diagnòstica, medicina nuclear i cirurgia de l’avantpeu, amb formació a les universitats de Barcelona i Manresa.' },
+    'meritxell-paredes': { role: 'Medicina', bio: 'Doctora amb experiència en atenció primària i una visió integral del benestar, basada en la seguretat, la confiança i el tractament personalitzat.' },
+    'calipso-del-pino': { role: 'Infermeria', bio: 'Infermera amb experiència en extraccions, consultes, urgències, control de tractaments i suport en procediments diagnòstics.' },
+  },
+  'en-GB': {
+    'jaime-paredes': { role: 'Medical director · General medicine · Urgent care', bio: 'More than 25 years of experience in urgent care and general medicine, specialising in primary care, clinical diagnosis and complex treatment coordination.' },
+    'esteban-pedro-mussin': { role: 'Gynaecology and obstetrics', bio: 'More than 20 years of international experience in gynaecology and obstetrics, with a special interest in gynaecological surgery and comprehensive women’s health.' },
+    'yolanda-medrano': { role: 'Gynaecology and obstetrics', bio: 'Specialist with more than 20 years of experience in women’s health and postgraduate training in contraception, sexual and reproductive health. She focuses on menopause, advanced ultrasound, assisted reproduction and cytology.' },
+    'alvaro-gomez-tomas': { role: 'Dermatology', bio: 'Specialist in adult and paediatric dermatology, skin condition diagnosis, prevention and aesthetic and therapeutic treatment.' },
+    'maria-cecilia-cristaldi': { role: 'Psychology', bio: 'Psychologist experienced in individual therapy, emotional support and trauma care for adolescents and adults.' },
+    'klay-escobar': { role: 'Psychology', bio: 'Specialist in child psychology, brief therapy and support through emotional and family processes, with more than 25 years of experience.' },
+    'luciano-herlein': { role: 'Physiotherapy and rehabilitation', bio: 'Physiotherapist specialising in trauma care, functional rehabilitation and sport, using advanced techniques for recovery and injury prevention.' },
+    'didac-melero': { role: 'Podiatry', bio: 'Podiatry specialist with training in diagnostic imaging, nuclear medicine and forefoot surgery at the universities of Barcelona and Manresa.' },
+    'meritxell-paredes': { role: 'Medicine', bio: 'Doctor with primary care experience and a whole-person approach based on safety, trust, professional precision and personalised treatment.' },
+    'calipso-del-pino': { role: 'Nursing', bio: 'Nurse experienced in sample collection, consultations, urgent care, treatment monitoring and support during diagnostic procedures.' },
+  },
+  'de-DE': {
+    'jaime-paredes': { role: 'Medizinischer Direktor · Allgemeinmedizin · Notfallversorgung', bio: 'Mehr als 25 Jahre Erfahrung in Notfallversorgung und Allgemeinmedizin, mit Schwerpunkt auf Primärversorgung, klinischer Diagnostik und der Koordination komplexer Behandlungen.' },
+    'esteban-pedro-mussin': { role: 'Gynäkologie und Geburtshilfe', bio: 'Mehr als 20 Jahre internationale Erfahrung in Gynäkologie und Geburtshilfe, mit besonderem Interesse an gynäkologischer Chirurgie und ganzheitlicher Frauengesundheit.' },
+    'yolanda-medrano': { role: 'Gynäkologie und Geburtshilfe', bio: 'Fachärztin mit mehr als 20 Jahren Erfahrung in der Frauengesundheit und einer Masterausbildung in Verhütung sowie sexueller und reproduktiver Gesundheit. Schwerpunkte sind Menopause, moderne Ultraschalldiagnostik, Reproduktionsmedizin und Zytologie.' },
+    'alvaro-gomez-tomas': { role: 'Dermatologie', bio: 'Spezialist für allgemeine und pädiatrische Dermatologie, die Diagnose von Hauterkrankungen sowie Prävention und ästhetische und therapeutische Behandlungen.' },
+    'maria-cecilia-cristaldi': { role: 'Psychologie', bio: 'Psychologin mit Erfahrung in Einzeltherapie, emotionaler Begleitung und Traumatherapie für Jugendliche und Erwachsene.' },
+    'klay-escobar': { role: 'Psychologie', bio: 'Spezialistin für Kinderpsychologie, Kurzzeittherapie und die Begleitung emotionaler und familiärer Prozesse mit mehr als 25 Jahren Berufserfahrung.' },
+    'luciano-herlein': { role: 'Physiotherapie und Rehabilitation', bio: 'Physiotherapeut mit Schwerpunkt auf Traumatologie, funktioneller Rehabilitation und Sport sowie modernen Methoden zur Genesung und Verletzungsprävention.' },
+    'didac-melero': { role: 'Podologie', bio: 'Podologe mit Ausbildung in bildgebender Diagnostik, Nuklearmedizin und Vorfußchirurgie an den Universitäten Barcelona und Manresa.' },
+    'meritxell-paredes': { role: 'Medizin', bio: 'Ärztin mit Erfahrung in der Primärversorgung und einem ganzheitlichen Ansatz, der auf Sicherheit, Vertrauen und individueller Behandlung beruht.' },
+    'calipso-del-pino': { role: 'Krankenpflege', bio: 'Pflegefachkraft mit Erfahrung in Blutentnahmen, Sprechstunden, Notfallversorgung, Behandlungskontrollen und diagnostischer Assistenz.' },
+  },
+  'fr-FR': {
+    'jaime-paredes': { role: 'Directeur médical · Médecine générale · Urgences', bio: 'Plus de 25 ans d’expérience en urgences et médecine générale, avec une expertise en soins primaires, diagnostic clinique et coordination des traitements complexes.' },
+    'esteban-pedro-mussin': { role: 'Gynécologie et obstétrique', bio: 'Plus de 20 ans d’expérience internationale en gynécologie et obstétrique, avec un intérêt particulier pour la chirurgie gynécologique et la santé globale des femmes.' },
+    'yolanda-medrano': { role: 'Gynécologie et obstétrique', bio: 'Spécialiste avec plus de 20 ans d’expérience en santé féminine et une formation supérieure en contraception, santé sexuelle et reproductive. Elle intervient notamment pour la ménopause, l’échographie avancée, la procréation assistée et la cytologie.' },
+    'alvaro-gomez-tomas': { role: 'Dermatologie', bio: 'Spécialiste en dermatologie adulte et pédiatrique, diagnostic des maladies cutanées, prévention et traitements esthétiques et thérapeutiques.' },
+    'maria-cecilia-cristaldi': { role: 'Psychologie', bio: 'Psychologue expérimentée en thérapie individuelle, accompagnement émotionnel et prise en charge du traumatisme chez les adolescents et les adultes.' },
+    'klay-escobar': { role: 'Psychologie', bio: 'Spécialiste en psychologie de l’enfant, thérapie brève et accompagnement des processus émotionnels et familiaux, avec plus de 25 ans d’expérience.' },
+    'luciano-herlein': { role: 'Kinésithérapie et rééducation', bio: 'Kinésithérapeute spécialisé en traumatologie, rééducation fonctionnelle et sport, avec des techniques avancées pour la récupération et la prévention des blessures.' },
+    'didac-melero': { role: 'Podologie', bio: 'Spécialiste en podologie, formé en imagerie diagnostique, médecine nucléaire et chirurgie de l’avant-pied aux universités de Barcelone et de Manresa.' },
+    'meritxell-paredes': { role: 'Médecine', bio: 'Médecin expérimentée en soins primaires, avec une approche globale fondée sur la sécurité, la confiance, la précision et un traitement personnalisé.' },
+    'calipso-del-pino': { role: 'Soins infirmiers', bio: 'Infirmière expérimentée en prélèvements, consultations, urgences, suivi des traitements et assistance aux procédures diagnostiques.' },
+  },
+  'zh-CN': {
+    'jaime-paredes': { role: '医疗主任 · 全科医疗 · 急诊护理', bio: '拥有超过 25 年急诊和全科医疗经验，专长于初级医疗、临床诊断和复杂治疗协调。' },
+    'esteban-pedro-mussin': { role: '妇科与产科', bio: '拥有超过 20 年国际妇科和产科经验，重点关注妇科手术和女性全生命周期健康。' },
+    'yolanda-medrano': { role: '妇科与产科', bio: '拥有超过 20 年女性健康经验，并接受避孕、性健康与生殖健康方面的硕士培训。专长包括更年期、先进超声、辅助生殖和细胞学检查。' },
+    'alvaro-gomez-tomas': { role: '皮肤科', bio: '专长于成人及儿童皮肤科、皮肤疾病诊断、预防以及美容和治疗性护理。' },
+    'maria-cecilia-cristaldi': { role: '心理咨询', bio: '心理学家，擅长青少年和成人个体治疗、情绪支持及创伤干预。' },
+    'klay-escobar': { role: '心理咨询', bio: '专长于儿童心理学、短期治疗以及情绪和家庭问题支持，拥有超过 25 年从业经验。' },
+    'luciano-herlein': { role: '物理治疗与康复', bio: '物理治疗师，专长于创伤、功能康复和运动康复，采用先进技术帮助恢复并预防损伤。' },
+    'didac-melero': { role: '足病科', bio: '足病专家，接受过诊断影像、核医学和前足手术培训，培训经历来自巴塞罗那和曼雷萨的大学。' },
+    'meritxell-paredes': { role: '医学', bio: '具有初级医疗经验的医生，以安全、信任、专业精准和个性化治疗为基础，提供全方位健康服务。' },
+    'calipso-del-pino': { role: '护理', bio: '护士，擅长采样、门诊、急诊护理、治疗监测和诊断操作支持。' },
+  },
+  ar: {
+    'jaime-paredes': { role: 'المدير الطبي · الطب العام · الرعاية العاجلة', bio: 'أكثر من 25 عاماً من الخبرة في الرعاية العاجلة والطب العام، مع تخصص في الرعاية الأولية والتشخيص السريري وتنسيق العلاجات المعقدة.' },
+    'esteban-pedro-mussin': { role: 'أمراض النساء والتوليد', bio: 'أكثر من 20 عاماً من الخبرة الدولية في أمراض النساء والتوليد، مع اهتمام خاص بالجراحة النسائية والرعاية الشاملة لصحة المرأة.' },
+    'yolanda-medrano': { role: 'أمراض النساء والتوليد', bio: 'متخصصة بخبرة تزيد على 20 عاماً في صحة المرأة وتدريب دراسات عليا في منع الحمل والصحة الجنسية والإنجابية. تركز على سن اليأس والتصوير بالموجات فوق الصوتية المتقدم والإخصاب المساعد وعلم الخلايا.' },
+    'alvaro-gomez-tomas': { role: 'الأمراض الجلدية', bio: 'متخصص في الأمراض الجلدية للبالغين والأطفال، وتشخيص أمراض الجلد والوقاية منها والعلاجات التجميلية والعلاجية.' },
+    'maria-cecilia-cristaldi': { role: 'علم النفس', bio: 'أخصائية نفسية تتمتع بخبرة في العلاج الفردي والدعم العاطفي ومعالجة الصدمات للمراهقين والبالغين.' },
+    'klay-escobar': { role: 'علم النفس', bio: 'متخصصة في علم نفس الأطفال والعلاج المختصر ودعم العمليات العاطفية والأسرية، مع أكثر من 25 عاماً من الخبرة.' },
+    'luciano-herlein': { role: 'العلاج الطبيعي وإعادة التأهيل', bio: 'معالج طبيعي متخصص في الإصابات وإعادة التأهيل الوظيفي والرياضة، ويستخدم تقنيات متقدمة للتعافي والوقاية من الإصابات.' },
+    'didac-melero': { role: 'طب القدم', bio: 'متخصص في طب القدم والتصوير التشخيصي والطب النووي وجراحة مقدمة القدم، مع تدريب في جامعتي برشلونة ومانريسا.' },
+    'meritxell-paredes': { role: 'الطب', bio: 'طبيبة تتمتع بخبرة في الرعاية الأولية ونهج شامل قائم على السلامة والثقة والدقة المهنية والعلاج الشخصي.' },
+    'calipso-del-pino': { role: 'التمريض', bio: 'ممرضة تتمتع بخبرة في سحب العينات والاستشارات والرعاية العاجلة ومتابعة العلاجات ودعم الإجراءات التشخيصية.' },
+  },
+};
 
 const serviceDetailText = {
   es: { highlights: ['Valoración integral', 'Prevención y seguimiento', 'Atención personalizada'], texts: ['Valoración clínica y orientación adaptada a las necesidades de cada paciente.', 'Revisiones y seguimiento para detectar cambios y actuar a tiempo.', 'Un plan de atención claro, cercano y coordinado con nuestro equipo.'], bullets: ['Consulta especializada con enfoque preventivo', 'Valoración y seguimiento según cada caso', 'Orientación personalizada para adultos y familias', 'Coordinación con otros profesionales cuando sea necesario'] },
@@ -219,6 +297,7 @@ const clubCardBenefitsByLocale = {
 
 export function getLocaleContent(locale) {
   const selected = ui[locale] || ui['en-GB'];
+  const professionalTranslations = professionalDetails[locale] || professionalDetails['en-GB'];
   return {
     ...selected,
     ...layoutLabels[locale] || layoutLabels['en-GB'],
@@ -228,6 +307,10 @@ export function getLocaleContent(locale) {
     clubCardBenefits: clubCardBenefitsByLocale[locale] || clubCardBenefitsByLocale['en-GB'],
     clubComparison: clubComparisonByLocale[locale] || clubComparisonByLocale['en-GB'],
     locale,
+    professionals: profesionales.map((professional) => ({
+      ...professional,
+      ...(professionalTranslations[professional.id] || professionalDetails.es[professional.id] || {}),
+    })),
     serviceList: serviceSlugs.map((slug) => ({ slug, title: services[slug][locale]?.[0] || services[slug].es[0], description: services[slug][locale]?.[1] || services[slug].es[1] })),
   };
 }

@@ -9,7 +9,6 @@ const relativePath = currentPath.startsWith(base) ? currentPath.slice(base.lengt
 const supportedLocales = ['es', 'ca', 'en-GB', 'de-DE', 'fr-FR', 'zh-CN', 'ar'] as const;
 const localeSegment = relativePath.split('/')[0];
 const currentLocale = (supportedLocales.includes(localeSegment as (typeof supportedLocales)[number]) ? localeSegment : 'es') as (typeof supportedLocales)[number];
-const isCatalan = currentLocale === 'ca';
 const isRtl = currentLocale === 'ar';
 const normalizedPath = currentLocale === 'es' ? relativePath : relativePath.replace(new RegExp(`^${currentLocale}/?`), '');
 const localeBase = currentLocale === 'es' ? base : `${base}${currentLocale}/`;
@@ -286,7 +285,7 @@ const jsonLd = {
           <a href={`${localeBase}#inicio`} class="nav__logo">
             <img src={`${base}images/logo_solo.png`} alt="Centre Sanitari Villaquet" width="48" height="48" class="nav__logo-image nav__logo-image--solo nav__logo-image--footer" />
           </a>
-          <p>{localeContent.localeName === 'Català' ? 'Centre Sanitari Villaquet — Un centre mèdic d’excel·lència i proximitat a Calafell.' : 'Centre Sanitari Villaquet — Un centro médico de excelencia y proximidad en Calafell.'}</p>
+          <p>{localeContent.brandDescription}</p>
 
           <div class="footer__socials">
             <h4>{localeContent.follow}</h4>

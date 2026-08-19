@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { contenidoEspecialidades, profesionales } from '../data/especialidades';
+import { contenidoEspecialidades } from '../data/especialidades';
 import { getLocaleContent, getServiceContent } from '../i18n/localized';
 
 const { locale, page, slug } = Astro.props;
@@ -10,9 +10,11 @@ type WhyItem = [string, string];
 type TechItem = [string, string];
 type PlanItem = [string, string, string];
 type ServiceHighlight = { title: string; text: string };
+type Professional = { id: string; nombre: string; role: string; especialidad: string; image: string; bio: string };
 type ClubCommonItem = { concept: string; value: string };
 type ClubDifferenceRow = { concept: string; general: string; sport: string; senior: string };
 const serviceList = content.serviceList as ServiceItem[];
+const localizedProfessionals = content.professionals as Professional[];
 const whyItems = content.why as WhyItem[];
 const techItems = content.tech as TechItem[];
 const planItems = content.plans as PlanItem[];
@@ -22,7 +24,7 @@ const service = slug ? getServiceContent(locale, slug) : null;
 const serviceData = slug ? contenidoEspecialidades[slug as keyof typeof contenidoEspecialidades] : null;
 const serviceHighlights = (service?.highlights || []) as ServiceHighlight[];
 const serviceBullets = (service?.bullets || []) as string[];
-const serviceProfessionals = slug ? profesionales.filter((professional) => professional.especialidad === slug) : [];
+const serviceProfessionals = slug ? localizedProfessionals.filter((professional) => professional.especialidad === slug) : [];
 const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
 const localeBase = `${base}${locale}/`;
 const pageTitle = service ? `${service.title} | Centre Sanitari Villaquet` : `${content[page === 'home' ? 'home' : page]} | Centre Sanitari Villaquet`;
@@ -247,7 +249,7 @@ const isUniqueValueInRow = (row: ClubDifferenceRow, value: string) => {
         <section class="team section" id="equipo">
           <div class="container">
             <div class="section__header"><span class="section__tag">{content.team}</span><h2 class="section__title">{content.teamTitle}</h2><p class="section__desc">{content.whyText}</p></div>
-            <div class="team__grid">{profesionales.map((professional) => <a href={`${localeBase}Equipoyservicios#${professional.id}`} class="doctor-card doctor-card--link"><div class="doctor-card__header"><div class="doctor-card__avatar"><img src={professional.image} alt={professional.nombre} /></div><div><h3>{professional.nombre}</h3><p class="doctor-card__role">{serviceList.find((item) => item.slug === professional.especialidad)?.title}</p></div></div></a>)}</div>
+            <div class="team__grid">{localizedProfessionals.map((professional) => <a href={`${localeBase}Equipoyservicios#${professional.id}`} class="doctor-card doctor-card--link"><div class="doctor-card__header"><div class="doctor-card__avatar"><img src={professional.image} alt={professional.nombre} /></div><div><h3>{professional.nombre}</h3><p class="doctor-card__role">{professional.role}</p></div></div><p class="doctor-card__bio">{professional.bio}</p></a>)}</div>
           </div>
         </section>
         <section class="tech section" id="tecnologia">
@@ -275,7 +277,7 @@ const isUniqueValueInRow = (row: ClubDifferenceRow, value: string) => {
     {page === 'team' && (
       <>
         <section class="specialties-page__hero"><div class="container"><span class="section__tag">{content.team}</span><h1 class="section__title">{content.teamTitle}</h1><p class="section__desc">{content.appointmentText}</p></div></section>
-        <section class="team section"><div class="container"><div class="team__grid">{profesionales.map((professional) => <article class="doctor-card"><div class="doctor-card__header"><div class="doctor-card__avatar"><img src={professional.image} alt={professional.nombre} /></div><div><h3>{professional.nombre}</h3><p class="doctor-card__role">{serviceList.find((item) => item.slug === professional.especialidad)?.title}</p></div></div></article>)}</div></div></section>
+        <section class="team section"><div class="container"><div class="team__grid">{localizedProfessionals.map((professional) => <article class="doctor-card"><div class="doctor-card__header"><div class="doctor-card__avatar"><img src={professional.image} alt={professional.nombre} /></div><div><h3>{professional.nombre}</h3><p class="doctor-card__role">{professional.role}</p></div></div><p class="doctor-card__specialty">{content.specialty}: {serviceList.find((item) => item.slug === professional.especialidad)?.title}</p><p class="doctor-card__bio">{professional.bio}</p></article>)}</div></div></section>
       </>
     )}
 
@@ -299,7 +301,7 @@ const isUniqueValueInRow = (row: ClubDifferenceRow, value: string) => {
       <>
         <section class="specialty-page__hero"><div class="container"><span class="section__tag">{content.services}</span><h1 class="section__title">{service.title}</h1><p class="section__subtitle">{service.subtitle}</p></div></section>
         <section class="section"><div class="container specialty-page__grid"><div class="specialty-page__content"><p>{service.intro}</p><div class="specialty-page__media"><img src={serviceData?.image} alt={service.title} /></div><div class="specialty-page__highlights">{serviceHighlights.map((highlight) => <div class="specialty-page__highlight"><h3>{highlight.title}</h3><p>{highlight.text}</p></div>)}</div><ul class="specialty-page__list">{serviceBullets.map((bullet) => <li>{bullet}</li>)}</ul><div class="specialty-page__actions"><a href={`${localeBase}servicios`} class="btn btn--outline">{content.viewAll}</a></div></div><aside class="specialty-page__card"><h3>{content.appointment}</h3><p>{content.appointmentText}</p><div class="specialty-page__contact"><a href={`${localeBase}reservar-cita`} class="btn btn--primary btn--full">{content.book}</a><a href="tel:877643360">877 643 360</a><a href="mailto:info@villaquet.com">info@villaquet.com</a></div><div class="specialty-page__aside-image"><img src={serviceData?.image} alt={service.title} /></div></aside></div></section>
-        <section class="section section--alt"><div class="container"><div class="section__header"><span class="section__tag">{content.team}</span><h2 class="section__title">{content.team} · {service.title}</h2></div><div class="team__grid">{serviceProfessionals.map((professional) => <article class="doctor-card"><div class="doctor-card__header"><div class="doctor-card__avatar"><img src={professional.image} alt={professional.nombre} /></div><div><h3>{professional.nombre}</h3><p class="doctor-card__role">{professional.role}</p></div></div><p class="doctor-card__bio">{professional.bio}</p></article>)}</div></div></section>
+        <section class="section section--alt"><div class="container"><div class="section__header"><span class="section__tag">{content.team}</span><h2 class="section__title">{content.professionalsOf} {service.title}</h2></div><div class="team__grid">{serviceProfessionals.map((professional) => <article class="doctor-card"><div class="doctor-card__header"><div class="doctor-card__avatar"><img src={professional.image} alt={professional.nombre} /></div><div><h3>{professional.nombre}</h3><p class="doctor-card__role">{professional.role}</p></div></div><p class="doctor-card__specialty">{content.specialty}: {service.title}</p><p class="doctor-card__bio">{professional.bio}</p></article>)}</div></div></section>
       </>
     )}
   </main>
