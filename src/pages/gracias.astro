@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const patientPortalUrl = 'https://portalpaciente.dricloud.net/Dricloud_centresanitarivillaquet_21026811';
 ---
 
 <Layout
@@ -9,21 +11,51 @@ import Layout from '../layouts/Layout.astro';
   <main>
     <section class="section thanks-page">
       <div class="container thanks-page__content">
-        <span class="section__tag">Gracias</span>
-        <h1 class="section__title">Tu solicitud de cita ha sido enviada</h1>
+        <a class="thanks-page__brand nav__logo nav__logo--brand" href="/" aria-label="Inicio">
+          <img src="/images/logo_solo.png" alt="Centre Sanitari Villaquet" width="54" height="54" class="nav__logo-image nav__logo-image--solo" />
+          <span class="nav__brand-text" aria-label="Centre Sanitari Villaquet">
+            <span class="nav__brand-text--top">Centre Sanitari</span>
+            <span class="nav__brand-text--bottom">Villaquet</span>
+          </span>
+        </a>
+        <span class="section__tag">Reserva completada</span>
+        <p class="thanks-page__wellness">Cuidar de tu salud empieza con este paso.</p>
         <p class="section__desc">
-          Gracias por confiar en Centre Sanitari Villaquet. Hemos recibido tu petición y nuestro equipo
-          revisará la información para confirmar la cita lo antes posible.
+          Gracias por confiar en Centre Sanitari Villaquet. Recibirás un mensaje con los detalles de la cita en tu correo.
         </p>
 
-        <div class="thanks-page__actions">
-          <a href="/" class="btn btn--primary">Volver al inicio</a>
-          <a href="/reservar-cita" class="btn btn--outline">Reservar otra cita</a>
-        </div>
+        <div class="thanks-page__lower">
+          <div class="thanks-page__main">
+            <div class="thanks-page__location">
+              <div>
+                <span class="thanks-page__location-label">Visítanos</span>
+                <h2>Centre Sanitari Villaquet</h2>
+                <address>Carrer Molí del Blanquet, 24, baixos<br />El Vilarenc, 43820 Calafell, Tarragona</address>
+              </div>
+              <iframe title="Ubicación Centre Sanitari Villaquet" src="https://maps.google.com/maps?q=Carrer+Mol%C3%AD+del+Blanquet+24+Calafell&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            </div>
 
-        <div class="thanks-page__info">
-          <p><strong>¿Necesitas ayuda urgente?</strong> Puedes contactar con nosotros en el teléfono 877 643 360.</p>
-          <p><strong>Email:</strong> info@villaquet.com</p>
+            <div class="thanks-page__actions">
+              <a href="/" class="btn btn--primary">Volver al inicio</a>
+              <a href="/reservar-cita" class="btn btn--outline">Reservar otra cita</a>
+            </div>
+
+            <div class="thanks-page__info">
+              <p><strong>Teléfono:</strong> 877643360</p>
+              <p><strong>Email:</strong> info@villaquet.com</p>
+              <p class="thanks-page__policy"><strong>Importante:</strong> si necesitas anular o cambiar tu cita, avísanos con al menos 48 horas de antelación.</p>
+            </div>
+          </div>
+
+          <div class="thanks-page__portal thanks-page__portal--distinct">
+            <span class="thanks-page__portal-icon" aria-hidden="true">&#128274;</span>
+            <div>
+              <span class="thanks-page__portal-label">Tu espacio de salud</span>
+              <h2>Gestiona tu atención desde el portal de usuario</h2>
+              <p>Accede cuando quieras para consultar tus citas, comunicaciones por email, datos personales, informes y pruebas médicas disponibles.</p>
+              <a href={patientPortalUrl} class="btn btn--portal" target="_blank" rel="noopener">Acceder al portal del usuario</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

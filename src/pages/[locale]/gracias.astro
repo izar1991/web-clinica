@@ -16,6 +16,11 @@ const messages = {
     bookAgain: 'Book another appointment',
     help: 'Need urgent help?',
     email: 'Email',
+    portalTitle: 'Manage your care from the patient portal',
+    portalText: 'Access your appointments, email communications, personal details, reports and available medical tests whenever you need them.',
+    portalCta: 'Access the patient portal',
+    careMessage: 'Thank you for trusting us. Your request is being reviewed and we will send your confirmation and appointment details through the indicated channels. Looking after your health starts with this step.',
+    cancellation: 'Important: appointments must be cancelled or changed at least 48 hours in advance.',
   },
   'de-DE': {
     badge: 'Vielen Dank',
@@ -25,6 +30,11 @@ const messages = {
     bookAgain: 'Weiteren Termin buchen',
     help: 'Brauchen Sie sofortige Hilfe?',
     email: 'E-Mail',
+    portalTitle: 'Verwalten Sie Ihre Betreuung im Patientenportal',
+    portalText: 'Rufen Sie Ihre Termine, E-Mail-Kommunikation, persönlichen Daten, Berichte und verfügbaren medizinischen Untersuchungen jederzeit ab.',
+    portalCta: 'Patientenportal öffnen',
+    careMessage: 'Vielen Dank für Ihr Vertrauen. Ihre Anfrage wird geprüft und wir senden Ihnen die Bestätigung und Termindetails über die angegebenen Kanäle. Für Ihre Gesundheit zu sorgen beginnt mit diesem Schritt.',
+    cancellation: 'Wichtig: Termine müssen mindestens 48 Stunden im Voraus abgesagt oder geändert werden.',
   },
   'fr-FR': {
     badge: 'Merci',
@@ -34,6 +44,11 @@ const messages = {
     bookAgain: 'Prendre un autre rendez-vous',
     help: 'Besoin d’aide urgente ?',
     email: 'E-mail',
+    portalTitle: 'Gérez votre suivi depuis le portail patient',
+    portalText: 'Consultez vos rendez-vous, communications par e-mail, données personnelles, comptes rendus et examens médicaux disponibles à tout moment.',
+    portalCta: 'Accéder au portail patient',
+    careMessage: 'Merci de votre confiance. Votre demande est en cours de vérification et nous vous enverrons la confirmation et les détails du rendez-vous par les canaux indiqués. Prendre soin de votre santé commence par cette étape.',
+    cancellation: 'Important : toute annulation ou modification doit être effectuée au moins 48 heures à l’avance.',
   },
   'zh-CN': {
     badge: '感谢',
@@ -43,6 +58,11 @@ const messages = {
     bookAgain: '再次预约',
     help: '需要紧急帮助？',
     email: '邮箱',
+    portalTitle: '通过患者门户管理您的医疗服务',
+    portalText: '您可以随时查看预约、电子邮件通信、个人资料、报告和可用的医疗检查结果。',
+    portalCta: '进入患者门户',
+    careMessage: '感谢您的信任。我们正在审核您的申请，并会通过您提供的渠道发送预约确认和相关详情。关爱健康，就从这一步开始。',
+    cancellation: '重要提示：如需取消或更改预约，请至少提前48小时通知我们。',
   },
   ar: {
     badge: 'شكرًا لك',
@@ -52,11 +72,17 @@ const messages = {
     bookAgain: 'حجز موعد آخر',
     help: 'هل تحتاج إلى مساعدة عاجلة؟',
     email: 'البريد الإلكتروني',
+    portalTitle: 'إدارة رعايتك من خلال بوابة المريض',
+    portalText: 'يمكنك الوصول في أي وقت إلى مواعيدك ورسائل البريد الإلكتروني وبياناتك الشخصية وتقاريرك والفحوصات الطبية المتاحة.',
+    portalCta: 'الدخول إلى بوابة المريض',
+    careMessage: 'شكرًا لثقتك بنا. تتم مراجعة طلبك الآن وسنرسل إليك تأكيد الموعد وتفاصيله عبر القنوات المحددة. العناية بصحتك تبدأ بهذه الخطوة.',
+    cancellation: 'مهم: يجب إلغاء المواعيد أو تعديلها قبل 48 ساعة على الأقل.',
   },
 };
 
 const content = messages[locale] || messages['en-GB'];
 const base = `/${locale}/`;
+const patientPortalUrl = 'https://portalpaciente.dricloud.net/Dricloud_centresanitarivillaquet_21026811';
 ---
 
 <Layout title={content.title} description={content.text}>
@@ -67,6 +93,17 @@ const base = `/${locale}/`;
         <h1 class="section__title">{content.title}</h1>
         <p class="section__desc">{content.text}</p>
 
+        <p class="section__desc">{content.careMessage}</p>
+
+        <div class="thanks-page__portal">
+          <span class="thanks-page__portal-icon" aria-hidden="true">&#128274;</span>
+          <div>
+            <h2>{content.portalTitle}</h2>
+            <p>{content.portalText}</p>
+            <a href={patientPortalUrl} class="btn btn--portal" target="_blank" rel="noopener">{content.portalCta}</a>
+          </div>
+        </div>
+
         <div class="thanks-page__actions">
           <a href={base} class="btn btn--primary">{content.home}</a>
           <a href={`${base}reservar-cita`} class="btn btn--outline">{content.bookAgain}</a>
@@ -75,6 +112,7 @@ const base = `/${locale}/`;
         <div class="thanks-page__info">
           <p><strong>{content.help}</strong> Puede contactar con nosotros en el teléfono 877 643 360.</p>
           <p><strong>{content.email}:</strong> info@villaquet.com</p>
+          <p class="thanks-page__policy">{content.cancellation}</p>
         </div>
       </div>
     </section>

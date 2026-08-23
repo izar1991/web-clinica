@@ -1,5 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+
+const patientPortalUrl = 'https://portalpaciente.dricloud.net/Dricloud_centresanitarivillaquet_21026811';
 ---
 
 <Layout
@@ -9,11 +11,21 @@ import Layout from '../../layouts/Layout.astro';
   <main>
     <section class="section thanks-page">
       <div class="container thanks-page__content">
-        <span class="section__tag">Gràcies</span>
+        <div class="thanks-page__success-mark" aria-hidden="true">&#10024;</div>
+        <span class="section__tag">Visita completada</span>
         <h1 class="section__title">La teva sol·licitud de visita s'ha enviat</h1>
         <p class="section__desc">
-          Gràcies per confiar en Centre Sanitari Villaquet. Hem rebut la teva petició i el nostre equip la revisarà per confirmar la visita el més aviat possible.
+          Gràcies per confiar en Centre Sanitari Villaquet. Hem rebut la teva petició i el nostre equip la revisarà per confirmar la visita el més aviat possible. Cuidar la teva salut comença amb aquest pas.
         </p>
+
+        <div class="thanks-page__portal">
+          <span class="thanks-page__portal-icon" aria-hidden="true">&#128274;</span>
+          <div>
+            <h2>Gestiona la teva atenció des del portal d’usuari</h2>
+            <p>Accedeix-hi quan vulguis per consultar les teves visites, comunicacions per email, dades personals, informes i proves mèdiques disponibles.</p>
+            <a href={patientPortalUrl} class="btn btn--portal" target="_blank" rel="noopener">Accedir al portal d’usuari</a>
+          </div>
+        </div>
 
         <div class="thanks-page__actions">
           <a href="/ca/" class="btn btn--primary">Tornar a l'inici</a>
@@ -23,6 +35,7 @@ import Layout from '../../layouts/Layout.astro';
         <div class="thanks-page__info">
           <p><strong>Necessites ajuda urgent?</strong> Pots contactar amb nosaltres al telèfon 877 643 360.</p>
           <p><strong>Email:</strong> info@villaquet.com</p>
+          <p class="thanks-page__policy"><strong>Important:</strong> si necessites anul·lar o canviar la visita, avisa’ns amb almenys 48 hores d’antelació.</p>
         </div>
       </div>
     </section>
