@@ -7,6 +7,15 @@ const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
 const currentPath = Astro.url.pathname;
 const relativePath = currentPath.startsWith(base) ? currentPath.slice(base.length) : currentPath.replace(/^\//, '');
 const supportedLocales = ['es', 'ca', 'en-GB', 'de-DE', 'fr-FR', 'zh-CN', 'ar'] as const;
+const localeMeta = {
+  es: { hreflang: 'es', ogLocale: 'es_ES' },
+  ca: { hreflang: 'ca', ogLocale: 'ca_ES' },
+  'en-GB': { hreflang: 'en-GB', ogLocale: 'en_GB' },
+  'de-DE': { hreflang: 'de-DE', ogLocale: 'de_DE' },
+  'fr-FR': { hreflang: 'fr-FR', ogLocale: 'fr_FR' },
+  'zh-CN': { hreflang: 'zh-CN', ogLocale: 'zh_CN' },
+  ar: { hreflang: 'ar', ogLocale: 'ar_AR' },
+} as const;
 const localeSegment = relativePath.split('/')[0];
 const currentLocale = (supportedLocales.includes(localeSegment as (typeof supportedLocales)[number]) ? localeSegment : 'es') as (typeof supportedLocales)[number];
 const isRtl = currentLocale === 'ar';
@@ -28,12 +37,69 @@ const localeContent = getLocaleContent(currentLocale);
 const canonicalURL = new URL(currentPath, siteUrl).toString().replace(/\/$/, '');
 const esAlternateURL = new URL(esPath, siteUrl).toString().replace(/\/$/, '');
 const caAlternateURL = new URL(caPath, siteUrl).toString().replace(/\/$/, '');
+const enAlternateURL = new URL(enPath, siteUrl).toString().replace(/\/$/, '');
+const deAlternateURL = new URL(dePath, siteUrl).toString().replace(/\/$/, '');
+const frAlternateURL = new URL(frPath, siteUrl).toString().replace(/\/$/, '');
+const zhAlternateURL = new URL(zhPath, siteUrl).toString().replace(/\/$/, '');
+const arAlternateURL = new URL(arPath, siteUrl).toString().replace(/\/$/, '');
 const defaultTitle = currentLocale === 'ca' ? 'Centre Sanitari Villaquet — Centre mèdic a Calafell' : 'Centre Sanitari Villaquet — Centro médico en Calafell';
 const defaultDescription = currentLocale === 'ca' ? 'Centre mèdic a Calafell. Medicina general, ginecologia, dermatologia, psicologia, fisioteràpia, podologia i diagnòstic per la imatge.' : 'Centro médico en Calafell. Medicina general, ginecología, dermatología, psicología, fisioterapia, podología y diagnóstico por imagen.';
-const { title = defaultTitle, description = defaultDescription, image = '/images/about.jpg', keywords = 'centro médico Calafell, medicina general Calafell, ginecología Calafell, dermatología Calafell, fisioterapia Calafell, podología Calafell, psicología Calafell' } = Astro.props;
+const {
+  title = defaultTitle,
+  description = defaultDescription,
+  image = '/images/about.jpg',
+  keywords = 'centro médico Calafell, medicina general Calafell, ginecología Calafell, dermatología Calafell, fisioterapia Calafell, podología Calafell, psicología Calafell',
+  ogType = 'website',
+  noindex = false,
+  extraJsonLd = [],
+} = Astro.props;
 type LocalizedService = { slug: string; title: string; description: string };
 const localizedServices = localeContent.serviceList as LocalizedService[];
-const imageUrl = `${siteUrl}${base}${image.replace(/^\//, '')}`;
+const resolveAbsoluteUrl = (value: string) => {
+  if (/^https?:\/\//i.test(value)) return value;
+  return `${siteUrl}${base}${value.replace(/^\//, '')}`;
+};
+const imageUrl = resolveAbsoluteUrl(image);
+const robotsContent = noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+const ogLocale = localeMeta[currentLocale].ogLocale;
+const ogLocaleAlternates = supportedLocales
+  .filter((locale) => locale !== currentLocale)
+  .map((locale) => localeMeta[locale].ogLocale);
+
+const pathSegments = normalizedPath.replace(/\/$/, '').split('/').filter(Boolean);
+const segmentTitleMap: Record<string, string> = {
+  servicios: currentLocale === 'ca' ? 'Especialitats' : 'Servicios',
+  'reservar-cita': currentLocale === 'ca' ? 'Reservar visita' : 'Reservar cita',
+  Equipoyservicios: currentLocale === 'ca' ? 'Equip professional' : 'Equipo profesional',
+  ClubCSV: 'Club CSV',
+};
+
+const breadcrumbItems = [{ name: localeContent.home, url: esAlternateURL === canonicalURL ? canonicalURL : new URL(localeBase, siteUrl).toString().replace(/\/$/, '') }];
+
+if (pathSegments.length > 0) {
+  let composedPath = '';
+  pathSegments.forEach((segment) => {
+    composedPath += `${segment}/`;
+    const url = new URL(`${localeBase}${composedPath}`, siteUrl).toString().replace(/\/$/, '');
+    const serviceMatch = especialidades.find((item) => item.slug === segment);
+    breadcrumbItems.push({
+      name: segmentTitleMap[segment] || serviceMatch?.title || segment.replace(/-/g, ' '),
+      url,
+    });
+  });
+}
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: breadcrumbItems.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.name,
+    item: item.url,
+  })),
+};
+
 const searchIndex = [
   {
     label: localeContent.home,
@@ -81,7 +147,7 @@ const searchIndex = [
     keywords: ['especialidad', 'servicio medico', service.slug.replace(/-/g, ' ')],
   })),
 ];
-const jsonLd = {
+const medicalBusinessJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'MedicalBusiness',
   name: 'Centre Sanitari Villaquet',
@@ -101,6 +167,38 @@ const jsonLd = {
   medicalSpecialty: ['Family Medicine', 'Gynaecology', 'Dermatology', 'Psychology', 'Physiotherapy', 'Podiatry', 'Diagnostic imaging'],
   sameAs: ['https://maps.google.com/?q=Carrer+Mol%C3%AD+del+Blanquet+24+Calafell'],
 };
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Centre Sanitari Villaquet',
+  url: siteUrl,
+  logo: resolveAbsoluteUrl('/images/logo_solo.png'),
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      telephone: '+34 877 643 360',
+      contactType: 'customer service',
+      areaServed: 'ES',
+      availableLanguage: ['es', 'ca', 'en'],
+    },
+  ],
+};
+
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  url: siteUrl,
+  name: 'Centre Sanitari Villaquet',
+  inLanguage: currentLocale,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${siteUrl}${localeBase}?q={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
+};
+
+const jsonLdEntries = [organizationJsonLd, websiteJsonLd, medicalBusinessJsonLd, breadcrumbJsonLd, ...extraJsonLd];
 ---
 
 <!doctype html>
@@ -110,30 +208,47 @@ const jsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="robots" content={robotsContent} />
+    <meta name="googlebot" content={robotsContent} />
     <meta name="author" content="Centre Sanitari Villaquet" />
     <meta name="theme-color" content="#0d7377" />
-    <meta property="og:type" content="website" />
+    <meta name="language" content={currentLocale} />
+    <meta name="geo.region" content="ES-T" />
+    <meta name="geo.placename" content="Calafell" />
+    <meta name="geo.position" content="41.2008;1.5689" />
+    <meta name="ICBM" content="41.2008, 1.5689" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="format-detection" content="telephone=yes" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:alt" content={title} />
     <meta property="og:site_name" content="Centre Sanitari Villaquet" />
+    <meta property="og:locale" content={ogLocale} />
+    {ogLocaleAlternates.map((locale) => <meta property="og:locale:alternate" content={locale} />)}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageUrl} />
+    <meta name="twitter:image:alt" content={title} />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalURL} />
     <link rel="alternate" hreflang="es" href={esAlternateURL} />
     <link rel="alternate" hreflang="ca" href={caAlternateURL} />
+    <link rel="alternate" hreflang="en-GB" href={enAlternateURL} />
+    <link rel="alternate" hreflang="de-DE" href={deAlternateURL} />
+    <link rel="alternate" hreflang="fr-FR" href={frAlternateURL} />
+    <link rel="alternate" hreflang="zh-CN" href={zhAlternateURL} />
+    <link rel="alternate" hreflang="ar" href={arAlternateURL} />
     <link rel="alternate" hreflang="x-default" href={esAlternateURL} />
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href={`${base}css/styles.css`} />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)}></script>
+    {jsonLdEntries.map((entry) => <script type="application/ld+json" is:inline set:html={JSON.stringify(entry)}></script>)}
   </head>
   <body>
     <div class="contact-strip" aria-label={localeContent.contact}>
