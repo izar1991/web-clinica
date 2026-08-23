@@ -1,0 +1,18 @@
+export const mutuas = [
+  { name: 'Adeslas', file: 'adeslas-seguro-salud.png' },
+  { name: 'Asisa', file: 'asisa-seguro-salud.png' },
+  { name: 'DKV', file: 'dkv-seguro-salud.png' },
+  { name: 'AXA', file: 'axa-seguro-salud.webp' },
+  { name: 'FIATC', file: 'fiatc-seguro-salud.svg' },
+  { name: 'Assistència Sanitària', file: 'assistencia-sanitaria-seguro-salud.webp' },
+  { name: 'Occident', file: 'occident-seguro-salud.png' },
+  { name: 'IMQ', file: 'imq-seguro-salud.png' },
+  { name: 'Mutua de Granollers', file: 'mutua-granollers-mgc.webp' },
+  { name: 'Mutuacat', file: 'mutuacat-seguro-salud.webp' },
+  { name: 'Vivaz', file: 'vivaz-seguro-salud.webp' },
+  { name: 'Línea Directa', file: 'linea-directa-seguro-salud.png' },
+  { name: 'Alan', file: 'alan-seguro-salud.webp' },
+  { name: 'Globality', file: 'globality-seguro-salud.webp' },
+  { name: 'Afemefa', file: 'afemefa-seguro-salud.png' },
+  { name: 'Mutua Familiar', file: 'mutua-familiar-seguro-salud.png' },
+];

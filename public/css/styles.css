@@ -1043,26 +1043,46 @@ body.is-scrolled .search-panel__inner {
 }
 
 .mutuas__inner {
-  max-width: 720px;
+  max-width: 980px;
   margin-inline: auto;
 }
 
-.mutuas__coming {
+.mutuas__content {
   text-align: center;
-  background: linear-gradient(180deg, #f7fbfb 0%, #fff 100%);
+}
+
+.mutuas__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+
+.mutua-card {
+  min-width: 0;
+  min-height: 110px;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  background: #fff;
   border: 1px solid var(--color-border);
-  border-radius: 26px;
-  padding: 2rem;
-  box-shadow: 0 12px 30px rgba(13, 115, 119, 0.06);
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(13, 115, 119, 0.05);
 }
 
-.mutuas__icon {
-  margin: 0 auto 1rem;
+.mutua-card img {
+  display: block;
+  width: 100%;
+  height: 62px;
+  object-fit: contain;
 }
 
-.mutuas__coming h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.75rem;
+.mutuas__note {
+  margin: 0 0 1.25rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
 }
 
 .club {
@@ -3272,7 +3292,8 @@ body.is-scrolled .search-panel__inner {
   .specialties__grid,
   .specialties-page__grid,
   .team__grid,
-  .insurance__grid {
+  .insurance__grid,
+  .mutuas__grid {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -3354,7 +3375,8 @@ body.is-scrolled .search-panel__inner {
 @media (max-width: 480px) {
   .specialties__grid,
   .team__grid,
-  .insurance__grid {
+  .insurance__grid,
+  .mutuas__grid {
     grid-template-columns: 1fr;
   }
 

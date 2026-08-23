@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { especialidades, profesionales } from '../data/especialidades';
+import { mutuas } from '../data/mutuas';
 
 const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
 
@@ -237,12 +238,11 @@ const serviceContent: Record<string, { title: string; description: string }> = {
           <span class="section__tag">Mutuas colaboradoras</span>
           <h2 class="section__title">Cobertura de seguros</h2>
         </div>
-        <div class="mutuas__coming">
-          <div class="mutuas__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
-          </div>
-          <h3>Próximamente nuevas colaboraciones</h3>
-          <p>Permanece atento a las novedades. Estamos ampliando nuestra red de mutuas y seguros colaboradores.</p>
+        <div class="mutuas__content">
+          <ul class="mutuas__grid" aria-label="Mutuas y seguros colaboradores">
+            {mutuas.map((mutua) => <li class="mutua-card"><img src={`${base}images/mutuas/${mutua.file}`} alt={mutua.name} loading="lazy" /></li>)}
+          </ul>
+          <p class="mutuas__note">Consulta la cobertura de tu seguro antes de reservar.</p>
           <a href={`${base}reservar-cita`} class="btn btn--outline">Consultar cobertura</a>
         </div>
       </div>

@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { especialidades, profesionales } from '../../data/especialidades';
 import { especialitatsCa, professionalsCa } from '../../data/catala';
+import { mutuas } from '../../data/mutuas';
 
 const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
 const localeBase = `${base}ca/`;
@@ -241,12 +242,11 @@ const serviceContent: Record<string, { title: string; description: string }> = {
           <span class="section__tag">Mútues col·laboradores</span>
           <h2 class="section__title">Cobertura d’assegurances</h2>
         </div>
-        <div class="mutuas__coming">
-          <div class="mutuas__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
-          </div>
-          <h3>Properament, noves col·laboracions</h3>
-          <p>Estigues atent a les novetats. Estem ampliant la nostra xarxa de mútues i assegurances col·laboradores.</p>
+        <div class="mutuas__content">
+          <ul class="mutuas__grid" aria-label="Mútues i assegurances col·laboradores">
+            {mutuas.map((mutua) => <li class="mutua-card"><img src={`${base}images/mutuas/${mutua.file}`} alt={mutua.name} loading="lazy" /></li>)}
+          </ul>
+          <p class="mutuas__note">Consulta la cobertura de la teva assegurança abans de reservar.</p>
           <a href={`${localeBase}reservar-cita`} class="btn btn--outline">Consultar la cobertura</a>
         </div>
       </div>

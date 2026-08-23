@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { contenidoEspecialidades } from '../data/especialidades';
 import { getLocaleContent, getServiceContent } from '../i18n/localized';
+import { mutuas } from '../data/mutuas';
 
 const { locale, page, slug } = Astro.props;
 const content = getLocaleContent(locale);
@@ -256,7 +257,7 @@ const isUniqueValueInRow = (row: ClubDifferenceRow, value: string) => {
           <div class="container"><div class="section__header"><span class="section__tag">{content.technology}</span><h2 class="section__title">{content.techTitle}</h2><p class="section__desc">{content.techText}</p></div><div class="tech__grid">{techItems.map(([label, text]) => <article class="tech-card"><div class="tech-card__label">{label}</div><h3>{label === techItems[0][0] ? 'CHISON QBit 7' : 'Universal Vertix'}</h3><p>{text}</p></article>)}</div></div>
         </section>
         <section class="mutuas section" id="mutuas">
-          <div class="container mutuas__inner"><div class="section__header"><span class="section__tag">{content.insurers}</span><h2 class="section__title">{content.insurers}</h2></div><div class="mutuas__coming"><h3>{content.insurerNotice[0]}</h3><p>{content.insurerNotice[1]}</p><a href={`${localeBase}reservar-cita`} class="btn btn--outline">{content.contact}</a></div></div>
+          <div class="container mutuas__inner"><div class="section__header"><span class="section__tag">{content.insurers}</span><h2 class="section__title">{content.insurers}</h2></div><div class="mutuas__content"><ul class="mutuas__grid" aria-label={content.insurers}>{mutuas.map((mutua) => <li class="mutua-card"><img src={`${base}images/mutuas/${mutua.file}`} alt={mutua.name} loading="lazy" /></li>)}</ul><p class="mutuas__note">{content.insurerNotice[1]}</p><a href={`${localeBase}reservar-cita`} class="btn btn--outline">{content.contact}</a></div></div>
         </section>
         <section class="club section section--dark" id="club">
           <div class="container club__wrapper"><div class="club__header"><span class="section__tag section__tag--light">{content.club}</span><h2 class="section__title section__title--light">{content.clubTitle}</h2><p>{content.clubText}</p></div><div class="club__plans">{planItems.map(([name, audience, price], index) => <article class={`club__plan ${index === 0 ? 'club__plan--featured' : ''}`}><div class="club__plan-head"><div class="club__plan-icon" aria-hidden="true">{index === 0 ? '👤' : index === 1 ? '⚡' : '🌿'}</div><span class="club__plan-badge">{name}</span></div><h3>{content.club} {name}</h3><p class="club__plan-audience">{audience}</p><div class="club__plan-price"><span>{price}</span></div><ul class="club__plan-list">{clubCardBenefits[index].map((benefit) => <li>{benefit}</li>)}</ul><a href={`${localeBase}ClubCSV#${index === 0 ? 'general' : index === 1 ? 'sport' : 'senior'}`} class="btn btn--light">{content.viewDetails}</a></article>)}</div><div class="club__actions"><a href={`${localeBase}ClubCSV`} class="btn btn--outline btn--outline-light">{content.viewAll}</a></div></div>
