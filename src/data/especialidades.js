@@ -6,6 +6,7 @@ export const especialidades = [
   { slug: 'medicina-general', title: 'Medicina General' },
   { slug: 'ginecologia-obstetricia', title: 'Ginecología y Obstetricia' },
   { slug: 'dermatologia', title: 'Dermatología' },
+  { slug: 'aparato-digestivo', title: 'Aparato Digestivo' },
   { slug: 'psicologia', title: 'Psicología' },
   { slug: 'fisioterapia', title: 'Fisioterapia' },
   { slug: 'podologia', title: 'Podología' },
@@ -74,6 +75,14 @@ const profesionalesData = [
     especialidad: 'dermatologia',
     image: `${base}images/Dr.Alvaro_Gomez_Tomas.png`,
     bio: 'Formación en dermatología integral y pediátrica con especialidad en diagnóstico de patologías cutáneas, prevención y tratamiento estético y terapéutico.',
+  },
+  {
+    id: 'jordi-asensio-porti',
+    nombre: 'Dr. Jordi Asensio Porti',
+    role: 'Gastroenterología · Aparato Digestivo',
+    especialidad: 'aparato-digestivo',
+    image: `${base}images/Dr-Jordi-Asensio-Porti.png`,
+    bio: 'Graduado en Medicina por la Universidad Autónoma de Barcelona y especializado en Aparato Digestivo (Gastroenterología y Hepatología) vía MIR en el prestigioso Hospital de la Santa Creu i Sant Pau de Barcelona, el Dr. Jordi Asensio Porti ofrece una atención médica de primer nivel fundamentada en una rigurosa formación y una amplia experiencia clínica. Cuenta con la titulación en ecografía digestiva avanzada reconocida por la Asociación Española de Ecografía Digestiva, habiéndose formado a nivel práctico en el Hospital Universitario 12 de Octubre de Madrid, donde también se especializó en elastografía hepática / fibroscan. Asimismo, complementa su alta cualificación con un máster universitario en Patología Digestiva por la Universitat Oberta de Catalunya. En la actualidad, el Dr. Asensio consolida su actividad de consultorio privado y endoscopia digestiva en el Centre Sanitari Villaquet de Calafell, acercando una asistencia médica de máxima especialización, cercanía y confianza a los pacientes de todo el Baix Penedès. Esta actividad privada la compagina con su labor en un hospital universitario del área de Barcelona, donde forma parte de la unidad de enfermedad inflamatoria intestinal (colitis ulcerosa y enfermedad de Crohn), asiste en la planta de hospitalización de agudos de Patología Digestiva y ejerce en la Unidad de Endoscopia Digestiva, además de participar activamente en la formación de residentes y futuros digestólogos. Su sólida trayectoria hospitalaria, sumada a su dedicación personalizada en Calafell, le permite ofrecer a sus pacientes un diagnóstico preciso y un tratamiento avanzado para asegurar su bienestar y salud digestiva.',
   },
   {
     id: 'maria-cecilia-cristaldi',
@@ -181,6 +190,30 @@ export const contenidoEspecialidades = {
       'Tratamientos personalizados según la necesidad y evolución de cada paciente',
     ],
     cta: 'Reservar dermatología',
+  },
+  'aparato-digestivo': {
+    title: 'Aparato Digestivo en Calafell',
+    subtitle: 'Especialidad en gastroenterología, endoscopia avanzada y ecografía digestiva.',
+    intro: 'La especialidad de aparato digestivo del Dr. Jordi Asensio Porti integra la gastroenterología clínica, la hepatología y la endoscopia digestiva para ofrecer una atención precisa, preventiva y altamente especializada. En Centre Sanitari Villaquet se combinan la ecografía digestiva avanzada, la elastografía hepática y el seguimiento de enfermedades inflamatorias intestinales para diagnosticar a tiempo y tratar con máxima seguridad y cercanía.',
+    image: '/images/aparato-digestivo/consulta-gastroenterologia.webp',
+    gallery: [
+      '/images/aparato-digestivo/endoscopia-digestiva.webp',
+      '/images/aparato-digestivo/fibroscan-elastografia-hepatica.webp',
+      '/images/aparato-digestivo/ecografia-abdominal.webp',
+    ],
+    highlights: [
+      { title: 'Gastroenterología clínica y hepatología', text: 'Diagnóstico y seguimiento de enfermedades del tracto digestivo y del hígado con un enfoque preventivo, preciso y personalizado.' },
+      { title: 'Endoscopia digestiva avanzada', text: 'Exploraciones diagnósticas y terapéuticas con máxima seguridad, precisión y enfoque individualizado.' },
+      { title: 'Ecografía digestiva y fibroscan', text: 'Valoración no invasiva del hígado, tracto digestivo y fibrosis hepática para detectar alteraciones en fases tempranas.' },
+    ],
+    bullets: [
+      'Consulta de gastroenterología, hepatología y aparato digestivo',
+      'Endoscopia digestiva avanzada y detección precoz de patologías complejas',
+      'Ecografía digestiva avanzada y elastografía hepática / fibroscan',
+      'Acompañamiento integral en enfermedad inflamatoria intestinal, hepatopatías y patología digestiva compleja',
+      'Atención cercana en Calafell y Baix Penedès con enfoque personalizado',
+    ],
+    cta: 'Reservar aparato digestivo',
   },
   psicologia: {
     title: 'Psicología en Calafell',

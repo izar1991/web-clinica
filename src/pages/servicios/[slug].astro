@@ -39,11 +39,14 @@ const profesionalesEspecialidad = profesionales.filter((profesional) => profesio
           </div>
 
           <div class="specialty-page__highlights">
-            {data.highlights.map((highlight) => (
-              <div class="specialty-page__highlight">
+            {data.highlights.map((highlight, index) => (
+              <article class="specialty-page__highlight">
+                {data.gallery?.[index] && <img src={data.gallery[index]} alt={`${highlight.title} en aparato digestivo`} />}
+                <div class="specialty-page__highlight-body">
                 <h3>{highlight.title}</h3>
                 <p>{highlight.text}</p>
-              </div>
+                </div>
+              </article>
             ))}
           </div>
 

@@ -42,11 +42,14 @@ const professionals = professionalsCa as Record<string, { role: string; bio: str
           </div>
 
           <div class="specialty-page__highlights">
-            {data.highlights.map(([title, text]) => (
-              <div class="specialty-page__highlight">
+            {data.highlights.map(([title, text], index) => (
+              <article class="specialty-page__highlight">
+                {data.gallery?.[index] && <img src={data.gallery[index]} alt={`${title} a l’aparell digestiu`} />}
+                <div class="specialty-page__highlight-body">
                 <h3>{title}</h3>
                 <p>{text}</p>
-              </div>
+                </div>
+              </article>
             ))}
           </div>
 
