@@ -969,6 +969,29 @@ body.is-scrolled .search-panel__inner {
   height: 26px;
 }
 
+.service-card__icon svg,
+.specialty-page-card__icon svg {
+  display: none;
+}
+
+.service-card__icon [class^="medical-icon-"],
+.specialty-page-card__icon [class^="medical-icon-"],
+.why-card__icon [class^="medical-icon-"] {
+  font-size: 30px;
+}
+
+.why-card__icon .medical-icon-i-health-education,
+.why-card__icon .medical-icon-i-cath-lab {
+  font-size: 38px;
+}
+
+.service-card__icon img,
+.specialty-page-card__icon img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
 .why-card h3,
 .service-card h3,
 .tech-card h3 {
