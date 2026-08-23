@@ -48,7 +48,7 @@ const {
   title = defaultTitle,
   description = defaultDescription,
   image = '/images/about.jpg',
-  keywords = 'centro médico Calafell, medicina general Calafell, ginecología Calafell, dermatología Calafell, fisioterapia Calafell, podología Calafell, psicología Calafell',
+  keywords = (localeContent.serviceList as { title: string }[]).map((service) => `${service.title} Calafell`).join(', '),
   ogType = 'website',
   noindex = false,
   extraJsonLd = [],
@@ -81,7 +81,7 @@ if (pathSegments.length > 0) {
   pathSegments.forEach((segment) => {
     composedPath += `${segment}/`;
     const url = new URL(`${localeBase}${composedPath}`, siteUrl).toString().replace(/\/$/, '');
-    const serviceMatch = especialidades.find((item) => item.slug === segment);
+    const serviceMatch = localizedServices.find((item) => item.slug === segment);
     breadcrumbItems.push({
       name: segmentTitleMap[segment] || serviceMatch?.title || segment.replace(/-/g, ' '),
       url,
@@ -150,6 +150,7 @@ const searchIndex = [
 const medicalBusinessJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'MedicalBusiness',
+  '@id': `${siteUrl}/#medical-business`,
   name: 'Centre Sanitari Villaquet',
   image: imageUrl,
   url: siteUrl,
@@ -163,6 +164,7 @@ const medicalBusinessJsonLd = {
     addressRegion: 'Tarragona',
     addressCountry: 'ES',
   },
+  areaServed: ['Calafell', 'Cunit', 'Cubelles', 'El Vendrell', 'Segur de Calafell', 'Sant Salvador', 'Comarruga', 'Coma-ruga'],
   openingHours: 'Mo,Tu,We,Th,Fr 08:00-13:00,15:00-20:00',
   medicalSpecialty: ['Family Medicine', 'Gynaecology', 'Dermatology', 'Psychology', 'Physiotherapy', 'Podiatry', 'Diagnostic imaging'],
   sameAs: ['https://maps.google.com/?q=Carrer+Mol%C3%AD+del+Blanquet+24+Calafell'],
@@ -204,6 +206,20 @@ const jsonLdEntries = [organizationJsonLd, websiteJsonLd, medicalBusinessJsonLd,
 <!doctype html>
   <html lang={currentLocale} dir={isRtl ? 'rtl' : 'ltr'}>
   <head>
+    <!-- Google Tag Manager -->
+    <script is:inline>
+      {(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        const firstScript = d.getElementsByTagName(s)[0];
+        const gtmScript = d.createElement(s);
+        const dataLayerQuery = l !== 'dataLayer' ? `&l=${l}` : '';
+        gtmScript.async = true;
+        gtmScript.src = `https://www.googletagmanager.com/gtm.js?id=${i}${dataLayerQuery}`;
+        firstScript.parentNode?.insertBefore(gtmScript, firstScript);
+      })(window, document, 'script', 'dataLayer', 'GTM-5FJ6ZZG2')}
+    </script>
+    <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
@@ -252,6 +268,9 @@ const jsonLdEntries = [organizationJsonLd, websiteJsonLd, medicalBusinessJsonLd,
     {jsonLdEntries.map((entry) => <script type="application/ld+json" is:inline set:html={JSON.stringify(entry)}></script>)}
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FJ6ZZG2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div class="contact-strip" aria-label={localeContent.contact}>
       <div class="container contact-strip__inner">
         <a href="https://maps.google.com/?q=Carrer+Mol%C3%AD+del+Blanquet+24+Calafell" target="_blank" rel="noopener">

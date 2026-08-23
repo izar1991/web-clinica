@@ -1,11 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { contenidoEspecialidades } from '../data/especialidades';
-import { getLocaleContent, getServiceContent } from '../i18n/localized';
+import { getLocaleContent, getLocaleSeo, getServiceContent } from '../i18n/localized';
 import { mutuas } from '../data/mutuas';
 
 const { locale, page, slug } = Astro.props;
 const content = getLocaleContent(locale);
+const seo = getLocaleSeo(locale);
 type ServiceItem = { slug: string; title: string; description: string };
 type WhyItem = [string, string];
 type TechItem = [string, string];
@@ -29,7 +30,20 @@ const serviceBullets = (service?.bullets || []) as string[];
 const serviceProfessionals = slug ? localizedProfessionals.filter((professional) => professional.especialidad === slug) : [];
 const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
 const localeBase = `${base}${locale}/`;
-const pageTitle = service ? `${service.title} | Centre Sanitari Villaquet` : `${content[page === 'home' ? 'home' : page]} | Centre Sanitari Villaquet`;
+const pageTitle = service ? `${service.title} ${seo.serviceSuffix} | Centre Sanitari Villaquet` : page === 'home' ? seo.homeTitle : `${content[page]} | Centre Sanitari Villaquet`;
+const pageDescription = service ? `${service.intro} ${seo.serviceSuffix}. Centre Sanitari Villaquet.` : page === 'home' ? seo.homeDescription : `${content[page]} | Centre Sanitari Villaquet`;
+const serviceJsonLd = service ? {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalService',
+  name: `${service.title} ${seo.serviceSuffix}`,
+  description: service.intro,
+  url: new URL(`${localeBase}servicios/${slug}`, 'https://www.villaquet.com').toString(),
+  areaServed: {
+    '@type': 'City',
+    name: 'Calafell',
+  },
+  provider: { '@id': 'https://www.villaquet.com/#medical-business' },
+} : null;
 
 const clubTablesByLocale = {
   es: {
@@ -208,7 +222,7 @@ const isUniqueValueInRow = (row: ClubDifferenceRow, value: string) => {
 };
 ---
 
-<Layout title={pageTitle} description={service?.intro || `${content.services} | Centre Sanitari Villaquet`}>
+<Layout title={pageTitle} description={pageDescription} extraJsonLd={serviceJsonLd ? [serviceJsonLd] : []}>
   <main>
     {page === 'home' && (
       <>

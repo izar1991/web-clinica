@@ -85,6 +85,44 @@ const ui = {
   ar: { localeName: 'العربية (الفصحى)', home: 'الرئيسية', services: 'الخدمات', team: 'الفريق الطبي', book: 'حجز موعد', viewAll: 'عرض جميع التخصصات', viewDetails: 'عرض التفاصيل', appointment: 'اطلب استشارة معنا', appointmentText: 'املأ النموذج وسنتواصل معك لتأكيد موعدك.', teamTitle: 'أخصائيون يرافقونك في كل مرحلة من مراحل صحتك', specialty: 'التخصص', professionalsOf: 'متخصصو', brandDescription: 'Centre Sanitari Villaquet — مركز طبي للتميز والرعاية القريبة في كالافيل.', club: 'نادي CSV', clubTitle: 'طريقة أسهل للعناية بصحتك', contact: 'اتصل بنا', call: 'اتصل بالمركز', next: 'شراكات جديدة قريباً' },
 };
 
+const seoByLocale = {
+  es: {
+    homeTitle: 'Centro médico en Calafell | Centre Sanitari Villaquet',
+    homeDescription: 'Centro médico en Calafell con medicina general, ginecología, dermatología, psicología, fisioterapia, podología y diagnóstico por imagen.',
+    serviceSuffix: 'en Calafell',
+  },
+  ca: {
+    homeTitle: 'Centre mèdic a Calafell | Centre Sanitari Villaquet',
+    homeDescription: 'Centre mèdic a Calafell amb medicina general, ginecologia, dermatologia, psicologia, fisioteràpia, podologia i diagnòstic per la imatge.',
+    serviceSuffix: 'a Calafell',
+  },
+  'en-GB': {
+    homeTitle: 'Medical centre in Calafell | Centre Sanitari Villaquet',
+    homeDescription: 'Medical centre in Calafell offering general medicine, gynaecology, dermatology, psychology, physiotherapy, podiatry and diagnostic imaging.',
+    serviceSuffix: 'in Calafell',
+  },
+  'de-DE': {
+    homeTitle: 'Medizinisches Zentrum in Calafell | Centre Sanitari Villaquet',
+    homeDescription: 'Medizinisches Zentrum in Calafell für Allgemeinmedizin, Gynäkologie, Dermatologie, Psychologie, Physiotherapie, Podologie und bildgebende Diagnostik.',
+    serviceSuffix: 'in Calafell',
+  },
+  'fr-FR': {
+    homeTitle: 'Centre médical à Calafell | Centre Sanitari Villaquet',
+    homeDescription: 'Centre médical à Calafell proposant médecine générale, gynécologie, dermatologie, psychologie, kinésithérapie, podologie et imagerie médicale.',
+    serviceSuffix: 'à Calafell',
+  },
+  'zh-CN': {
+    homeTitle: '加拉费尔医疗中心 | Centre Sanitari Villaquet',
+    homeDescription: '位于加拉费尔的医疗中心，提供全科医疗、妇科、皮肤科、心理咨询、物理治疗、足病科和影像诊断服务。',
+    serviceSuffix: '在加拉费尔',
+  },
+  ar: {
+    homeTitle: 'مركز طبي في كالافيل | Centre Sanitari Villaquet',
+    homeDescription: 'مركز طبي في كالافيل يقدم الطب العام وأمراض النساء والأمراض الجلدية وعلم النفس والعلاج الطبيعي وطب القدم والتصوير التشخيصي.',
+    serviceSuffix: 'في كالافيل',
+  },
+};
+
 const serviceSlugs = Object.keys(services);
 
 const professionalDetails = {
@@ -323,6 +361,10 @@ export function getLocaleContent(locale) {
     })),
     serviceList: serviceSlugs.map((slug) => ({ slug, title: services[slug][locale]?.[0] || services[slug].es[0], description: services[slug][locale]?.[1] || services[slug].es[1] })),
   };
+}
+
+export function getLocaleSeo(locale) {
+  return seoByLocale[locale] || seoByLocale['en-GB'];
 }
 
 export function getServiceContent(locale, slug) {
