@@ -9,17 +9,9 @@ const siteUrl = 'https://www.villaquet.com';
     <meta name="viewport" content="width=device-width" />
     <title>Redirigiendo | Centre Sanitari Villaquet</title>
     <meta http-equiv="refresh" content={`5;url=${siteUrl}/gracias`} />
-    <style>
-      :root { font-family: Georgia, 'Times New Roman', serif; color: #173b40; background: #f5f1e8; }
-      body { display: grid; min-height: 100vh; place-items: center; margin: 0; }
-      main { max-width: 32rem; padding: 2rem; text-align: center; }
-      p { color: #52686b; line-height: 1.6; }
-    </style>
   </head>
   <body>
-    <main>
-      <p>Un momento, estamos preparando la confirmación de tu cita...</p>
-    </main>
+    <p>Un momento, estamos preparando la confirmación de tu cita...</p>
     <script is:inline define:vars={{ siteUrl }}>
       (function () {
         var supportedLocales = ['es', 'ca', 'en-GB', 'de-DE', 'fr-FR', 'zh-CN', 'ar'];
