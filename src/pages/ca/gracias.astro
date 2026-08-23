@@ -11,31 +11,51 @@ const patientPortalUrl = 'https://portalpaciente.dricloud.net/Dricloud_centresan
   <main>
     <section class="section thanks-page">
       <div class="container thanks-page__content">
-        <div class="thanks-page__success-mark" aria-hidden="true">&#10024;</div>
+        <a class="thanks-page__brand nav__logo nav__logo--brand" href="/ca/" aria-label="Inici">
+          <img src="/images/logo_solo.png" alt="Centre Sanitari Villaquet" width="54" height="54" class="nav__logo-image nav__logo-image--solo" />
+          <span class="nav__brand-text" aria-label="Centre Sanitari Villaquet">
+            <span class="nav__brand-text--top">Centre Sanitari</span>
+            <span class="nav__brand-text--bottom">Villaquet</span>
+          </span>
+        </a>
         <span class="section__tag">Visita completada</span>
-        <h1 class="section__title">La teva sol·licitud de visita s'ha enviat</h1>
+        <p class="thanks-page__wellness">Cuidar la teva salut comença amb aquest pas.</p>
         <p class="section__desc">
-          Gràcies per confiar en Centre Sanitari Villaquet. Hem rebut la teva petició i el nostre equip la revisarà per confirmar la visita el més aviat possible. Cuidar la teva salut comença amb aquest pas.
+          Gràcies per confiar en Centre Sanitari Villaquet. Rebràs un missatge amb els detalls de la visita al teu correu.
         </p>
 
-        <div class="thanks-page__portal">
-          <span class="thanks-page__portal-icon" aria-hidden="true">&#128274;</span>
-          <div>
-            <h2>Gestiona la teva atenció des del portal d’usuari</h2>
-            <p>Accedeix-hi quan vulguis per consultar les teves visites, comunicacions per email, dades personals, informes i proves mèdiques disponibles.</p>
-            <a href={patientPortalUrl} class="btn btn--portal" target="_blank" rel="noopener">Accedir al portal d’usuari</a>
+        <div class="thanks-page__lower">
+          <div class="thanks-page__main">
+            <div class="thanks-page__location">
+              <div>
+                <span class="thanks-page__location-label">Visita’ns</span>
+                <h2>Centre Sanitari Villaquet</h2>
+                <address>Carrer Molí del Blanquet, 24, baixos<br />El Vilarenc, 43820 Calafell, Tarragona</address>
+              </div>
+              <iframe title="Ubicació Centre Sanitari Villaquet" src="https://maps.google.com/maps?q=Carrer+Mol%C3%AD+del+Blanquet+24+Calafell&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            </div>
+
+            <div class="thanks-page__actions">
+              <a href="/ca/" class="btn btn--primary">Tornar a l’inici</a>
+              <a href="/ca/reservar-cita" class="btn btn--outline">Reservar una altra visita</a>
+            </div>
+
+            <div class="thanks-page__info">
+              <p><strong>Telèfon:</strong> 877643360</p>
+              <p><strong>Email:</strong> info@villaquet.com</p>
+              <p class="thanks-page__policy"><strong>Important:</strong> si necessites anul·lar o canviar la visita, avisa’ns amb almenys 48 hores d’antelació.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="thanks-page__actions">
-          <a href="/ca/" class="btn btn--primary">Tornar a l'inici</a>
-          <a href="/ca/reservar-cita" class="btn btn--outline">Reservar una altra visita</a>
-        </div>
-
-        <div class="thanks-page__info">
-          <p><strong>Necessites ajuda urgent?</strong> Pots contactar amb nosaltres al telèfon 877 643 360.</p>
-          <p><strong>Email:</strong> info@villaquet.com</p>
-          <p class="thanks-page__policy"><strong>Important:</strong> si necessites anul·lar o canviar la visita, avisa’ns amb almenys 48 hores d’antelació.</p>
+          <div class="thanks-page__portal thanks-page__portal--distinct">
+            <span class="thanks-page__portal-icon" aria-hidden="true">&#128274;</span>
+            <div>
+              <span class="thanks-page__portal-label">El teu espai de salut</span>
+              <h2>Gestiona la teva atenció des del portal d’usuari</h2>
+              <p>Accedeix-hi quan vulguis per consultar les teves visites, comunicacions per email, dades personals, informes i proves mèdiques disponibles.</p>
+              <a href={patientPortalUrl} class="btn btn--portal" target="_blank" rel="noopener">Accedir al portal d’usuari</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
