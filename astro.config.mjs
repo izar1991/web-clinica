@@ -1,10 +1,13 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
+import sitemap from '@astrojs/sitemap';
+
 export default defineConfig({
-  site: 'https://izar1991.github.io',
-  base: '/web-clinica',
+  site: 'https://www.villaquet.com',
+  base: '/',
   trailingSlash: 'ignore',
+
   i18n: {
     defaultLocale: 'es',
     locales: ['es', 'ca', 'en-GB', 'de-DE', 'fr-FR', 'zh-CN', 'ar'],
@@ -12,4 +15,6 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
+
+  integrations: [sitemap()],
 });
