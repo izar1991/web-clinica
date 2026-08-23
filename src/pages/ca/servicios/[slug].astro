@@ -15,8 +15,19 @@ const { data: rawData } = Astro.props;
 const data = rawData as typeof rawData & { gallery?: string[] };
 const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
 const localeBase = `${base}ca/`;
+const reservationIdsBySlug: Record<string, string> = {
+  'medicina-general': '5',
+  'ginecologia-obstetricia': '4',
+  'aparato-digestivo': '18',
+  'fisioterapia': '7',
+  'podologia': '8',
+  'dermatologia': '2',
+  'psicologia': '9',
+  'enfermeria': '10',
+};
 const profesionalesEspecialidad = profesionales.filter((profesional) => profesional.especialidad === slug);
 const professionals = professionalsCa as Record<string, { role: string; bio: string }>;
+const reservationLink = reservationIdsBySlug[slug || ''] ? `${localeBase}reservar-cita?esp_id=${reservationIdsBySlug[slug || '']}` : `${localeBase}reservar-cita`;
 ---
 
 <Layout
@@ -66,7 +77,7 @@ const professionals = professionalsCa as Record<string, { role: string; bio: str
           <h3>Necessites una valoració?</h3>
           <p>Contacte directe amb el nostre centre per resoldre dubtes i programar la primera visita.</p>
           <div class="specialty-page__contact">
-            <a href={`${localeBase}reservar-cita`} class="btn btn--primary btn--full">{data.cta}</a>
+            <a href={reservationLink} class="btn btn--primary btn--full">{data.cta}</a>
             <a href="tel:877643360">877 643 360</a>
             <a href="mailto:info@villaquet.com">info@villaquet.com</a>
           </div>

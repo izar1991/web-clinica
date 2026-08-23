@@ -30,6 +30,16 @@ const serviceBullets = (service?.bullets || []) as string[];
 const serviceProfessionals = slug ? localizedProfessionals.filter((professional) => professional.especialidad === slug) : [];
 const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
 const localeBase = `${base}${locale}/`;
+const serviceReservationIds: Record<string, string> = {
+  'medicina-general': '5',
+  'ginecologia-obstetricia': '4',
+  'aparato-digestivo': '18',
+  'fisioterapia': '7',
+  'podologia': '8',
+  'dermatologia': '2',
+  'psicologia': '9',
+  'enfermeria': '10',
+};
 const pageTitle = service ? `${service.title} ${seo.serviceSuffix} | Centre Sanitari Villaquet` : page === 'home' ? seo.homeTitle : `${content[page]} | Centre Sanitari Villaquet`;
 const pageDescription = service ? `${service.intro} ${seo.serviceSuffix}. Centre Sanitari Villaquet.` : page === 'home' ? seo.homeDescription : `${content[page]} | Centre Sanitari Villaquet`;
 const serviceJsonLd = service ? {
@@ -311,14 +321,34 @@ const isUniqueValueInRow = (row: ClubDifferenceRow, value: string) => {
     {page === 'appointment' && (
       <>
         <section class="reservation-page__hero"><div class="container reservation-page__intro"><span class="section__tag">{content.book}</span><h1 class="section__title">{content.appointment}</h1><p class="section__desc">{content.appointmentText}</p></div></section>
-        <section class="container reservation-page__grid"><div class="reservation-widget"><div class="reservation-widget__header"><span class="section__tag">{content.book}</span><h2>{content.appointment}</h2></div><div class="reservation-widget__wrapper"><iframe title={`${content.book} Centre Sanitari Villaquet`} src="https://citaonline.dricloud.net/?URL=dricloud_centresanitarivillaquet_21026811" width="100%" height="600" loading="lazy"></iframe></div></div><div class="reservation-page__help"><h3>{content.contact}</h3><p>{content.appointmentText}</p><a href="tel:877643360" class="btn btn--primary">877 643 360</a></div></section>
+        <section class="container reservation-page__grid"><div class="reservation-widget"><div class="reservation-widget__header"><span class="section__tag">{content.book}</span><h2>{content.appointment}</h2></div><div class="reservation-widget__wrapper"><iframe id="ifrModuloCitaonlineVisualizacion" title={`${content.book} Centre Sanitari Villaquet`} src="https://citaonline.dricloud.net/?URL=dricloud_centresanitarivillaquet_21026811" data-base-src="https://citaonline.dricloud.net/?URL=dricloud_centresanitarivillaquet_21026811" width="100%" height="600" loading="lazy"></iframe></div></div><div class="reservation-page__help"><h3>{content.contact}</h3><p>{content.appointmentText}</p><a href="tel:877643360" class="btn btn--primary">877 643 360</a></div></section>
+        <script is:inline>
+          (function () {
+            const iframe = document.getElementById('ifrModuloCitaonlineVisualizacion');
+            if (!iframe) return;
+
+            const baseSrc = iframe.dataset.baseSrc || iframe.src;
+            const espId = new URLSearchParams(window.location.search).get('esp_id');
+            iframe.src = espId ? `${baseSrc}&ESP_ID=${encodeURIComponent(espId)}` : baseSrc;
+          })();
+
+          window.addEventListener('message', function (event) {
+            if (event.origin !== 'https://citaonline.dricloud.net') return;
+
+            const iframe = document.getElementById('ifrModuloCitaonlineVisualizacion');
+            if (!iframe) return;
+
+            const heightIframe = Number(event.data) || 300;
+            iframe.height = String(heightIframe);
+          });
+        </script>
       </>
     )}
 
     {page === 'service' && service && (
       <>
         <section class="specialty-page__hero"><div class="container"><span class="section__tag">{content.services}</span><h1 class="section__title">{service.title}</h1><p class="section__subtitle">{service.subtitle}</p></div></section>
-        <section class="section"><div class="container specialty-page__grid"><div class="specialty-page__content"><p>{service.intro}</p><div class="specialty-page__media"><img src={serviceData?.image} alt={service.title} /></div><div class="specialty-page__highlights">{serviceHighlights.map((highlight, index) => <article class="specialty-page__highlight">{serviceGallery[index] && <img src={serviceGallery[index]} alt={highlight.title} />}<div class="specialty-page__highlight-body"><h3>{highlight.title}</h3><p>{highlight.text}</p></div></article>)}</div><ul class="specialty-page__list">{serviceBullets.map((bullet) => <li>{bullet}</li>)}</ul><div class="specialty-page__actions"><a href={`${localeBase}servicios`} class="btn btn--outline">{content.viewAll}</a></div></div><aside class="specialty-page__card"><h3>{content.appointment}</h3><p>{content.appointmentText}</p><div class="specialty-page__contact"><a href={`${localeBase}reservar-cita`} class="btn btn--primary btn--full">{content.book}</a><a href="tel:877643360">877 643 360</a><a href="mailto:info@villaquet.com">info@villaquet.com</a></div><div class="specialty-page__aside-image"><img src={serviceData?.image} alt={service.title} /></div></aside></div></section>
+        <section class="section"><div class="container specialty-page__grid"><div class="specialty-page__content"><p>{service.intro}</p><div class="specialty-page__media"><img src={serviceData?.image} alt={service.title} /></div><div class="specialty-page__highlights">{serviceHighlights.map((highlight, index) => <article class="specialty-page__highlight">{serviceGallery[index] && <img src={serviceGallery[index]} alt={highlight.title} />}<div class="specialty-page__highlight-body"><h3>{highlight.title}</h3><p>{highlight.text}</p></div></article>)}</div><ul class="specialty-page__list">{serviceBullets.map((bullet) => <li>{bullet}</li>)}</ul><div class="specialty-page__actions"><a href={`${localeBase}servicios`} class="btn btn--outline">{content.viewAll}</a></div></div><aside class="specialty-page__card"><h3>{content.appointment}</h3><p>{content.appointmentText}</p><div class="specialty-page__contact"><a href={service && serviceReservationIds[slug || ''] ? `${localeBase}reservar-cita?esp_id=${serviceReservationIds[slug || '']}` : `${localeBase}reservar-cita`} class="btn btn--primary btn--full">{content.book}</a><a href="tel:877643360">877 643 360</a><a href="mailto:info@villaquet.com">info@villaquet.com</a></div><div class="specialty-page__aside-image"><img src={serviceData?.image} alt={service.title} /></div></aside></div></section>
         <section class="section section--alt"><div class="container"><div class="section__header"><span class="section__tag">{content.team}</span><h2 class="section__title">{content.professionalsOf} {service.title}</h2></div><div class="team__grid">{serviceProfessionals.map((professional) => <article class="doctor-card"><div class="doctor-card__header"><div class="doctor-card__avatar"><img src={professional.image} alt={professional.nombre} /></div><div><h3>{professional.nombre}</h3><p class="doctor-card__role">{professional.role}</p></div></div><p class="doctor-card__specialty">{content.specialty}: {service.title}</p><p class="doctor-card__bio">{professional.bio}</p></article>)}</div></div></section>
       </>
     )}

@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
-const iframeSrc = 'https://citaonline.dricloud.net/?URL=dricloud_centresanitarivillaquet_21026811';
+const iframeBaseSrc = 'https://citaonline.dricloud.net/?URL=dricloud_centresanitarivillaquet_21026811';
 ---
 
 <Layout title="Reservar visita | Centre Sanitari Villaquet" description="Reserva la teva visita a Centre Sanitari Villaquet. Sol·licita una consulta mèdica a Calafell i contactarem amb tu tan aviat com sigui possible.">
@@ -29,7 +29,8 @@ const iframeSrc = 'https://citaonline.dricloud.net/?URL=dricloud_centresanitariv
           <iframe
             id="ifrModuloCitaonlineVisualizacion"
             title="Reserva en línia Centre Sanitari Villaquet"
-            src={iframeSrc}
+            src={iframeBaseSrc}
+            data-base-src={iframeBaseSrc}
             frameborder="0"
             scrolling="auto"
             width="100%"
@@ -50,6 +51,15 @@ const iframeSrc = 'https://citaonline.dricloud.net/?URL=dricloud_centresanitariv
     </section>
 
     <script is:inline>
+      (function () {
+        const iframe = document.getElementById('ifrModuloCitaonlineVisualizacion');
+        if (!iframe) return;
+
+        const baseSrc = iframe.dataset.baseSrc || iframe.src;
+        const espId = new URLSearchParams(window.location.search).get('esp_id');
+        iframe.src = espId ? `${baseSrc}&ESP_ID=${encodeURIComponent(espId)}` : baseSrc;
+      })();
+
       window.addEventListener('message', function (event) {
         if (event.origin !== 'https://citaonline.dricloud.net') return;
 

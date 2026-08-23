@@ -1,0 +1,82 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  const locales = ['en-GB', 'de-DE', 'fr-FR', 'zh-CN', 'ar'];
+  return locales.map((locale) => ({ params: { locale }, props: { locale } }));
+}
+
+const { locale } = Astro.props;
+const messages = {
+  'en-GB': {
+    badge: 'Thank you',
+    title: 'Your appointment request has been sent',
+    text: 'Thank you for trusting Centre Sanitari Villaquet. We have received your request and our team will review it to confirm the appointment as soon as possible.',
+    home: 'Back to home',
+    bookAgain: 'Book another appointment',
+    help: 'Need urgent help?',
+    email: 'Email',
+  },
+  'de-DE': {
+    badge: 'Vielen Dank',
+    title: 'Ihre Terminanfrage wurde gesendet',
+    text: 'Vielen Dank, dass Sie Centre Sanitari Villaquet vertrauen. Wir haben Ihre Anfrage erhalten und unser Team prüft sie, damit wir Ihren Termin so schnell wie möglich bestätigen können.',
+    home: 'Zur Startseite',
+    bookAgain: 'Weiteren Termin buchen',
+    help: 'Brauchen Sie sofortige Hilfe?',
+    email: 'E-Mail',
+  },
+  'fr-FR': {
+    badge: 'Merci',
+    title: 'Votre demande de rendez-vous a bien été envoyée',
+    text: 'Merci de faire confiance à Centre Sanitari Villaquet. Nous avons bien reçu votre demande et notre équipe la vérifiera pour confirmer le rendez-vous dans les meilleurs délais.',
+    home: 'Retour à l’accueil',
+    bookAgain: 'Prendre un autre rendez-vous',
+    help: 'Besoin d’aide urgente ?',
+    email: 'E-mail',
+  },
+  'zh-CN': {
+    badge: '感谢',
+    title: '您的预约申请已发送',
+    text: '感谢您信任 Centre Sanitari Villaquet。我们已收到您的申请，团队会尽快审核并确认预约信息。',
+    home: '返回首页',
+    bookAgain: '再次预约',
+    help: '需要紧急帮助？',
+    email: '邮箱',
+  },
+  ar: {
+    badge: 'شكرًا لك',
+    title: 'تم إرسال طلب موعدك',
+    text: 'شكرًا لك على ثقتك بمركز Centre Sanitari Villaquet. لقد استلمنا طلبك وسيقوم فريقنا بمراجعته لتأكيد الموعد في أقرب وقت ممكن.',
+    home: 'العودة إلى الرئيسية',
+    bookAgain: 'حجز موعد آخر',
+    help: 'هل تحتاج إلى مساعدة عاجلة؟',
+    email: 'البريد الإلكتروني',
+  },
+};
+
+const content = messages[locale] || messages['en-GB'];
+const base = `/${locale}/`;
+---
+
+<Layout title={content.title} description={content.text}>
+  <main>
+    <section class="section thanks-page">
+      <div class="container thanks-page__content">
+        <span class="section__tag">{content.badge}</span>
+        <h1 class="section__title">{content.title}</h1>
+        <p class="section__desc">{content.text}</p>
+
+        <div class="thanks-page__actions">
+          <a href={base} class="btn btn--primary">{content.home}</a>
+          <a href={`${base}reservar-cita`} class="btn btn--outline">{content.bookAgain}</a>
+        </div>
+
+        <div class="thanks-page__info">
+          <p><strong>{content.help}</strong> Puede contactar con nosotros en el teléfono 877 643 360.</p>
+          <p><strong>{content.email}:</strong> info@villaquet.com</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

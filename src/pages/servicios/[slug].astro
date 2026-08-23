@@ -12,7 +12,18 @@ export async function getStaticPaths() {
 const { slug } = Astro.params;
 const { data } = Astro.props;
 const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
+const reservationIdsBySlug: Record<string, string> = {
+  'medicina-general': '5',
+  'ginecologia-obstetricia': '4',
+  'aparato-digestivo': '18',
+  'fisioterapia': '7',
+  'podologia': '8',
+  'dermatologia': '2',
+  'psicologia': '9',
+  'enfermeria': '10',
+};
 const profesionalesEspecialidad = profesionales.filter((profesional) => profesional.especialidad === slug);
+const reservationLink = reservationIdsBySlug[slug || ''] ? `${base}reservar-cita?esp_id=${reservationIdsBySlug[slug || '']}` : `${base}reservar-cita`;
 ---
 
 <Layout
@@ -62,7 +73,7 @@ const profesionalesEspecialidad = profesionales.filter((profesional) => profesio
           <h3>¿Necesitas una valoración?</h3>
           <p>Contacto directo con nuestro centro para resolver dudas y programar la primera visita.</p>
           <div class="specialty-page__contact">
-            <a href={`${base}reservar-cita`} class="btn btn--primary btn--full">{data.cta}</a>
+            <a href={reservationLink} class="btn btn--primary btn--full">{data.cta}</a>
             <a href="tel:877643360">877 643 360</a>
             <a href="mailto:info@villaquet.com">info@villaquet.com</a>
           </div>

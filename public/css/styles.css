@@ -106,6 +106,42 @@ ul {
   margin-bottom: 3rem;
 }
 
+.thanks-page {
+  min-height: 60vh;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, #f4fbfb 0%, #ffffff 100%);
+}
+
+.thanks-page__content {
+  max-width: 700px;
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(13, 115, 119, 0.1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.thanks-page__actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.thanks-page__info {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+
+.thanks-page__info p + p {
+  margin-top: 0.5rem;
+}
+
 /* ===== Buttons ===== */
 .btn {
   display: inline-flex;
