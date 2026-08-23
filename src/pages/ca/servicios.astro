@@ -27,7 +27,7 @@ const especialitats = especialitatsCa as Record<string, string>;
         {especialidades.map((especialidad) => (
           <article class="specialty-page-card">
             <div class="specialty-page-card__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2v20M2 12h20"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M3 12h18"/><path d="M7 5h10M7 19h10"/></svg>
             </div>
             <h2>{especialitats[especialidad.slug] || especialidad.title}</h2>
             <p>Atenció especialitzada, propera i centrada en el teu benestar.</p>
