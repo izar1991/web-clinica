@@ -1,3 +1,5 @@
+import { z } from 'zod';
+
 const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
 
 export const especialidades = [
@@ -11,7 +13,36 @@ export const especialidades = [
   { slug: 'diagnostico-por-imagen', title: 'Diagnóstico por imagen' },
 ];
 
-export const profesionales = [
+const especialidadSlugs = especialidades.map((especialidad) => especialidad.slug);
+
+const profesionalSchema = z.object({
+  id: z.string().trim().min(1),
+  nombre: z.string().trim().min(1),
+  role: z.string().trim().min(1),
+  especialidad: z.enum(especialidadSlugs),
+  image: z.string().trim().min(1),
+  bio: z.string().trim().min(1),
+});
+
+const profesionalesSchema = z
+  .array(profesionalSchema)
+  .superRefine((items, ctx) => {
+    const ids = new Set();
+
+    items.forEach((item, index) => {
+      if (ids.has(item.id)) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: [index, 'id'],
+          message: `El id \"${item.id}\" está duplicado en profesionales.`,
+        });
+      }
+
+      ids.add(item.id);
+    });
+  });
+
+const profesionalesData = [
   {
     id: 'jaime-paredes',
     nombre: 'Dr. Jaime Paredes',
@@ -93,6 +124,8 @@ export const profesionales = [
     bio: 'Enfermera con amplia experiencia en extracciones, consultas, urgencias y control de tratamientos. Además, colabora en procedimientos diagnósticos y apoyo asistencial.',
   },
 ];
+
+export const profesionales = profesionalesSchema.parse(profesionalesData);
 
 export const contenidoEspecialidades = {
   'medicina-general': {
