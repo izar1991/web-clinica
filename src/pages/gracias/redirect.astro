@@ -1,0 +1,50 @@
+---
+const siteUrl = 'https://www.villaquet.com';
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Redirigiendo | Centre Sanitari Villaquet</title>
+    <meta http-equiv="refresh" content={`2;url=${siteUrl}/gracias`} />
+    <style>
+      :root { font-family: Georgia, 'Times New Roman', serif; color: #173b40; background: #f5f1e8; }
+      body { display: grid; min-height: 100vh; place-items: center; margin: 0; }
+      main { max-width: 32rem; padding: 2rem; text-align: center; }
+      p { color: #52686b; line-height: 1.6; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p>Un momento, estamos preparando la confirmación de tu cita...</p>
+    </main>
+    <script is:inline define:vars={{ siteUrl }}>
+      (function () {
+        var supportedLocales = ['es', 'ca', 'en-GB', 'de-DE', 'fr-FR', 'zh-CN', 'ar'];
+        var locale = '';
+
+        try {
+          locale = localStorage.getItem('villaquet-locale') || '';
+        } catch (error) {
+          locale = '';
+        }
+
+        if (!supportedLocales.includes(locale)) {
+          var browserLanguage = (navigator.language || 'es').toLowerCase();
+          locale = browserLanguage.startsWith('ca') ? 'ca'
+            : browserLanguage.startsWith('de') ? 'de-DE'
+            : browserLanguage.startsWith('fr') ? 'fr-FR'
+            : browserLanguage.startsWith('zh') ? 'zh-CN'
+            : browserLanguage.startsWith('ar') ? 'ar'
+            : browserLanguage.startsWith('en') ? 'en-GB'
+            : 'es';
+        }
+
+        var destination = locale === 'es' ? '/gracias' : '/' + locale + '/gracias';
+        window.location.replace(siteUrl + destination);
+      })();
+    </script>
+  </body>
+</html>

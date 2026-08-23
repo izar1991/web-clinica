@@ -449,6 +449,15 @@ const jsonLdEntries = [organizationJsonLd, websiteJsonLd, medicalBusinessJsonLd,
 
     <script is:inline>
       (function () {
+        try {
+          localStorage.setItem('villaquet-locale', document.documentElement.lang || 'es');
+        } catch (error) {
+        }
+      })();
+    </script>
+
+    <script is:inline>
+      (function () {
         var CLINICA = 'Dricloud_centresanitarivillaquet_21026811';
         var BASE_URL = 'https://citaonline.dricloud.net';
         var POSICION_DERECHA = '24px';
