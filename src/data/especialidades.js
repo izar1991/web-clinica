@@ -141,7 +141,7 @@ export const contenidoEspecialidades = {
     title: 'Medicina General en Calafell',
     subtitle: 'Atención primaria, urgencias y seguimiento integral para toda la familia.',
     intro: 'La medicina general es la base de la atención preventiva y continua en nuestro centro. En Centre Sanitari Villaquet te ayudamos a cuidar tu salud en cada etapa, con revisiones periódicas, diagnóstico precoz, seguimiento de patologías y atención personalizada para adultos y familias.',
-    image: 'https://images.unsplash.com/photo-1538108149393-fbbd81895977?auto=format&fit=crop&w=1200&q=80',
+    image: `${base}images/servicios/medicina-general/medicina-general.jpg`,
     highlights: [
       { title: 'Consulta integral', text: 'Valoración clínica completa, diagnóstico y seguimiento en un entorno cercano y profesional.' },
       { title: 'Prevención', text: 'Revisiones, cribados y consejos para mantener una salud estable a largo plazo.' },
@@ -159,7 +159,7 @@ export const contenidoEspecialidades = {
     title: 'Ginecología y Obstetricia en Calafell',
     subtitle: 'Salud femenina integral con diagnóstico preciso y atención personalizada.',
     intro: 'La ginecología y obstetricia en Calafell es una de las especialidades más demandadas por la atención preventiva, diagnóstica y terapéutica de la salud femenina. En nuestro centro te acompañamos en cada etapa, desde la revisión anual hasta el control durante el embarazo y la atención en la menopausia.',
-    image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1200&q=80',
+    image: `${base}images/servicios/ginecologia-obstetricia/ginecologia-obstetricia.jpg`,
     highlights: [
       { title: 'Salud preventiva', text: 'Controles regulares, revisiones y seguimiento para mantener un equilibrio integral de salud.' },
       { title: 'Acompañamiento', text: 'Atención cercana en embarazo, fertilidad, menopausia y salud reproductiva.' },
@@ -177,7 +177,7 @@ export const contenidoEspecialidades = {
     title: 'Dermatología en Calafell',
     subtitle: 'Diagnóstico y tratamiento de la piel, pelo y uñas con tecnología y experiencia.',
     intro: 'La dermatología es una especialidad clave para la prevención, diagnóstico y tratamiento de alteraciones cutáneas. En Centre Sanitari Villaquet tratamos afecciones comunes y complejas con un enfoque preventivo, diagnóstico preciso y tratamiento eficaz para mejorar la salud de la piel en todos los grupos de edad.',
-    image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80',
+    image: `${base}images/servicios/dermatologia/dermatologia.jpg`,
     highlights: [
       { title: 'Piel sana', text: 'Diagnóstico y tratamiento de eccemas, infecciones, dermatitis y alteraciones cutáneas frecuentes.' },
       { title: 'Prevención', text: 'Seguimiento y control de lesiones cutáneas con foco en la detección temprana.' },
@@ -195,11 +195,11 @@ export const contenidoEspecialidades = {
     title: 'Aparato Digestivo en Calafell',
     subtitle: 'Especialidad en gastroenterología, endoscopia avanzada y ecografía digestiva.',
     intro: 'La especialidad de aparato digestivo del Dr. Jordi Asensio Porti integra la gastroenterología clínica, la hepatología y la endoscopia digestiva para ofrecer una atención precisa, preventiva y altamente especializada. En Centre Sanitari Villaquet se combinan la ecografía digestiva avanzada, la elastografía hepática y el seguimiento de enfermedades inflamatorias intestinales para diagnosticar a tiempo y tratar con máxima seguridad y cercanía.',
-    image: '/images/aparato-digestivo/consulta-gastroenterologia.webp',
+    image: `${base}images/servicios/aparato-digestivo/consulta-gastroenterologia.webp`,
     gallery: [
-      '/images/aparato-digestivo/endoscopia-digestiva.webp',
-      '/images/aparato-digestivo/fibroscan-elastografia-hepatica.webp',
-      '/images/aparato-digestivo/ecografia-abdominal.webp',
+      `${base}images/servicios/aparato-digestivo/endoscopia-digestiva.webp`,
+      `${base}images/servicios/aparato-digestivo/fibroscan-elastografia-hepatica.webp`,
+      `${base}images/servicios/aparato-digestivo/ecografia-abdominal.webp`,
     ],
     highlights: [
       { title: 'Gastroenterología clínica y hepatología', text: 'Diagnóstico y seguimiento de enfermedades del tracto digestivo y del hígado con un enfoque preventivo, preciso y personalizado.' },
@@ -219,7 +219,7 @@ export const contenidoEspecialidades = {
     title: 'Psicología en Calafell',
     subtitle: 'Acompañamiento profesional para tu salud mental y emocional.',
     intro: 'La psicología clínica ofrece un espacio de escucha, comprensión y tratamiento para afrontar momentos de ansiedad, estrés, duelos, cambios vitales y dificultades emocionales. En nuestro centro te brindamos terapia personalizada, un enfoque humano y un acompañamiento orientado a mejorar tu bienestar emocional y calidad de vida.',
-    image: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80',
+    image: `${base}images/servicios/psicologia/psicologia.jpg`,
     highlights: [
       { title: 'Terapia individual', text: 'Acompañamiento en ansiedad, depresión, autoestima, duelos, relaciones y cambios vitales.' },
       { title: 'Atención personal', text: 'Abordaje integral para adolescentes, adultos y familias según cada situación.' },
@@ -237,7 +237,7 @@ export const contenidoEspecialidades = {
     title: 'Fisioterapia en Calafell',
     subtitle: 'Recuperación funcional, movilidad y bienestar físico.',
     intro: 'La fisioterapia en Calafell es una herramienta esencial para reducir el dolor, recuperar la movilidad y prevenir lesiones. Nuestro equipo trabaja en rehabilitación funcional, dolor musculoesquelético y bienestar físico para mejorar la calidad de vida de cada paciente, tanto en recuperación como en rendimiento.',
-    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80',
+    image: `${base}images/servicios/fisioterapia/fisioterapia.jpg`,
     highlights: [
       { title: 'Dolor y movilidad', text: 'Tratamiento del dolor muscular, articular y postural con enfoque terapéutico integral.' },
       { title: 'Rehabilitación', text: 'Recuperación funcional tras intervenciones, traumatismos o procesos de inmovilización.' },
@@ -255,7 +255,7 @@ export const contenidoEspecialidades = {
     title: 'Podología en Calafell',
     subtitle: 'Cuidado experto del pie para una mejor movilidad y calidad de vida.',
     intro: 'La podología ayuda a prevenir y tratar dolencias del pie y la extremidad inferior, mejorando la movilidad, el confort y la salud de cada paciente. Desde tratamientos conservadores hasta revisiones preventivas, trabajamos para que cada paso sea más cómodo, seguro y saludable.',
-    image: 'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1200&q=80',
+    image: `${base}images/servicios/podologia/podologia.jpg`,
     highlights: [
       { title: 'Cuidado del pie', text: 'Diagnóstico de deformidades, dolor, callosidades y patologías funcionales del pie.' },
       { title: 'Prevención', text: 'Revisiones periódicas para prevenir complicaciones y mejorar la movilidad.' },
@@ -273,7 +273,7 @@ export const contenidoEspecialidades = {
     title: 'Enfermería en Calafell',
     subtitle: 'Cuidado profesional, extracción y seguimiento clínico cercano.',
     intro: 'La enfermería en Calafell ofrece atención clínica de alta calidad para extracciones, controles, valoración de síntomas y coordinación con el resto del equipo médico. Nuestro servicio está pensado para acompañarte con eficacia, rigor y cercanía en cada etapa del tratamiento y seguimiento.',
-    image: 'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1200&q=80',
+    image: `${base}images/servicios/enfermeria/enfermeria.jpg`,
     highlights: [
       { title: 'Procedimientos', text: 'Extracciones, control de tratamientos y valoración inicial de síntomas.' },
       { title: 'Seguimiento', text: 'Acompañamiento continuo para mejorar la adherencia al tratamiento y la evolución clínica.' },
@@ -291,7 +291,7 @@ export const contenidoEspecialidades = {
     title: 'Diagnóstico por imagen en Calafell',
     subtitle: 'Tecnología avanzada para un diagnóstico preciso y seguro.',
     intro: 'El diagnóstico por imagen es esencial para detectar, confirmar y monitorizar patologías con rapidez y precisión. En nuestro centro disponemos de equipos modernos para ofrecer ecografías, radiología digital y exploraciones complementarias con altos estándares de calidad y atención segura.',
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80',
+    image: `${base}images/servicios/diagnostico-por-imagen/diagnostico-por-imagen.jpg`,
     highlights: [
       { title: 'Tecnología', text: 'Ecografías, radiología digital y exploraciones con equipos de alta resolución.' },
       { title: 'Precisión', text: 'Diagnóstico ágil y fiable para orientar el tratamiento con mayor seguridad.' },
