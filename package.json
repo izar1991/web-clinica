@@ -10,6 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "ai:prompt": "node scripts/generate-ai-prompt.mjs",
+    "ai:prompt:check": "node scripts/generate-ai-prompt.mjs --check",
     "i18n:check": "node scripts/i18n-sync.mjs --check",
     "i18n:sync": "node scripts/i18n-sync.mjs"
   },

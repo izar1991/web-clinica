@@ -1,17 +1,10 @@
 import { z } from 'zod';
+import clinic from './clinic.json';
 
 const base = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/');
 
 export const especialidades = [
-  { slug: 'medicina-general', title: 'Medicina General' },
-  { slug: 'ginecologia-obstetricia', title: 'Ginecología y Obstetricia' },
-  { slug: 'dermatologia', title: 'Dermatología' },
-  { slug: 'aparato-digestivo', title: 'Aparato Digestivo' },
-  { slug: 'psicologia', title: 'Psicología' },
-  { slug: 'fisioterapia', title: 'Fisioterapia' },
-  { slug: 'podologia', title: 'Podología' },
-  { slug: 'enfermeria', title: 'Enfermería' },
-  { slug: 'diagnostico-por-imagen', title: 'Diagnóstico por imagen' },
+  ...clinic.specialties.map(({ slug, name }) => ({ slug, title: name })),
 ];
 
 const especialidadSlugs = especialidades.map((especialidad) => especialidad.slug);
@@ -43,7 +36,7 @@ const profesionalesSchema = z
     });
   });
 
-const profesionalesData = [
+const legacyProfesionalesData = [
   {
     id: 'jaime-paredes',
     nombre: 'Dr. Jaime Paredes',
@@ -133,6 +126,15 @@ const profesionalesData = [
     bio: 'Enfermera con amplia experiencia en extracciones, consultas, urgencias y control de tratamientos. Además, colabora en procedimientos diagnósticos y apoyo asistencial.',
   },
 ];
+
+const profesionalesData = clinic.professionals.map(({ id, name, specialty, bio, image }) => ({
+  id,
+  nombre: name,
+  role: specialty,
+  especialidad: clinic.specialties.find(({ name: specialtyName }) => specialtyName === specialty)?.slug,
+  image: `${base}${image}`,
+  bio,
+}));
 
 export const profesionales = profesionalesSchema.parse(profesionalesData);
 

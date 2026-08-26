@@ -1,4 +1,4 @@
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile, stat, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -21,7 +21,15 @@ for (const field of ['name', 'website', 'bookingUrl', 'address', 'phone', 'email
 }
 
 if (!Array.isArray(clinic.mutuas) || clinic.mutuas.length === 0) fail('mutuas debe ser una lista no vacía.');
-if (new Set(clinic.mutuas).size !== clinic.mutuas.length) fail('hay mutuas duplicadas.');
+for (const mutua of clinic.mutuas) {
+  required(mutua.name, 'nombre de mutua');
+  required(mutua.file, `imagen de mutua ${mutua.name}`);
+  if (!(await stat(resolve(root, 'public/images/mutuas', mutua.file)).catch(() => null))) {
+    fail(`la imagen de la mutua ${mutua.name} no existe.`);
+  }
+}
+const mutuaNames = clinic.mutuas.map(({ name }) => name);
+if (new Set(mutuaNames).size !== mutuaNames.length) fail('hay mutuas duplicadas.');
 if (!Array.isArray(clinic.specialties) || clinic.specialties.length === 0) fail('specialties debe ser una lista no vacía.');
 const specialtySlugs = new Set();
 for (const specialty of clinic.specialties) {
@@ -37,6 +45,9 @@ for (const professional of clinic.professionals) {
   for (const field of ['id', 'name', 'specialty', 'bio', 'image']) required(professional[field], `${field} del profesional`);
   if (professionalIds.has(professional.id)) fail(`el profesional ${professional.id} está duplicado.`);
   if (!specialtyNames(clinic).has(professional.specialty)) fail(`la especialidad de ${professional.name} no existe.`);
+  if (!(await stat(resolve(root, 'public', professional.image)).catch(() => null))) {
+    fail(`la imagen del profesional ${professional.name} no existe.`);
+  }
   professionalIds.add(professional.id);
 }
 
@@ -47,7 +58,7 @@ function specialtyNames(data) {
 const list = (items) => items.map((item) => `- ${item}`).join('\n');
 const specialtyBlock = clinic.specialties.map(({ name, description }) => `- ${name}: ${description}`).join('\n');
 const professionalBlock = clinic.professionals.map(({ name, specialty, bio }) => `- ${name} (${specialty}): ${bio}`).join('\n');
-const mutuaBlock = list(clinic.mutuas);
+const mutuaBlock = list(mutuaNames);
 
 const prompt = `SYSTEM PROMPT PARA EL ASISTENTE DE WHATSAPP\n${clinic.name.toUpperCase()}\n\n` +
 `==================================================\nMISIÓN PRINCIPAL\n==================================================\n\n` +
