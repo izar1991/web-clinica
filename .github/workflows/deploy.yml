@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Generate AI prompt
+        run: npm run ai:prompt
+
       - name: Validate generated AI prompt
         run: npm run ai:prompt:check
 

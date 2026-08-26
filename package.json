@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "npm run ai:prompt && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "ai:prompt": "node scripts/generate-ai-prompt.mjs",
