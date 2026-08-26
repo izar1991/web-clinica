@@ -1,8 +1,6 @@
 export const mutuas = [
   { name: 'Adeslas', file: 'adeslas-seguro-salud.png' },
-  { name: 'Asisa', file: 'asisa-seguro-salud.png' },
   { name: 'DKV', file: 'dkv-seguro-salud.png' },
-  { name: 'AXA', file: 'axa-seguro-salud.webp' },
   { name: 'FIATC', file: 'fiatc-seguro-salud.svg' },
   { name: 'Assistència Sanitària', file: 'assistencia-sanitaria-seguro-salud.webp' },
   { name: 'Occident', file: 'occident-seguro-salud.png' },

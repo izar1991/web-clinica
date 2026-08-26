@@ -102,12 +102,6 @@ const commonIncludes = [
 
 const comparisonRows = [
   {
-    concept: 'Precio',
-    general: '390 € / año o 35 € / mes',
-    sport: '449 € / año o 40 € / mes',
-    senior: '390 € / año o 35 € / mes',
-  },
-  {
     concept: 'Analítica anual',
     general: 'Básica',
     sport: 'Básica + Gamma, Fosfatasa, TSH/T3/T4, Cortisol, Vitamina D, Creatina-Cinasa, Hierro y Hemoglobina Glicosilada',
@@ -185,17 +179,6 @@ const isUniqueValueInRow = (row: { general: string; sport: string; senior: strin
 
               <h2>{plan.name}</h2>
               <p class="club-page__audience">{plan.audience}</p>
-
-              <div class="club-page__pricing">
-                <div class="club-page__price-block">
-                  <span>Pago anual</span>
-                  <strong>{plan.annual}</strong>
-                </div>
-                <div class="club-page__price-block">
-                  <span>Pago mensual</span>
-                  <strong>{plan.monthly}</strong>
-                </div>
-              </div>
 
               <ul class="club-page__list">
                 {plan.benefits.map((benefit) => <li>{benefit}</li>)}
