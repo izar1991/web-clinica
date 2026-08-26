@@ -38,6 +38,10 @@ Especialidad: Medicina general
 
 El asistente solo puede ofrecer horas presentes en esa tabla y debe aplicar la advertencia obligatoria a los huecos pequeños.
 
+Cuando la tabla sea válida, las reservas se gestionan directamente por WhatsApp. La web solo se ofrece como alternativa si la tabla no llega, está vacía, ha caducado o no permite calcular una disponibilidad utilizable.
+
+Las citas médicas duran 20 minutos. El contexto que inyecte FastAPI debe incluir una fecha y hora actuales fiables. El asistente nunca debe ofrecer fechas pasadas ni horas ya transcurridas del día actual. Para cada bloque libre debe ofrecer inicios separados por 20 minutos cuyo final quede dentro del bloque, con un mínimo de una opción y un máximo de cuatro.
+
 ## Verificación
 
 ```sh
