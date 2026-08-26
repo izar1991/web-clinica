@@ -46,3 +46,17 @@ npm run build
 ```
 
 El modo `check` falla si el documento generado no coincide con la fuente canónica.
+
+## Sincronización con el servidor de IA
+
+En cada `push` a `main`, GitHub Actions regenera `docs/instrucciones_ia.txt` y puede copiarlo automáticamente a un servidor externo mediante SSH.
+
+Configura estos secretos en GitHub, en `Settings > Secrets and variables > Actions`:
+
+- `AI_SERVER_HOST`: dominio o IP del servidor.
+- `AI_SERVER_USER`: usuario SSH.
+- `AI_SERVER_PORT`: puerto SSH, opcional; por defecto `22`.
+- `AI_SERVER_PATH`: carpeta remota de destino, ya existente y escribible por el usuario SSH.
+- `AI_SERVER_SSH_KEY`: clave privada SSH asociada a una clave pública autorizada en el servidor.
+
+El archivo se copiará como `instrucciones_ia.txt` dentro de `AI_SERVER_PATH`. La clave privada nunca se guarda en el repositorio. Si los secretos obligatorios no están configurados, la sincronización se omite y GitHub Pages continúa con normalidad.
