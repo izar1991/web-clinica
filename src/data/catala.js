@@ -21,10 +21,7 @@ export const professionalsCa = /** @type {Record<string, { role: string; bio: st
     role: 'Ginecologia i obstetrícia',
     bio: "Més de 20 anys d'experiència internacional en ginecologia i obstetrícia, amb especial interès en cirurgia ginecològica i atenció integral de la salut femenina.",
   },
-  'yolanda-medrano': {
-    role: 'Ginecologia i obstetrícia',
-    bio: 'Especialista amb una sòlida trajectòria de més de 20 anys d’experiència en salut femenina. Té formació de postgrau de Màster en Anticoncepció, Salut Sexual i Reproductiva per la Universitat d’Alcalá. És referent en l’abordatge de la menopausa, l’ecografia avançada, la reproducció assistida i la citologia. El seu perfil combina una preparació tècnica avançada i una àmplia experiència clínica per oferir una atenció integral de la dona, centrada en la prevenció, el diagnòstic precís i el tractament de les diferents etapes de la salut reproductiva.',
-  },
+
   'alvaro-gomez-tomas': {
     role: 'Dermatologia',
     bio: 'Formació en dermatologia integral i pediàtrica, amb especialització en el diagnòstic de patologies cutànies, la prevenció i el tractament estètic i terapèutic.',

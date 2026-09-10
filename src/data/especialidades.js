@@ -54,14 +54,6 @@ const legacyProfesionalesData = [
     bio: 'Más de 20 años de experiencia internacional en ginecología y obstetricia, con especial interés en cirugía ginecológica y atención integral a la salud femenina.',
   },
   {
-    id: 'yolanda-medrano',
-    nombre: 'Dra. Yolanda Medrano de Blas',
-    role: 'Ginecología y Obstetricia',
-    especialidad: 'ginecologia-obstetricia',
-    image: `${base}images/Dra.Yolanda_Medrano_de_Blas.jpg`,
-    bio: 'Especialista con una sólida trayectoria de más de 20 años de experiencia en salud femenina. Cuenta con formación de posgrado de Máster en Anticoncepción, Salud Sexual y Reproductiva por la Universidad de Alcalá. Es referente en el abordaje de la menopausia, ecografía avanzada, reproducción asistida y citología. Su perfil combina una preparación técnica avanzada y una dilatada experiencia clínica para ofrecer una atención integral de la mujer, enfocada en la prevención, el diagnóstico preciso y el tratamiento de las diferentes etapas de la salud reproductiva.',
-  },
-  {
     id: 'alvaro-gomez-tomas',
     nombre: 'Dr. Álvaro Gómez Tomás',
     role: 'Dermatología',
