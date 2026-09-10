@@ -42,7 +42,7 @@ const legacyProfesionalesData = [
     nombre: 'Dr. Jaime Paredes',
     role: 'Director Médico · Medicina General · Urgencias',
     especialidad: 'medicina-general',
-    image: `${base}images/Dr.Paredes_Amaya.png`,
+    image: `${base}images/servicios/medicina-general/Dr.Paredes_Amaya.png`,
     bio: 'Más de 25 años de experiencia en urgencias y medicina general. Especialista en atención primaria, diagnóstico clínico y coordinación de tratamientos complejos.',
   },
   {
@@ -50,7 +50,7 @@ const legacyProfesionalesData = [
     nombre: 'Dr. Esteban Pedro Mussin',
     role: 'Ginecología y Obstetricia',
     especialidad: 'ginecologia-obstetricia',
-    image: `${base}images/Dr.Esteban_Pedro_Mussin.png`,
+    image: `${base}images/servicios/ginecologia-obstetricia/Dr.Esteban_Pedro_Mussin.png`,
     bio: 'Más de 20 años de experiencia internacional en ginecología y obstetricia, con especial interés en cirugía ginecológica y atención integral a la salud femenina.',
   },
   {
@@ -58,7 +58,7 @@ const legacyProfesionalesData = [
     nombre: 'Dr. Álvaro Gómez Tomás',
     role: 'Dermatología',
     especialidad: 'dermatologia',
-    image: `${base}images/Dr.Alvaro_Gomez_Tomas.png`,
+    image: `${base}images/servicios/dermatologia/Dr.Alvaro_Gomez_Tomas.png`,
     bio: 'Formación en dermatología integral y pediátrica con especialidad en diagnóstico de patologías cutáneas, prevención y tratamiento estético y terapéutico.',
   },
   {
@@ -66,7 +66,7 @@ const legacyProfesionalesData = [
     nombre: 'Dr. Jordi Asensio Porti',
     role: 'Gastroenterología · Aparato Digestivo',
     especialidad: 'aparato-digestivo',
-    image: `${base}images/Dr-Jordi-Asensio-Porti.png`,
+    image: `${base}images/servicios/aparato-digestivo/Dr-Jordi-Asensio-Porti.png`,
     bio: 'Graduado en Medicina por la Universidad Autónoma de Barcelona y especializado en Aparato Digestivo (Gastroenterología y Hepatología) vía MIR en el prestigioso Hospital de la Santa Creu i Sant Pau de Barcelona, el Dr. Jordi Asensio Porti ofrece una atención médica de primer nivel fundamentada en una rigurosa formación y una amplia experiencia clínica. Cuenta con la titulación en ecografía digestiva avanzada reconocida por la Asociación Española de Ecografía Digestiva, habiéndose formado a nivel práctico en el Hospital Universitario 12 de Octubre de Madrid, donde también se especializó en elastografía hepática / fibroscan. Asimismo, complementa su alta cualificación con un máster universitario en Patología Digestiva por la Universitat Oberta de Catalunya. En la actualidad, el Dr. Asensio consolida su actividad de consultorio privado y endoscopia digestiva en el Centre Sanitari Villaquet de Calafell, acercando una asistencia médica de máxima especialización, cercanía y confianza a los pacientes de todo el Baix Penedès. Esta actividad privada la compagina con su labor en un hospital universitario del área de Barcelona, donde forma parte de la unidad de enfermedad inflamatoria intestinal (colitis ulcerosa y enfermedad de Crohn), asiste en la planta de hospitalización de agudos de Patología Digestiva y ejerce en la Unidad de Endoscopia Digestiva, además de participar activamente en la formación de residentes y futuros digestólogos. Su sólida trayectoria hospitalaria, sumada a su dedicación personalizada en Calafell, le permite ofrecer a sus pacientes un diagnóstico preciso y un tratamiento avanzado para asegurar su bienestar y salud digestiva.',
   },
   {
@@ -74,7 +74,7 @@ const legacyProfesionalesData = [
     nombre: 'María Cecilia Cristaldi',
     role: 'Psicología',
     especialidad: 'psicologia',
-    image: `${base}images/Dra.Maria_Cecilia_.png`,
+    image: `${base}images/servicios/psicologia/Dra.Maria_Cecilia_.png`,
     bio: 'Psicóloga con amplia experiencia en terapia individual, acompañamiento emocional y abordaje del trauma, con enfoque cercano y personalizado para adolescentes y adultos.',
   },
   {
@@ -82,7 +82,7 @@ const legacyProfesionalesData = [
     nombre: 'Klay del Carmen Escobar',
     role: 'Psicología',
     especialidad: 'psicologia',
-    image: `${base}images/Klay.png`,
+    image: `${base}images/servicios/psicologia/Klay.png`,
     bio: 'Especializada en psicología infantil, terapia breve y acompañamiento en procesos emocionales y familiares, con más de 25 años de experiencia profesional.',
   },
   {
@@ -90,7 +90,7 @@ const legacyProfesionalesData = [
     nombre: 'Lic. Luciano Ezequiel Herlein',
     role: 'Fisioterapia y Rehabilitación',
     especialidad: 'fisioterapia',
-    image: `${base}images/Lic.Luciano_Ezequiel_Herlein.png`,
+    image: `${base}images/servicios/fisioterapia/Lic.Luciano_Ezequiel_Herlein.png`,
     bio: 'Fisioterapeuta especializado en traumatología, rehabilitación funcional y deporte. Trabaja con técnicas avanzadas para la recuperación y la prevención de lesiones.',
   },
   {
@@ -98,7 +98,7 @@ const legacyProfesionalesData = [
     nombre: 'Dídac Melero',
     role: 'Podología',
     especialidad: 'podologia',
-    image: `${base}images/Didac_Melero.png`,
+    image: `${base}images/servicios/podologia/Didac_Melero.png`,
     bio: 'Especialista en Podología, con formación universitaria por la Universitat de Barcelona y una sólida especialización en imagen diagnóstica, medicina nuclear y cirugía de antepié, gracias a su formación de posgrado en la Universitat de Manresa. Su perfil combina preparación técnica avanzada y experiencia clínica para ofrecer una atención integral del pie, enfocada en la prevención, el diagnóstico preciso y el tratamiento personalizado de las patologías podológicas.',
   },
   {
@@ -106,7 +106,7 @@ const legacyProfesionalesData = [
     nombre: 'Dra. Meritxell Paredes',
     role: 'Medicina',
     especialidad: 'medicina-general',
-    image: `${base}images/Dra.Meritxell_Paredes.png`,
+    image: `${base}images/servicios/medicina-general/Dra.Meritxell_Paredes.png`,
     bio: 'Doctora con formación sanitaria y experiencia en Atención Primaria, lo que le aporta una visión médica integral del bienestar y del cuidado global del paciente. Su trayectoria combina la atención clínica general con tratamientos realzando el bienestar personal, siempre desde un enfoque basado en la seguridad, la confianza, la precisión profesional y la personalización de cada tratamiento.',
   },
   {
@@ -114,7 +114,7 @@ const legacyProfesionalesData = [
     nombre: 'Calipso del Pino',
     role: 'Enfermería',
     especialidad: 'enfermeria',
-    image: `${base}images/Calipso_del_Pino.png`,
+    image: `${base}images/servicios/enfermeria/Calipso_del_Pino.png`,
     bio: 'Enfermera con amplia experiencia en extracciones, consultas, urgencias y control de tratamientos. Además, colabora en procedimientos diagnósticos y apoyo asistencial.',
   },
 ];
