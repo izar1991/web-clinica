@@ -54,6 +54,10 @@ export const professionalsCa = /** @type {Record<string, { role: string; bio: st
     role: 'Infermeria',
     bio: 'Infermera amb àmplia experiència en extraccions, consultes, urgències i control de tractaments. També col·labora en procediments diagnòstics i suport assistencial.',
   },
+  'carolina-labrador': {
+    role: 'Medicina general',
+    bio: 'Metgessa amb formació integral en medicina familiar i atenció primària. Especialista en diagnòstic clínic, seguiment personalitzat i cura preventiva per a totes les edats. Ofereix una atenció propera, accessible i basada en la confiança del pacient.',
+  },
 });
 
 export const contingutEspecialitatsCa = {

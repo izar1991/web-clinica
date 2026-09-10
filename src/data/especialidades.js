@@ -117,6 +117,14 @@ const legacyProfesionalesData = [
     image: `${base}images/servicios/enfermeria/Calipso_del_Pino.png`,
     bio: 'Enfermera con amplia experiencia en extracciones, consultas, urgencias y control de tratamientos. Además, colabora en procedimientos diagnósticos y apoyo asistencial.',
   },
+  {
+    id: 'carolina-labrador',
+    nombre: 'Dra. Carolina Labrador Dominguez',
+    role: 'Medicina General',
+    especialidad: 'medicina-general',
+    image: `${base}images/servicios/medicina-general/Dra.Carolina_Labrador_Dominguez.png`,
+    bio: 'Médica con formación integral en medicina de familia y atención primaria. Especialista en diagnóstico clínico, seguimiento personalizado y cuidado preventivo para todas las edades. Ofrece una atención cercana, accesible y basada en la confianza y la seguridad del paciente.',
+  },
 ];
 
 const profesionalesData = clinic.professionals.map(({ id, name, specialty, bio, image }) => ({

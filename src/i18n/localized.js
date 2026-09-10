@@ -139,6 +139,7 @@ const professionalDetails = {
     'didac-melero': { role: 'Podologia', bio: 'Especialista en podologia, imatge diagnòstica, medicina nuclear i cirurgia de l’avantpeu, amb formació a les universitats de Barcelona i Manresa.' },
     'meritxell-paredes': { role: 'Medicina', bio: 'Doctora amb experiència en atenció primària i una visió integral del benestar, basada en la seguretat, la confiança i el tractament personalitzat.' },
     'calipso-del-pino': { role: 'Infermeria', bio: 'Infermera amb experiència en extraccions, consultes, urgències, control de tractaments i suport en procediments diagnòstics.' },
+    'carolina-labrador': { role: 'Medicina general', bio: 'Metgessa amb formació integral en medicina familiar i atenció primària. Especialista en diagnòstic clínic, seguiment personalitzat i cura preventiva per a totes les edats. Ofereix una atenció propera, accessible i basada en la confiança del pacient.' },
   },
   'en-GB': {
     'jaime-paredes': { role: 'Medical director · General medicine · Urgent care', bio: 'More than 25 years of experience in urgent care and general medicine, specialising in primary care, clinical diagnosis and complex treatment coordination.' },
@@ -152,6 +153,7 @@ const professionalDetails = {
     'didac-melero': { role: 'Podiatry', bio: 'Podiatry specialist with training in diagnostic imaging, nuclear medicine and forefoot surgery at the universities of Barcelona and Manresa.' },
     'meritxell-paredes': { role: 'Medicine', bio: 'Doctor with primary care experience and a whole-person approach based on safety, trust, professional precision and personalised treatment.' },
     'calipso-del-pino': { role: 'Nursing', bio: 'Nurse experienced in sample collection, consultations, urgent care, treatment monitoring and support during diagnostic procedures.' },
+    'carolina-labrador': { role: 'General medicine', bio: 'Doctor with comprehensive training in family medicine and primary care. Specialist in clinical diagnosis, personalised follow-up and preventive care for all ages. Offers close, accessible care based on patient trust and safety.' },
   },
   'de-DE': {
     'jaime-paredes': { role: 'Medizinischer Direktor · Allgemeinmedizin · Notfallversorgung', bio: 'Mehr als 25 Jahre Erfahrung in Notfallversorgung und Allgemeinmedizin, mit Schwerpunkt auf Primärversorgung, klinischer Diagnostik und der Koordination komplexer Behandlungen.' },
@@ -163,6 +165,7 @@ const professionalDetails = {
     'didac-melero': { role: 'Podologie', bio: 'Podologe mit Ausbildung in bildgebender Diagnostik, Nuklearmedizin und Vorfußchirurgie an den Universitäten Barcelona und Manresa.' },
     'meritxell-paredes': { role: 'Medizin', bio: 'Ärztin mit Erfahrung in der Primärversorgung und einem ganzheitlichen Ansatz, der auf Sicherheit, Vertrauen und individueller Behandlung beruht.' },
     'calipso-del-pino': { role: 'Krankenpflege', bio: 'Pflegefachkraft mit Erfahrung in Blutentnahmen, Sprechstunden, Notfallversorgung, Behandlungskontrollen und diagnostischer Assistenz.' },
+    'carolina-labrador': { role: 'Allgemeinmedizin', bio: 'Ärztin mit umfassender Ausbildung in Familienmedizin und Primärversorgung. Spezialistin in klinischer Diagnostik, personalisierten Nachuntersuchungen und präventiver Betreuung für alle Altersgruppen. Bietet eine vertraute, zugängliche Betreuung auf Basis von Patientensicherheit.' },
   },
   'fr-FR': {
     'jaime-paredes': { role: 'Directeur médical · Médecine générale · Urgences', bio: 'Plus de 25 ans d’expérience en urgences et médecine générale, avec une expertise en soins primaires, diagnostic clinique et coordination des traitements complexes.' },
@@ -175,6 +178,7 @@ const professionalDetails = {
     'didac-melero': { role: 'Podologie', bio: 'Spécialiste en podologie, formé en imagerie diagnostique, médecine nucléaire et chirurgie de l’avant-pied aux universités de Barcelone et de Manresa.' },
     'meritxell-paredes': { role: 'Médecine', bio: 'Médecin expérimentée en soins primaires, avec une approche globale fondée sur la sécurité, la confiance, la précision et un traitement personnalisé.' },
     'calipso-del-pino': { role: 'Soins infirmiers', bio: 'Infirmière expérimentée en prélèvements, consultations, urgences, suivi des traitements et assistance aux procédures diagnostiques.' },
+    'carolina-labrador': { role: 'Médecine générale', bio: 'Médecin ayant une formation complète en médecine familiale et soins primaires. Spécialiste en diagnostic clinique, suivi personnalisé et soins préventifs pour tous les âges. Offre une prise en charge proche, accessible et basée sur la confiance et la sécurité du patient.' },
   },
   'zh-CN': {
     'jaime-paredes': { role: '医疗主任 · 全科医疗 · 急诊护理', bio: '拥有超过 25 年急诊和全科医疗经验，专长于初级医疗、临床诊断和复杂治疗协调。' },
@@ -186,6 +190,7 @@ const professionalDetails = {
     'didac-melero': { role: '足病科', bio: '足病专家，接受过诊断影像、核医学和前足手术培训，培训经历来自巴塞罗那和曼雷萨的大学。' },
     'meritxell-paredes': { role: '医学', bio: '具有初级医疗经验的医生，以安全、信任、专业精准和个性化治疗为基础，提供全方位健康服务。' },
     'calipso-del-pino': { role: '护理', bio: '护士，擅长采样、门诊、急诊护理、治疗监测和诊断操作支持。' },
+    'carolina-labrador': { role: '全科医学', bio: '医生，拥有家庭医学和初级保健的综合培训。临床诊断、个性化随访和各年龄段预防护理专家。提供基于患者信任和安全的亲近、易获得的医疗保健。' },
   },
   ar: {
     'jaime-paredes': { role: 'المدير الطبي · الطب العام · الرعاية العاجلة', bio: 'أكثر من 25 عاماً من الخبرة في الرعاية العاجلة والطب العام، مع تخصص في الرعاية الأولية والتشخيص السريري وتنسيق العلاجات المعقدة.' },
@@ -197,6 +202,7 @@ const professionalDetails = {
     'didac-melero': { role: 'طب القدم', bio: 'متخصص في طب القدم والتصوير التشخيصي والطب النووي وجراحة مقدمة القدم، مع تدريب في جامعتي برشلونة ومانريسا.' },
     'meritxell-paredes': { role: 'الطب', bio: 'طبيبة تتمتع بخبرة في الرعاية الأولية ونهج شامل قائم على السلامة والثقة والدقة المهنية والعلاج الشخصي.' },
     'calipso-del-pino': { role: 'التمريض', bio: 'ممرضة تتمتع بخبرة في سحب العينات والاستشارات والرعاية العاجلة ومتابعة العلاجات ودعم الإجراءات التشخيصية.' },
+    'carolina-labrador': { role: 'الطب العام', bio: 'طبيبة تتمتع بتدريب شامل في طب الأسرة والرعاية الأولية. متخصصة في التشخيص السريري والمتابعة الشخصية والرعاية الوقائية لجميع الأعمار. تقدم رعاية قريبة وسهلة الوصول بناءً على ثقة المريض وسلامته.' },
   },
 };
 
