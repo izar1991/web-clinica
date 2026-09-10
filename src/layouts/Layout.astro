@@ -458,143 +458,20 @@ const jsonLdEntries = [organizationJsonLd, websiteJsonLd, medicalBusinessJsonLd,
     </script>
 
     <script is:inline>
-      (function () {
-        var CLINICA = 'Dricloud_centresanitarivillaquet_21026811';
-        var BASE_URL = 'https://citaonline.dricloud.net';
-        var POSICION_DERECHA = '24px';
-        var POSICION_ABAJO = '24px';
-        var TAMANO_BOTON = '120px';
-        var ANCHO_CHAT = '380px';
-        var ALTO_CHAT = '600px';
-        var idiomaActual = (document.documentElement.lang || 'es').toLowerCase().split('-')[0];
-
-        var container = document.createElement('div');
-        container.id = 'dricloud-chat-container';
-        container.style.cssText = [
-          'position:fixed',
-          'bottom:' + POSICION_ABAJO,
-          'right:' + POSICION_DERECHA,
-          'left:auto',
-          'z-index:9999',
-          'width:' + TAMANO_BOTON,
-          'height:' + TAMANO_BOTON,
-          'max-width:calc(100vw - 16px)',
-          'max-height:calc(100vh - 16px)',
-          'overflow:hidden',
-          'transition:width .3s ease, height .3s ease, border-radius .3s ease, box-shadow .3s ease, left .3s ease, right .3s ease, transform .3s ease',
-          'border-radius:50%',
-          'box-shadow:none',
-          'background:transparent',
-          'border:none',
-          'transform:none'
-        ].join(';');
-
-        var buttonVisual = document.createElement('div');
-        buttonVisual.style.cssText = [
-          'position:absolute',
-          'inset:0',
-          'display:flex',
-          'align-items:center',
-          'justify-content:center',
-          'flex-direction:column',
-          'gap:4px',
-          'color:#ffffff',
-          'font-family:Inter, Arial, sans-serif',
-          'font-size:11px',
-          'font-weight:700',
-          'letter-spacing:0.04em',
-          'text-transform:uppercase',
-          'pointer-events:none',
-          'transition:opacity .25s ease',
-          'border-radius:50%',
-          'background:linear-gradient(135deg, #0d7377 0%, #11a7a3 100%)',
-          'box-shadow:0 20px 45px rgba(11, 83, 88, 0.22)',
-          'border:2px solid rgba(255,255,255,0.6)'
-        ].join(';');
-
-        buttonVisual.innerHTML = [
-          '<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">',
-          '<path d="M8 12.5C8 9.46243 10.4624 7 13.5 7H18.5C21.5376 7 24 9.46243 24 12.5V16.5C24 19.5376 21.5376 22 18.5 22H15.5L11.5 25V22H13.5C10.4624 22 8 19.5376 8 16.5V12.5Z" fill="white" fill-opacity="0.96"/>',
-          '<circle cx="13.5" cy="15" r="1.2" fill="#0d7377"/>',
-          '<circle cx="18.5" cy="15" r="1.2" fill="#0d7377"/>',
-          '<path d="M14.7 18.2C15.5 18.9 16.5 19.2 17.7 18.7" stroke="#0d7377" stroke-width="1.4" stroke-linecap="round"/>',
-          '</svg>',
-          '<span>Asistente</span>'
-        ].join('');
-
-        var iframe = document.createElement('iframe');
-        iframe.src = BASE_URL + '/Home/ChatWidget?URL=' + encodeURIComponent(CLINICA) + '&lang=' + encodeURIComponent(idiomaActual);
-        iframe.setAttribute('allowtransparency', 'true');
-        iframe.style.cssText = 'width:100%;height:100%;border:none;background:transparent;';
-        iframe.allow = 'clipboard-write';
-
-        container.appendChild(iframe);
-        container.appendChild(buttonVisual);
-        document.body.appendChild(container);
-
-        var chatOpen = false;
-
-        function setChatOpenState(open) {
-          chatOpen = open;
-          if (open) {
-            buttonVisual.style.opacity = '0';
-            container.style.boxShadow = '0 28px 55px rgba(11, 83, 88, 0.3)';
-          } else {
-            buttonVisual.style.opacity = '1';
-            container.style.boxShadow = '0 20px 45px rgba(11, 83, 88, 0.22)';
-          }
-        }
-
-        function applyChatViewportState(open) {
-          var isMobile = window.innerWidth < 480;
-
-          if (isMobile) {
-            var safeWidth = Math.max(Math.min(window.innerWidth - 12, 420), 0);
-            var safeHeight = Math.min(window.innerHeight * 0.85, 560);
-
-            container.style.width = open ? safeWidth + 'px' : TAMANO_BOTON;
-            container.style.height = open ? safeHeight + 'px' : TAMANO_BOTON;
-            container.style.left = '50%';
-            container.style.right = 'auto';
-            container.style.transform = 'translateX(-50%)';
-            container.style.bottom = open ? 'calc(env(safe-area-inset-bottom, 0px) + 8px)' : POSICION_ABAJO;
-            container.style.borderRadius = open ? '16px 16px 0 0' : '50%';
-          } else {
-            container.style.width = open ? ANCHO_CHAT : TAMANO_BOTON;
-            container.style.height = open ? ALTO_CHAT : TAMANO_BOTON;
-            container.style.left = 'auto';
-            container.style.right = POSICION_DERECHA;
-            container.style.transform = 'none';
-            container.style.bottom = POSICION_ABAJO;
-            container.style.borderRadius = open ? '16px' : '50%';
-          }
-        }
-
-        window.addEventListener('message', function (e) {
-          if (e.origin !== BASE_URL) return;
-
-          if (e.data === 'dricloud-open') {
-            setChatOpenState(true);
-            applyChatViewportState(true);
-            container.style.background = 'transparent';
-            container.style.boxShadow = 'none';
-          }
-
-          if (e.data === 'dricloud-close') {
-            setChatOpenState(false);
-            applyChatViewportState(false);
-            container.style.background = 'transparent';
-            container.style.boxShadow = 'none';
-          }
-        });
-
-        setChatOpenState(false);
-        applyChatViewportState(false);
-
-        window.addEventListener('resize', function () {
-          applyChatViewportState(chatOpen);
-        });
-      })();
+      (function(d,t) {
+        var BASE_URL = 'http://192.168.50.107:3000';
+        var g = d.createElement(t);
+        var s = d.getElementsByTagName(t)[0];
+        g.src = BASE_URL + '/packs/js/sdk.js';
+        g.async = true;
+        s.parentNode.insertBefore(g, s);
+        g.onload = function () {
+          window.chatwootSDK.run({
+            websiteToken: 'XQL4EGrj8VvuQEWHgqUMjaxD',
+            baseUrl: BASE_URL
+          });
+        };
+      })(document, 'script');
     </script>
   </body>
 </html>
