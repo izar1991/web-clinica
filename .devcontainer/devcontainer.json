@@ -20,6 +20,12 @@
     }
   },
 
+  "mounts": [
+    "source=${localEnv:SSH_AUTH_SOCK},target=/tmp/vscode-ssh-auth.sock,type=bind"
+  ],
+  "remoteEnv": {
+    "SSH_AUTH_SOCK": "/tmp/vscode-ssh-auth.sock"
+  },
   "forwardPorts": [4321],
-  "postCreateCommand": "npm install"
+  "postCreateCommand": "npm install && git config --global url.\"git@github.com:\".insteadOf \"https://github.com/\""
 }
