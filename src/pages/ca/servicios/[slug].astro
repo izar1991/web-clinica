@@ -4,10 +4,17 @@ import { contenidoEspecialidades, profesionales } from '../../../data/especialid
 import { contingutEspecialitatsCa, professionalsCa } from '../../../data/catala';
 
 export async function getStaticPaths() {
-  return Object.entries(contingutEspecialitatsCa).map(([slug, data]) => ({
-    params: { slug },
-    props: { data: { ...data, image: contenidoEspecialidades[slug as keyof typeof contenidoEspecialidades].image, asideImage: contenidoEspecialidades[slug as keyof typeof contenidoEspecialidades].asideImage } },
-  }));
+  return Object.entries(contingutEspecialitatsCa).map(([slug, data]) => {
+    const serviceData = contenidoEspecialidades[slug as keyof typeof contenidoEspecialidades] as {
+      image: string;
+      asideImage?: string;
+    };
+
+    return {
+      params: { slug },
+      props: { data: { ...data, image: serviceData.image, asideImage: serviceData.asideImage } },
+    };
+  });
 }
 
 const { slug } = Astro.params;
