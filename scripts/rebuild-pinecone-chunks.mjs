@@ -19,10 +19,6 @@ const legacyAdditions = [
   'El centro puede recibir consultas sobre especialidades, profesionales, horarios, cobertura y reservas. Una respuesta informativa debe distinguir entre datos institucionales confirmados y disponibilidad en tiempo real. El asistente no debe inventar huecos de agenda ni afirmar que ha enviado una confirmación si no dispone de una acción real que lo demuestre. Cuando el usuario necesite atención humana, debe indicar el teléfono oficial o el formulario de reserva. En cuestiones urgentes o de riesgo inmediato, la prioridad es el 112 o un servicio de urgencias.'
 ];
 
-for (const chunk of chunks) {
-  for (const addition of legacyAdditions) chunk.text = removeEverywhere(chunk.text, addition);
-}
-
 const append = {
   'informacion-general-centro-01': 'La información pública del centro presenta una atención orientada a adultos, familias y pacientes que necesitan seguimiento continuado. La página de inicio destaca la coordinación entre profesionales, el acceso a pruebas y la posibilidad de reservar una consulta. Las rutas de servicios permiten consultar una descripción propia de cada especialidad y conocer el equipo relacionado. Para información actualizada sobre horarios, disponibilidad, precios o cobertura, debe utilizarse el contacto oficial, porque esos datos pueden depender de la agenda, la póliza o las condiciones vigentes.',
   'servicios-medicina-traumatologia-01': `${overlapA} La medicina general, ginecología, dermatología y traumatología tienen páginas propias con información introductoria, beneficios del servicio y un botón para solicitar cita. La página de Traumatología utiliza una imagen de la sala de radiología en el contenido principal y una imagen específica en la tarjeta de solicitud. La ficha del profesional se mantiene separada de la información general del servicio.`,
@@ -32,6 +28,12 @@ const append = {
   'tarjetas-csv-tarifas-01': 'Las cantidades del contrato son condiciones del documento de Tarjetas CSV consultado en el repositorio y pueden requerir confirmación antes de comunicarse como vigentes. La tarjeta no equivale a una póliza de seguro y sus beneficios se aplican según la modalidad contratada, el contrato, la cita previa y los límites indicados. Las especialidades, las pruebas diagnósticas y los servicios posteriores pueden tener precios o descuentos diferentes. El usuario debe revisar las condiciones económicas, la permanencia, la renovación y la protección de datos antes de contratar.',
   'reservas-mutuas-contacto-01': 'El centro puede recibir consultas sobre especialidades, profesionales, horarios, cobertura y reservas. Una respuesta informativa debe distinguir entre datos institucionales confirmados y disponibilidad en tiempo real. El asistente no debe inventar huecos de agenda ni afirmar que ha enviado una confirmación si no dispone de una acción real que lo demuestre. Cuando el usuario necesite atención humana, debe indicar el teléfono oficial o el formulario de reserva. En cuestiones urgentes o de riesgo inmediato, la prioridad es el 112 o un servicio de urgencias.'
 };
+
+for (const chunk of chunks) {
+  for (const addition of [...legacyAdditions, ...Object.values(append)]) {
+    chunk.text = removeEverywhere(chunk.text, addition);
+  }
+}
 
 for (const chunk of chunks) {
   const addition = append[chunk.id];
