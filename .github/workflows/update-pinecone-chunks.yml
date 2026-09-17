@@ -1,0 +1,109 @@
+name: Update Pinecone chunks
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths:
+      - 'src/data/**'
+      - 'src/i18n/**'
+      - 'src/pages/**/*.astro'
+      - 'src/components/**/*.astro'
+      - 'docs/Contrato_Tarjetas_CSV.txt'
+      - 'docs/i18n.md'
+      - 'public/images/servicios/**'
+      - 'scripts/rebuild-pinecone-chunks.mjs'
+      - 'chunks_pinecone.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: read
+
+concurrency:
+  group: pinecone-chunks-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  update-same-repository-pr:
+    name: Regenerate chunks and update PR branch
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Rebuild Pinecone chunks
+        run: node scripts/rebuild-pinecone-chunks.mjs
+
+      - name: Validate Pinecone chunks
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const chunks = JSON.parse(fs.readFileSync('chunks_pinecone.json', 'utf8'));
+          const categories = new Set(['servicios', 'contacto', 'informacion_general']);
+          const words = (text) => text.trim().split(/\s+/).filter(Boolean).length;
+          if (!Array.isArray(chunks) || chunks.length === 0) throw new Error('No hay chunks generados.');
+          for (const chunk of chunks) {
+            if (!chunk.id || !chunk.text || !chunk.metadata?.title || !categories.has(chunk.metadata.category) || !chunk.metadata.url) {
+              throw new Error(`Estructura inválida en ${chunk.id || 'chunk sin id'}.`);
+            }
+            const count = words(chunk.text);
+            if (count < 400 || count > 500) throw new Error(`${chunk.id} tiene ${count} palabras.`);
+          }
+          console.log(`Validados ${chunks.length} chunks Pinecone.`);
+          NODE
+
+      - name: Commit generated chunks
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: 'chore: refresh Pinecone chunks'
+          file_pattern: chunks_pinecone.json
+          commit_user_name: github-actions[bot]
+          commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
+
+  validate-fork-pr:
+    name: Validate chunks for fork PR
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout PR merge commit
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate existing Pinecone chunks
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const chunks = JSON.parse(fs.readFileSync('chunks_pinecone.json', 'utf8'));
+          const words = (text) => text.trim().split(/\s+/).filter(Boolean).length;
+          if (!Array.isArray(chunks) || chunks.length === 0) throw new Error('No hay chunks disponibles.');
+          for (const chunk of chunks) {
+            const count = words(chunk.text);
+            if (!chunk.id || !chunk.text || !chunk.metadata?.title || !chunk.metadata?.category || !chunk.metadata?.url || count < 400 || count > 500) {
+              throw new Error(`Chunk inválido: ${chunk.id || 'sin id'} (${count} palabras).`);
+            }
+          }
+          console.log(`Validados ${chunks.length} chunks Pinecone.`);
+          NODE
