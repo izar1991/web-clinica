@@ -26,6 +26,6 @@
   "remoteEnv": {
     "SSH_AUTH_SOCK": "/tmp/vscode-ssh-auth.sock"
   },
-  "forwardPorts": [4321],
+  "forwardPorts": [4321]
   //"postCreateCommand": "npm install && git config --global url.\"git@github.com:\".insteadOf \"https://github.com/\""
 }
