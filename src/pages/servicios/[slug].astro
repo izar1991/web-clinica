@@ -80,7 +80,7 @@ const reservationLink = reservationIdsBySlug[slug || ''] ? `${base}reservar-cita
             <a href="mailto:info@villaquet.com">info@villaquet.com</a>
           </div>
           <div class="specialty-page__aside-image">
-            <img src={data.image} alt={`Atención en ${data.title}`} />
+            <img src={data.asideImage || data.image} alt={`Atención en ${data.title}`} />
           </div>
         </aside>
       </div>

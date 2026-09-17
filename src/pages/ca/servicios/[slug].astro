@@ -6,7 +6,7 @@ import { contingutEspecialitatsCa, professionalsCa } from '../../../data/catala'
 export async function getStaticPaths() {
   return Object.entries(contingutEspecialitatsCa).map(([slug, data]) => ({
     params: { slug },
-    props: { data: { ...data, image: contenidoEspecialidades[slug as keyof typeof contenidoEspecialidades].image } },
+    props: { data: { ...data, image: contenidoEspecialidades[slug as keyof typeof contenidoEspecialidades].image, asideImage: contenidoEspecialidades[slug as keyof typeof contenidoEspecialidades].asideImage } },
   }));
 }
 
@@ -82,7 +82,7 @@ const reservationLink = reservationIdsBySlug[slug || ''] ? `${localeBase}reserva
             <a href="mailto:info@villaquet.com">info@villaquet.com</a>
           </div>
           <div class="specialty-page__aside-image">
-            <img src={data.image} alt={`Atenció de ${data.title}`} />
+            <img src={data.asideImage || data.image} alt={`Atenció de ${data.title}`} />
           </div>
         </aside>
       </div>

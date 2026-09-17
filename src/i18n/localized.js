@@ -25,6 +25,14 @@ const services = {
     'zh-CN': ['皮肤科', '皮肤、毛发和指甲疾病的诊断与治疗。'],
     ar: ['الأمراض الجلدية', 'تشخيص وعلاج أمراض الجلد والشعر والأظافر.'],
   },
+  traumatologia: {
+    es: ['Traumatología', 'Valoración y atención especializada de lesiones y problemas del aparato locomotor.'],
+    'en-GB': ['Traumatology', 'Specialist assessment and care for injuries and musculoskeletal conditions.'],
+    'de-DE': ['Traumatologie', 'Spezialisierte Untersuchung und Behandlung von Verletzungen und Erkrankungen des Bewegungsapparats.'],
+    'fr-FR': ['Traumatologie', 'Évaluation et prise en charge spécialisées des blessures et des troubles musculosquelettiques.'],
+    'zh-CN': ['创伤骨科', '为运动系统损伤和疾病提供专业评估与治疗。'],
+    ar: ['طب العظام والرضوض', 'تقييم ورعاية متخصصة لإصابات واضطرابات الجهاز العضلي الهيكلي.'],
+  },
   'aparato-digestivo': {
     es: ['Aparato Digestivo', 'Especialidad en gastroenterología, endoscopia avanzada y ecografía digestiva.'],
     'en-GB': ['Digestive system', 'Specialised gastroenterology, advanced endoscopy and digestive ultrasound.'],
@@ -132,6 +140,7 @@ const professionalDetails = {
     'esteban-pedro-mussin': { role: 'Ginecologia i obstetrícia', bio: "Més de 20 anys d'experiència internacional en ginecologia i obstetrícia, amb especial interès en cirurgia ginecològica i atenció integral de la salut femenina." },
 
     'alvaro-gomez-tomas': { role: 'Dermatologia', bio: 'Especialista en dermatologia integral i pediàtrica, diagnòstic de patologies cutànies, prevenció i tractaments estètics i terapèutics.' },
+    'jose-andres-collantes-cosquillo': { role: 'Traumatologia', bio: 'Metge cirurgià amb el títol homologat a Espanya i resident de Cirurgia Ortopèdica i Traumatologia a l’Hospital Universitari Joan XXIII de Tarragona. Té formació en fractures, patologia de genoll, espatlla, mà, canell i maluc, i és membre de la SECOT i la SEROD.' },
     'jordi-asensio-porti': { role: 'Gastroenterologia · Aparell digestiu', bio: 'Graduat en Medicina per la Universitat Autònoma de Barcelona i especialitzat en Aparell Digestiu (Gastroenterologia i Hepatologia) mitjançant MIR a l’prestigiós Hospital de la Santa Creu i Sant Pau de Barcelona, el Dr. Jordi Asensio Porti ofereix una atenció mèdica de primer nivell basada en una formació rigorosa i una àmplia experiència clínica. Comptabilitza amb la titulació en ecografia digestiva avançada reconeguda per l’Associació Espanyola d’Ecografia Digestiva, i s’ha format pràcticament a l’Hospital Universitari 12 d’Octubre de Madrid, on també es va especialitzar en elastografia hepàtica / fibroscan. A més, complementa la seva alta qualificació amb un màster universitari en Patologia Digestiva per la Universitat Oberta de Catalunya. Actualment, el Dr. Asensio consolida la seva activitat de consultori privat i endoscòpia digestiva al Centre Sanitari Villaquet de Calafell, aportant una assistència mèdica de màxima especialització, proximitat i confiança als pacients de tot el Baix Penedès. Aquesta activitat privada la combina amb la seva tasca en un hospital universitari de l’àrea de Barcelona, on forma part de la unitat d’enfermetat inflamatòria intestinal (colitis ulcerosa i malaltia de Crohn), assisteix a la planta d’hospitalització d’aguts de Patologia Digestiva i exerceix a la Unitat d’Endoscòpia Digestiva, a més de participar activament en la formació de residents i futurs digestòlegs. La seva sòlida trajectòria hospitalària, sumada a la seva dedicació personalitzada a Calafell, li permet oferir als seus pacients un diagnòstic precís i un tractament avançat per garantir el seu benestar i salut digestiva.' },
     'maria-cecilia-cristaldi': { role: 'Psicologia', bio: 'Psicòloga amb experiència en teràpia individual, acompanyament emocional i abordatge del trauma per a adolescents i adults.' },
     'klay-escobar': { role: 'Psicologia', bio: 'Especialitzada en psicologia infantil, teràpia breu i acompanyament de processos emocionals i familiars, amb més de 25 anys d’experiència.' },
