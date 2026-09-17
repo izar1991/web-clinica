@@ -193,6 +193,24 @@ export const contenidoEspecialidades = {
     ],
     cta: 'Reservar dermatología',
   },
+  traumatologia: {
+    title: 'Traumatología en Calafell',
+    subtitle: 'Valoración y atención especializada de lesiones y problemas del aparato locomotor.',
+    intro: 'La traumatología aborda las lesiones y enfermedades del aparato locomotor, desde fracturas y lesiones articulares hasta problemas de rodilla, hombro, mano, muñeca y cadera. En Centre Sanitari Villaquet te ofrecemos una valoración profesional y un seguimiento personalizado.',
+    image: `${base}images/servicios/traumatologia/Dr.Collantes.png`,
+    highlights: [
+      { title: 'Valoración especializada', text: 'Evaluación de lesiones y problemas musculoesqueléticos con un enfoque preciso y personalizado.' },
+      { title: 'Extremidades y articulaciones', text: 'Formación específica en patología de rodilla, hombro, mano, muñeca y cadera.' },
+      { title: 'Atención integral', text: 'Coordinación con pruebas diagnósticas y otros profesionales cuando sea necesario.' },
+    ],
+    bullets: [
+      'Valoración de lesiones y problemas del aparato locomotor',
+      'Atención de fracturas y lesiones articulares',
+      'Patología de rodilla, hombro, mano, muñeca y cadera',
+      'Seguimiento personalizado y orientación sobre el proceso asistencial',
+    ],
+    cta: 'Reservar traumatología',
+  },
   'aparato-digestivo': {
     title: 'Aparato Digestivo en Calafell',
     subtitle: 'Especialidad en gastroenterología, endoscopia avanzada y ecografía digestiva.',
