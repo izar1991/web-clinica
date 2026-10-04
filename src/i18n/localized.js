@@ -73,6 +73,14 @@ const services = {
     'zh-CN': ['护理', '提供采样、临床检查和持续护理。'],
     ar: ['التمريض', 'سحب العينات والفحوصات والمتابعة السريرية القريبة.'],
   },
+  estetica: {
+    es: ['Estética', 'Enfermería dermoestética para cuidar tu piel con seguridad y resultados naturales.'],
+    'en-GB': ['Aesthetic nursing', 'Aesthetic nursing to care for your skin safely and achieve natural results.'],
+    'de-DE': ['Ästhetische Pflege', 'Ästhetische Pflege für eine sichere Hautpflege und natürliche Ergebnisse.'],
+    'fr-FR': ['Soins infirmiers esthétiques', 'Des soins infirmiers esthétiques pour prendre soin de votre peau en toute sécurité.'],
+    'zh-CN': ['美容护理', '以安全护理和自然效果呵护您的肌肤。'],
+    ar: ['التمريض التجميلي', 'تمريض تجميلي للعناية بالبشرة بأمان وتحقيق نتائج طبيعية.'],
+  },
   'diagnostico-por-imagen': {
     es: ['Diagnóstico por imagen', 'Tecnología avanzada para un diagnóstico preciso, ágil y seguro.'],
     'en-GB': ['Diagnostic imaging', 'Advanced technology for accurate, efficient and safe diagnosis.'],
@@ -148,6 +156,7 @@ const professionalDetails = {
     'didac-melero': { role: 'Podologia', bio: 'Especialista en podologia, imatge diagnòstica, medicina nuclear i cirurgia de l’avantpeu, amb formació a les universitats de Barcelona i Manresa.' },
     'meritxell-paredes': { role: 'Medicina', bio: 'Doctora amb experiència en atenció primària i una visió integral del benestar, basada en la seguretat, la confiança i el tractament personalitzat.' },
     'calipso-del-pino': { role: 'Infermeria', bio: 'Infermera amb experiència en extraccions, consultes, urgències, control de tractaments i suport en procediments diagnòstics.' },
+    'iliane-casanova-ramos': { role: 'Infermeria dermoestètica', bio: 'Infermera especialitzada en dermoestètica, amb un enfocament personalitzat, segur i natural per a la cura i el benestar de la pell.' },
     'carolina-labrador': { role: 'Medicina general', bio: 'Metgessa amb formació integral en medicina familiar i atenció primària. Especialista en diagnòstic clínic, seguiment personalitzat i cura preventiva per a totes les edats. Ofereix una atenció propera, accessible i basada en la confiança del pacient.' },
   },
   'en-GB': {
