@@ -5,7 +5,8 @@
   "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
   
   "features": {
-    "ghcr.io/devcontainers/features/git:1": {}
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers-contrib/features/ripgrep:1": {}
   },
 
   "customizations": {
